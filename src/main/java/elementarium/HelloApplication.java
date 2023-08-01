@@ -1,4 +1,4 @@
-package elementarium.elementarium;
+package elementarium;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

@@ -1,4 +1,4 @@
-module elementarium.elementarium {
+module elementarium {
     requires javafx.controls;
     requires javafx.fxml;
 
@@ -6,6 +6,6 @@ module elementarium.elementarium {
     requires com.dlsc.formsfx;
     requires org.kordamp.bootstrapfx.core;
 
-    opens elementarium.elementarium to javafx.fxml;
-    exports elementarium.elementarium;
+    opens elementarium to javafx.fxml;
+    exports elementarium;
 }
