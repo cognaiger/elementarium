@@ -2,12 +2,13 @@ package elementarium.Model;
 
 public abstract class Elements {
     protected int elementId;
+
     protected int name;
     protected String description;
     protected String image;
     protected boolean canCombine;
-    protected int eraId;
-    protected int levelId;
+    protected Era era;
+    protected Level level;
 
     public Elements() {
     }
@@ -52,20 +53,20 @@ public abstract class Elements {
         this.canCombine = canCombine;
     }
 
-    public int getEraId() {
-        return eraId;
+    public Era getEra() {
+        return era;
     }
 
-    public void setEraId(int eraId) {
-        this.eraId = eraId;
+    public void setEra(Era era) {
+        this.era = era;
     }
 
-    public int getLevelId() {
-        return levelId;
+    public Level getLevel() {
+        return level;
     }
 
-    public void setLevelId(int levelId) {
-        this.levelId = levelId;
+    public void setLevel(Level level) {
+        this.level = level;
     }
 
     @Override
@@ -76,8 +77,8 @@ public abstract class Elements {
                 ", description='" + description + '\'' +
                 ", image='" + image + '\'' +
                 ", canCombine=" + canCombine +
-                ", eraId=" + eraId +
-                ", levelId=" + levelId +
+                ", eraId=" + era +
+                ", levelId=" + level.getId() +
                 '}';
     }
 }
