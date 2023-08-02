@@ -2,6 +2,7 @@ package elementarium.Model;
 
 public abstract class Elements {
     protected int elementId;
+
     protected int name;
     protected String description;
     protected String image;

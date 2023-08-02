@@ -12,7 +12,6 @@ public class Game extends Application {
     public void start(Stage stage) throws IOException {
         StackPane root = new StackPane();
         Scene scene = new Scene(root, 800, 600);
-
         stage.setScene(scene);
         stage.setTitle("Elementarium");
         stage.show();
