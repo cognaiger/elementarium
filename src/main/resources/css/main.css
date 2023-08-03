@@ -1,0 +1,4 @@
+.image-button {
+    -fx-text-fill: white; /* Màu chữ */
+    -fx-background-radius: 10; /* Bo tròn đường viền nền */
+}
