@@ -11,12 +11,10 @@ import javafx.stage.Stage;
 
 
 public class Game extends Application {
-
     private int imageViewsLength = 2;
     private ImageView[] imageViews = new ImageView[1000];
     private ImageView[] cloneImageViews = new ImageView[1000];
 
-    private ImageView[] combinedImage = new ImageView[1000];
     private double[] offsetXs = new double[1000];
     private double[] offsetYs = new double[1000];
 
@@ -30,12 +28,6 @@ public class Game extends Application {
         // Create the image views for the original images
         imageViews[0] = new ImageView(originalImage1);
         imageViews[1] = new ImageView(originalImage2);
-
-        // Set the properties of the image views
-//        for (ImageView imageView : imageViews) {
-//            imageView.setPreserveRatio(true);
-//            imageView.setFitWidth(100);
-//        }
 
         for (int i = 0;i<imageViewsLength;i++) {
             imageViews[i].setPreserveRatio(true);

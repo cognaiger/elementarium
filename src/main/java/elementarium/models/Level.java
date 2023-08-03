@@ -1,10 +1,10 @@
-package elementarium.Model;
+package elementarium.models;
 
 public class Level {
     private int id;
     private String name;
     private String description;
-    private int required_scored;
+    private int requiredScore;
 
     public int getId() {
         return id;
@@ -30,11 +30,11 @@ public class Level {
         this.description = description;
     }
 
-    public int getRequired_scored() {
-        return required_scored;
+    public int getRequiredScore() {
+        return requiredScore;
     }
 
-    public void setRequired_scored(int required_scored) {
-        this.required_scored = required_scored;
+    public void setRequiredScore(int requiredScore) {
+        this.requiredScore = requiredScore;
     }
 }
