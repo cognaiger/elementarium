@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import play.CreativeGame;
 import play.Game;
+import util.SceneUtil;
 
 public class MainController {
     @FXML
@@ -23,6 +24,8 @@ public class MainController {
 
     @FXML
     private Button chemistryButton;
+
+    SceneUtil sceneUtil = SceneUtil.getInstance();
 
     @FXML
     public void creativeGame() {
@@ -39,13 +42,9 @@ public class MainController {
     @FXML
     public void historyGame() {
         try {
-            Game game = new Game();
             Stage currentStage = (Stage) historyButton.getScene().getWindow();
-            // Đặt lại Scene của Stage với giao diện của Game
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/layout/SelectLevel.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            currentStage.setScene(scene);
+            Scene historyScene = sceneUtil.loadScene("/layout/SelectLevel.fxml");
+            currentStage.setScene(historyScene);
             currentStage.show();
         } catch (Exception e) {
             e.printStackTrace();
@@ -69,7 +68,6 @@ public class MainController {
         try {
             Game game = new Game();
             Stage currentStage = (Stage) chemistryButton.getScene().getWindow();
-            // Đặt lại Scene của Stage với giao diện của Game
             game.start(currentStage);
         } catch (Exception e) {
             e.printStackTrace();

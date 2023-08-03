@@ -6,15 +6,20 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import controller.MainController;
+import util.SceneUtil;
 
 public class Main extends Application {
+
+    SceneUtil sceneUtil = SceneUtil.getInstance();
+
     @Override
     public void start(Stage stage) throws Exception {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/layout/main.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 900, 600);
-            stage.setTitle("ELEMENTARIUM");
-            stage.setScene(scene);
-            stage.show();
+        sceneUtil.setPrimaryStage(stage);
+        Scene main = sceneUtil.loadScene("/layout/main.fxml");
+
+        stage.setTitle("ELEMENTARIUM");
+        stage.setScene(main);
+        stage.show();
     }
 
     public static void main(String[] args) {
