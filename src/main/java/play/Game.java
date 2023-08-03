@@ -42,13 +42,12 @@ public class Game extends Application {
             System.out.println(fire.getName() + " " + fire.getImageLink());
             elementList.add(fire);
             elementList.add(AutomaticLoadData.getElementById(ElementId.WATER_ID));
-            elementList.add(AutomaticLoadData.getElementById(ElementId.));
+
             System.out.println("List length " + elementList.size());
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 
     public void setLayoutElementImageViews() {
         int startY = 0;
@@ -102,8 +101,8 @@ public class Game extends Application {
 
         for (int i = 0; i < elementList.size(); i++) {
             int index = i;
-            elementList.get(i).getImageView().setOnMousePressed(event -> onMousePressed(event, index));
-            elementList.get(i).getImageView().setOnMouseDragged(event -> onMouseDragged(event, index));
+            elementList.get(i).getImageView().setOnMousePressed(event -> MouseHandler.onMousePressed(event, index, elementList, cloneImageViews, offsetXs, offsetYs));
+            elementList.get(i).getImageView().setOnMouseDragged(event -> MouseHandler.onMouseDragged(event, index, offsetXs, offsetYs, cloneImageViews));
             elementList.get(i).getImageView().setOnMouseReleased(event -> onMouseReleased(event, index));
         }
 
@@ -112,60 +111,29 @@ public class Game extends Application {
         primaryStage.show();
     }
 
-
-    private void onMousePressedAfterDrop(MouseEvent event, int index) {
-        // Calculate the offset between the mouse position and the image position
-        offsetXs[index] = event.getSceneX() - cloneImageViews[index].getLayoutX();
-        offsetYs[index] = event.getSceneY() - cloneImageViews[index].getLayoutY();
-    }
-
-    private void onMousePressed(MouseEvent event, int index) {
-        // Create a clone of the original image
-        cloneImageViews[index] = new ImageView(elementList.get(index).getImageView().getImage());
-        cloneImageViews[index].setPreserveRatio(true);
-        cloneImageViews[index].setFitWidth(ELEMENT_WIDTH);
-
-        // Set the position of the clone image
-        cloneImageViews[index].setLayoutX(elementList.get(index).getImageView().getLayoutX());
-        cloneImageViews[index].setLayoutY(elementList.get(index).getImageView().getLayoutY());
-        // Add the clone image to the pane
-        Pane pane = (Pane) elementList.get(index).getImageView().getParent();
-        pane.getChildren().add(cloneImageViews[index]);
-
-        // Calculate the offset between the mouse position and the clone image position
-        offsetXs[index] = event.getSceneX() - cloneImageViews[index].getLayoutX();
-        offsetYs[index] = event.getSceneY() - cloneImageViews[index].getLayoutY();
-    }
-
-    private void onMouseDragged(MouseEvent event, int index) {
-        // Move the clone image to the mouse position
-        cloneImageViews[index].setLayoutX(event.getSceneX() - offsetXs[index]);
-        cloneImageViews[index].setLayoutY(event.getSceneY() - offsetYs[index]);
-    }
-
     private void onMouseReleased(MouseEvent event, int index) {
         // Remove the clone image from the pane
         Pane pane = (Pane) elementList.get(index).getImageView().getParent();
-         // pane.getChildren().remove(cloneImageViews[index]);
-        cloneImageViews[index].setOnMousePressed(e -> onMousePressedAfterDrop(e, index));
-        cloneImageViews[index].setOnMouseDragged(e -> onMouseDragged(e, index));
+        // pane.getChildren().remove(cloneImageViews[index]);
+        cloneImageViews[index].setOnMousePressed(e -> MouseHandler.onMousePressedAfterDrop(e, index, offsetXs, offsetYs, cloneImageViews));
+        cloneImageViews[index].setOnMouseDragged(e -> MouseHandler.onMouseDragged(e, index, offsetXs, offsetYs, cloneImageViews));
         cloneImageViews[index].setOnMouseReleased(e -> onMouseReleased(e, index));
 
 
         // Check if the clone image overlaps with any other clone image
         boolean isOverlap = false;
         int overlapIndex = -1;
-        System.out.println("GO HERE");
+
         for (int i = 0; i < imageViews.length; i++) {
-            if (i != index && cloneImageViews[i]!=null && cloneImageViews[index].getBoundsInParent().intersects(cloneImageViews[i].getBoundsInParent()) ) {
+            if (i != index && cloneImageViews[i] != null && cloneImageViews[index].getBoundsInParent().intersects(cloneImageViews[i].getBoundsInParent())) {
                 isOverlap = true;
                 overlapIndex = i;
                 break;
             }
         }
-        ImageView newImageView = null;
+
         if (isOverlap) {
-            System.out.println( "index: "+ index + " overlap: " + overlapIndex);
+
 
             pane.getChildren().removeAll(cloneImageViews[overlapIndex],cloneImageViews[index]);
             imageViews[imageViewsLength] = new ImageView(new Image("steam.png"));
@@ -191,14 +159,11 @@ public class Game extends Application {
             System.out.println("Number of image on screen:" + imageViewsLength);
             // Add the new image view to the pane
             pane.getChildren().add(imageViews[imageViewsLength]);
-
-             imageViewsLength++;
+            imageViewsLength++;
 
         }
 
     }
-
-
 
     public static void main(String[] args) {
         launch(args);
