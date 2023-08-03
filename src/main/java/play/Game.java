@@ -1,4 +1,4 @@
-package elementarium;
+package play;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -7,6 +7,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+
 
 
 public class Game extends Application {
