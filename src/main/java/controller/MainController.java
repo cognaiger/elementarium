@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import play.CreativeGame;
 import play.Game;
 
 public class MainController {
@@ -26,7 +27,7 @@ public class MainController {
     @FXML
     public void creativeGame() {
         try {
-            Game game = new Game();
+            CreativeGame game = new CreativeGame();
             Stage currentStage = (Stage) creativeButton.getScene().getWindow();
             // Đặt lại Scene của Stage với giao diện của Game
             game.start(currentStage);
