@@ -12,10 +12,13 @@ import javafx.stage.Stage;
 
 public class Game extends Application {
 
-    private ImageView[] imageViews = new ImageView[2];
-    private ImageView[] cloneImageViews = new ImageView[2];
-    private double[] offsetXs = new double[2];
-    private double[] offsetYs = new double[2];
+    private int imageViewsLength = 2;
+    private ImageView[] imageViews = new ImageView[1000];
+    private ImageView[] cloneImageViews = new ImageView[1000];
+
+    private ImageView[] combinedImage = new ImageView[1000];
+    private double[] offsetXs = new double[1000];
+    private double[] offsetYs = new double[1000];
 
     @Override
     public void start(Stage primaryStage) {
@@ -29,9 +32,14 @@ public class Game extends Application {
         imageViews[1] = new ImageView(originalImage2);
 
         // Set the properties of the image views
-        for (ImageView imageView : imageViews) {
-            imageView.setPreserveRatio(true);
-            imageView.setFitWidth(100);
+//        for (ImageView imageView : imageViews) {
+//            imageView.setPreserveRatio(true);
+//            imageView.setFitWidth(100);
+//        }
+
+        for (int i = 0;i<imageViewsLength;i++) {
+            imageViews[i].setPreserveRatio(true);
+            imageViews[i].setFitWidth(100);
         }
 
         imageViews[0].setLayoutX(50);
@@ -42,13 +50,13 @@ public class Game extends Application {
         imageViews[1].setLayoutY(100);
 
         // Create a pane to hold the images
-        Pane pane = new Pane(imageViews);
+        Pane pane = new Pane(imageViews[0],imageViews[1]);
 
         // Create the scene
         Scene scene = new Scene(pane, 400, 400);
 
         // Register the mouse event handlers for the original images
-        for (int i = 0; i < imageViews.length; i++) {
+        for (int i = 0; i < 2; i++) {
             int index = i;
             imageViews[i].setOnMousePressed(event -> onMousePressed(event, index));
             imageViews[i].setOnMouseDragged(event -> onMouseDragged(event, index));
@@ -58,6 +66,13 @@ public class Game extends Application {
         // Show the scene
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+
+    private void onMousePressedAfterDrop(MouseEvent event, int index) {
+        // Calculate the offset between the mouse position and the image position
+        offsetXs[index] = event.getSceneX() - cloneImageViews[index].getLayoutX();
+        offsetYs[index] = event.getSceneY() - cloneImageViews[index].getLayoutY();
     }
 
     private void onMousePressed(MouseEvent event, int index) {
@@ -88,6 +103,9 @@ public class Game extends Application {
         // Remove the clone image from the pane
         Pane pane = (Pane) imageViews[index].getParent();
          // pane.getChildren().remove(cloneImageViews[index]);
+        cloneImageViews[index].setOnMousePressed(e -> onMousePressedAfterDrop(e, index));
+        cloneImageViews[index].setOnMouseDragged(e -> onMouseDragged(e, index));
+        cloneImageViews[index].setOnMouseReleased(e -> onMouseReleased(e, index));
 
 
         // Check if the clone image overlaps with any other clone image
@@ -103,26 +121,53 @@ public class Game extends Application {
         }
         ImageView newImageView = null;
         if (isOverlap) {
-
-
             System.out.println( "index: "+ index + " overlap: " + overlapIndex);
 
             pane.getChildren().removeAll(cloneImageViews[overlapIndex],cloneImageViews[index]);
-
+            imageViews[imageViewsLength] = new ImageView(new Image("steam.png"));
             // Create a new image view for the combined image
-            newImageView = new ImageView(new Image("steam.png"));
-            newImageView.setPreserveRatio(true);
-            newImageView.setFitWidth(imageViews[index].getFitWidth());
+
+            imageViews[imageViewsLength].setPreserveRatio(true);
+            imageViews[imageViewsLength].setFitWidth(imageViews[index].getFitWidth());
+
+
+            if (imageViews[imageViewsLength] == null) {
+                System.out.println("imageView is null and length = " + imageViewsLength+1);
+            }
+            for (int i=2;i<=imageViewsLength;i++) {
+                int indexx = i;
+                imageViews[imageViewsLength].setOnMousePressed(e -> onMousePressedNotClone(e, indexx));
+                imageViews[imageViewsLength].setOnMouseDragged(e -> onMouseDraggedNotClone(e, indexx));
+            }
+           // newImageView.setOnMouseReleased(e -> onMouseReleased(event, 2));
+
+
 
             // Set the position of the new image view
-            newImageView.setLayoutX(event.getSceneX() - offsetXs[index]);
-            newImageView.setLayoutY(event.getSceneY() - offsetYs[index]);
+            imageViews[imageViewsLength].setLayoutX(event.getSceneX() - offsetXs[index]);
+            imageViews[imageViewsLength].setLayoutY(event.getSceneY() - offsetYs[index]);
 
+
+
+            System.out.println("Number of image on screen:" + imageViewsLength);
             // Add the new image view to the pane
-            pane.getChildren().add(newImageView);
+            pane.getChildren().add(imageViews[imageViewsLength]);
+
+             imageViewsLength++;
 
         }
 
+    }
+
+    private void onMouseDraggedNotClone(MouseEvent event, int index) {
+        System.out.println("index in array is " + index);
+        imageViews[index].setLayoutX(event.getSceneX() - offsetXs[index]);
+        imageViews[index].setLayoutY(event.getSceneY() - offsetYs[index]);
+    }
+
+    private void onMousePressedNotClone(MouseEvent event, int index) {
+        offsetXs[index] = event.getSceneX() - imageViews[index].getLayoutX();
+        offsetYs[index] = event.getSceneY() - imageViews[index].getLayoutY();
     }
 
 
