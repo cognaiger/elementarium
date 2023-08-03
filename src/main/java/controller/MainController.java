@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,18 +12,22 @@ import play.Game;
 
 public class MainController {
     @FXML
-    private Button startButton;
+    private Button creativeButton;
+
     @FXML
-    protected void onButtonClick() {
+    private Button historyButton;
+
+    @FXML
+    private Button natureButton;
+
+    @FXML
+    private Button chemistryButton;
+
+    @FXML
+    public void creativeGame() {
         try {
-
             Game game = new Game();
-            // Tạo FXMLLoader để tải file FXML của class Game
-            //FXMLLoader loader = new FXMLLoader(getClass().getResource("GameScene.fxml"));
-            //Parent gameRoot = loader.load();
-
-            // Lấy Stage hiện tại của Button
-            Stage currentStage = (Stage) startButton.getScene().getWindow();
+            Stage currentStage = (Stage) creativeButton.getScene().getWindow();
             // Đặt lại Scene của Stage với giao diện của Game
             game.start(currentStage);
         } catch (Exception e) {
@@ -30,4 +35,39 @@ public class MainController {
         }
     }
 
+    @FXML
+    public void historyGame() {
+        try {
+            Game game = new Game();
+            Stage currentStage = (Stage) historyButton.getScene().getWindow();
+            // Đặt lại Scene của Stage với giao diện của Game
+            game.start(currentStage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void natureGame() {
+        try {
+            Game game = new Game();
+            Stage currentStage = (Stage) natureButton.getScene().getWindow();
+            // Đặt lại Scene của Stage với giao diện của Game
+            game.start(currentStage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void chemistryGame() {
+        try {
+            Game game = new Game();
+            Stage currentStage = (Stage) chemistryButton.getScene().getWindow();
+            // Đặt lại Scene của Stage với giao diện của Game
+            game.start(currentStage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
