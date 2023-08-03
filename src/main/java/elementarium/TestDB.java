@@ -1,6 +1,6 @@
 package elementarium;
 
-import elementarium.DatabaseConnect.MySQLConnection;
+import elementarium.db_connect.MySQLConnection;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
