@@ -22,8 +22,8 @@ public class Game extends Application {
 
     public static final int MAX_ELEMENT = 1001;
 
-    public static final int SCREEN_HEIGHT = 600;
-    public static final int SCREEN_WIDTH = 900;
+    public static final int SCREEN_HEIGHT = 1080;
+    public static final int SCREEN_WIDTH = 1920;
 
     public static final int ELEMENT_WIDTH = 50;
 
