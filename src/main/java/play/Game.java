@@ -12,10 +12,10 @@ import javafx.stage.Stage;
 
 public class Game extends Application {
 
-    private ImageView[] imageViews = new ImageView[2];
-    private ImageView[] cloneImageViews = new ImageView[2];
-    private double[] offsetXs = new double[2];
-    private double[] offsetYs = new double[2];
+    private ImageView[] imageViews = new ImageView[1001];
+    private ImageView[] cloneImageViews = new ImageView[1001];
+    private double[] offsetXs = new double[1001];
+    private double[] offsetYs = new double[1001];
 
     @Override
     public void start(Stage primaryStage) {
@@ -29,9 +29,9 @@ public class Game extends Application {
         imageViews[1] = new ImageView(originalImage2);
 
         // Set the properties of the image views
-        for (ImageView imageView : imageViews) {
-            imageView.setPreserveRatio(true);
-            imageView.setFitWidth(100);
+        for (int i=0;i<=1;i++) {
+            imageViews[i].setPreserveRatio(true);
+            imageViews[i].setFitWidth(100);
         }
 
         imageViews[0].setLayoutX(50);
@@ -42,13 +42,13 @@ public class Game extends Application {
         imageViews[1].setLayoutY(100);
 
         // Create a pane to hold the images
-        Pane pane = new Pane(imageViews);
+        Pane pane = new Pane(imageViews[0],imageViews[1]);
 
         // Create the scene
-        Scene scene = new Scene(pane, 400, 400);
+        Scene scene = new Scene(pane, 900, 600);
 
         // Register the mouse event handlers for the original images
-        for (int i = 0; i < imageViews.length; i++) {
+        for (int i = 0; i < 2; i++) {
             int index = i;
             imageViews[i].setOnMousePressed(event -> onMousePressed(event, index));
             imageViews[i].setOnMouseDragged(event -> onMouseDragged(event, index));
