@@ -41,7 +41,11 @@ public class MainController {
             Game game = new Game();
             Stage currentStage = (Stage) historyButton.getScene().getWindow();
             // Đặt lại Scene của Stage với giao diện của Game
-            game.start(currentStage);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/layout/SelectLevel.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            currentStage.setScene(scene);
+            currentStage.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
