@@ -14,4 +14,11 @@ public class MouseHandler {
         imageViews[index].setLayoutX(event.getSceneX() - offsetXs[index]);
         imageViews[index].setLayoutY(event.getSceneY() - offsetYs[index]);
     }
+
+    public static void onMousePressedAfterDrop(MouseEvent event, int index,double[] offsetXs,double[] offsetYs, ImageView[] cloneImageViews) {
+        // Calculate the offset between the mouse position and the image position
+        offsetXs[index] = event.getSceneX() - cloneImageViews[index].getLayoutX();
+        offsetYs[index] = event.getSceneY() - cloneImageViews[index].getLayoutY();
+    }
+
 }
