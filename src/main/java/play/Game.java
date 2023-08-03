@@ -31,7 +31,7 @@ public class Game extends Application {
 
     public Game() {
         System.out.println("Constructor");
-        elementList.add()
+
     }
 
 
