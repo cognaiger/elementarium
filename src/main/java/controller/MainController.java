@@ -64,8 +64,17 @@ public class MainController {
         try {
             Game game = new Game();
             Stage currentStage = (Stage) chemistryButton.getScene().getWindow();
+            System.out.println("Chemistry clicked");
             // Đặt lại Scene của Stage với giao diện của Game
-            game.start(currentStage);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/layout/Chemistry.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+
+
+            currentStage.setScene(scene);
+            currentStage.show();
+//            game.start(currentStage);
         } catch (Exception e) {
             e.printStackTrace();
         }
