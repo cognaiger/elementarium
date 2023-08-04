@@ -2,13 +2,17 @@ package controller;
 
 import elementarium.models.Combination;
 import elementarium.models.Element;
+import elementarium.models.Result;
 import elementarium.utils.automatic_load_data.AutomaticLoadData;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DataFormat;
@@ -28,6 +32,17 @@ public class CreativeController {
     private ListView<ImageView> listView;
     @FXML
     private Pane pane;
+    @FXML
+    private Pane knowledgeBox;
+    @FXML
+    private Button closeBox;
+    @FXML
+    private TextField knowledgeText;
+    @FXML
+    private ImageView newElement;
+
+
+
 
     private ImageView draggedImageView;
     private int width = 80;
@@ -36,6 +51,9 @@ public class CreativeController {
     DataFormat idDataFormat = new DataFormat("id");
 
     private List<Element> elements = new ArrayList<Element>();
+    private Result[][] comRes = new Result[100][100];
+    
+    private List<Integer> bar = new ArrayList<Integer>();
 
     private boolean inBar[] = new boolean[1000];
 
@@ -44,13 +62,15 @@ public class CreativeController {
     private ObservableList<ImageView> imageList = FXCollections.observableArrayList();
 
     public CreativeController() throws SQLException, ClassNotFoundException {
+        comRes = data.getCombinations();
+        elements = data.getAllElements();
     }
 
     public void setup() {
 
         imageList.clear();
-        for (int i = 0; i < elements.size(); i++) {
-            Element x = elements.get(i);
+        for (int i: bar) {
+            Element x = elements.get(i - 1);
             ImageView imageView = new ImageView(x.getImageLink());
             imageView.setUserData(x.getElementId());
             imageList.add(imageView);
@@ -84,14 +104,9 @@ public class CreativeController {
     public void initialize() throws SQLException, ClassNotFoundException {
         // Tạo danh sách các ImageView
 
-        elements.add(data.getElementById(1));
-        elements.add(data.getElementById(2));
-        elements.add(data.getElementById(3));
-        elements.add(data.getElementById(4));
-        elements.add(data.getElementById(5));
-
         for (int i = 1; i <= 5; i++) {
             inBar[i] = true;
+            bar.add(i);
         }
 
         setup();
@@ -109,8 +124,6 @@ public class CreativeController {
             clipboardContent.put(idDataFormat, id);
             dragboard.setContent(clipboardContent);
             int idValue = (int) dragboard.getContent(idDataFormat);
-            System.out.println(idValue);
-
           }
           event.consume();
         });
@@ -139,47 +152,42 @@ public class CreativeController {
               if (overlap(img, imageView) || overlap(imageView, img)) {
                 id1 = (int) img.getUserData();
                 id2 = (int) imageView.getUserData();
-                if (id1 > id2) {
-                  int tmp = id1;
-                  id1 = id2;
-                  id2 = tmp;
-                }
                 override = img;
                 break;
               }
             }
             if (override != null) {
-                Combination curCom = null;
-                try {
-                    curCom = data.getCombinationByE1E2(id1, id2);
-                    if (curCom != null) {
-                        Element resElement = data.getElementById(curCom.getOutputElement());
-                        if (inBar[resElement.getElementId()]) { /// sản phẩm đã có từ trước
-                            pane.getChildren().remove(override);
-                            ImageView newImg = new ImageView(resElement.getImageLink());
-                            newImg.setLayoutX(event.getX() - width / 2);
-                            newImg.setLayoutY(event.getY() - height / 2);
-                            newImg.setUserData(resElement.getElementId());
-                            pane.getChildren().add(newImg);
-                        } else {
-                            inBar[resElement.getElementId()] = true;
-                            elements.add(resElement);
-                            setup();
-                            pane.getChildren().remove(override);
-                            ImageView newImg = new ImageView(resElement.getImageLink());
-                            newImg.setLayoutX(event.getX() - width / 2);
-                            newImg.setLayoutY(event.getY() - height / 2);
-                            newImg.setUserData(resElement.getElementId());
-                            pane.getChildren().add(newImg);
-                        }
-                    }
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
+              Result curCom = null;
+              curCom = comRes[id1][id2];
+              if (curCom != null) {
+                Element resElement = elements.get(curCom.getId() - 1);
+                if (inBar[resElement.getElementId()]) { // / sản phẩm đã có từ trước
+                  pane.getChildren().remove(override);
+                  ImageView newImg = new ImageView(resElement.getImageLink());
+                  newImg.setLayoutX(event.getX() - width / 2);
+                  newImg.setLayoutY(event.getY() - height / 2);
+                  newImg.setUserData(resElement.getElementId());
+                  pane.getChildren().add(newImg);
+                } else {  /// sản phẩm chưa có, cần hiển thị bảng.
+
+                   knowledgeBox.setVisible(!knowledgeBox.isVisible());
+                   knowledgeBox.setDisable(false);
+                   knowledgeText.setText(curCom.getDes());
+                   newElement.setImage(new Image(resElement.getImageLink()));
+
+                  inBar[resElement.getElementId()] = true;
+                  bar.add(resElement.getElementId());
+                  setup();
+                  pane.getChildren().remove(override);
+                  ImageView newImg = new ImageView(resElement.getImageLink());
+                  newImg.setLayoutX(event.getX() - width / 2);
+                  newImg.setLayoutY(event.getY() - height / 2);
+                  newImg.setUserData(resElement.getElementId());
+                  pane.getChildren().add(newImg);
                 }
+              }
             } else {
-                pane.getChildren().add(imageView);
+              pane.getChildren().add(imageView);
             }
           }
           event.setDropCompleted(true);
@@ -253,7 +261,10 @@ public class CreativeController {
         return false;
     }
 
-
+    public void onClose() {
+        knowledgeBox.setVisible(!knowledgeBox.isVisible());
+        knowledgeBox.setDisable(true);
+    }
 
 
 
