@@ -28,6 +28,10 @@ public class SceneUtil {
         this.primaryStage = primaryStage;
     }
 
+    public Stage getPrimaryStage() {
+        return this.primaryStage;
+    }
+
     public void showScene(Scene scene) {
         primaryStage.setScene(scene);
     }

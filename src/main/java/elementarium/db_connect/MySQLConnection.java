@@ -1,4 +1,4 @@
-package elementarium.DatabaseConnect;
+package elementarium.db_connect;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

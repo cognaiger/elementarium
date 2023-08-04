@@ -65,8 +65,10 @@ public class MainController {
     public void chemistryGame() {
         try {
             Game game = new Game();
-            Stage currentStage = (Stage) chemistryButton.getScene().getWindow();
+            Stage currentStage = sceneUtil.getPrimaryStage();
             game.start(currentStage);
+            Scene chemistry = sceneUtil.loadScene("/layout/Chemistry.fxml");
+            sceneUtil.showScene(chemistry);
         } catch (Exception e) {
             e.printStackTrace();
         }
