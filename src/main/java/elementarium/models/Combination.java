@@ -6,56 +6,62 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Combination {
-    private static MySQLConnection connection;
 
-    static {
-        try {
-            connection = new MySQLConnection();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+    private int id;
+    private int inputElement1;
+    private int inputElement2;
+    private int outputElement;
+    private String description;
+
+    public Combination() {
+
     }
 
-    private Element inputElement1;
-    private Element inputElement2;
-    private Element outputElement;
-
-    public Combination() throws SQLException, ClassNotFoundException {
+    public Combination(int id, int inputElement1, int inputElement2, int outputElement, String description) {
+        this.id = id;
+        this.inputElement1 = inputElement1;
+        this.inputElement2 = inputElement2;
+        this.outputElement = outputElement;
+        this.description = description;
     }
 
-    public Element getInputElement1() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getInputElement1() {
         return inputElement1;
     }
 
-    public void setInputElement1(Element inputElement1) {
+    public void setInputElement1(int inputElement1) {
         this.inputElement1 = inputElement1;
     }
 
-    public Element getInputElement2() {
+    public int getInputElement2() {
         return inputElement2;
     }
 
-    public void setInputElement2(Element inputElement2) {
+    public void setInputElement2(int inputElement2) {
         this.inputElement2 = inputElement2;
     }
 
-    public Element getOutputElement() {
+    public int getOutputElement() {
         return outputElement;
     }
 
-    public void setOutputElement(Element outputElement) {
+    public void setOutputElement(int outputElement) {
         this.outputElement = outputElement;
     }
 
-    public static boolean checkCombine(int e1_id, int e2_id) throws SQLException {
-        String sql = "SELECT * FROM combination WHERE element1_id = "+e1_id+" AND element2_id = "+e2_id;
-        // Execute the query and check if a row was returned
-        ResultSet rs = connection.executeQuery(sql);
-        if (rs.next()) {
-            return true;
-        }
-        return false;
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
