@@ -1,4 +1,4 @@
-package util;
+package elementarium.utils;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

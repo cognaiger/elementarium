@@ -2,7 +2,7 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import util.SceneUtil;
+import elementarium.utils.SceneUtil;
 
 import java.io.IOException;
 
