@@ -21,8 +21,8 @@ public class Game extends Application {
     public void start(Stage primaryStage) {
 
         // Load the original images
-        Image originalImage1 = new Image("fire.png");
-        Image originalImage2 = new Image("water.png");
+        Image originalImage1 = new Image("elements/fire.png");
+        Image originalImage2 = new Image("elements/water.png");
 
         // Create the image views for the original images
         imageViews[0] = new ImageView(originalImage1);
@@ -110,7 +110,7 @@ public class Game extends Application {
             pane.getChildren().removeAll(cloneImageViews[overlapIndex],cloneImageViews[index]);
 
             // Create a new image view for the combined image
-            newImageView = new ImageView(new Image("steam.png"));
+            newImageView = new ImageView(new Image("elements/steam.png"));
             newImageView.setPreserveRatio(true);
             newImageView.setFitWidth(imageViews[index].getFitWidth());
 
