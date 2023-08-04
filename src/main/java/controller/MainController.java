@@ -42,10 +42,8 @@ public class MainController {
     @FXML
     public void historyGame() {
         try {
-            Stage currentStage = (Stage) historyButton.getScene().getWindow();
             Scene historyScene = sceneUtil.loadScene("/layout/SelectLevel.fxml");
-            currentStage.setScene(historyScene);
-            currentStage.show();
+            sceneUtil.showScene(historyScene);
         } catch (Exception e) {
             e.printStackTrace();
         }

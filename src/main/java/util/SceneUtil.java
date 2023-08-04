@@ -37,6 +37,6 @@ public class SceneUtil {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
         Parent root = loader.load();
 
-        return new Scene(root, 900, 600);
+        return new Scene(root, 1300, 750);
     }
 }
