@@ -5,23 +5,62 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreativeController">
-    <ImageView fitHeight="600" fitWidth="900">
+<AnchorPane prefHeight="750.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreativeController">
+
+    <ImageView fitHeight="750" fitWidth="1300">
         <image>
             <Image url="@../background/creative_bgr.jpg" />
         </image>
     </ImageView>
-   <ListView fx:id="listView" layoutX="694.0" prefHeight="600.0" prefWidth="206.0" style="-fx-background-color: #BC8F8F;" />
-   <Pane fx:id="pane" prefHeight="600.0" prefWidth="695.0" />
-   <Pane fx:id="knowledgeBox" disable="true" layoutX="188.0" layoutY="85.0" prefHeight="350.0" prefWidth="384.0" style="-fx-background-color: white;" visible="false">
-      <children>
-         <Button fx:id="closeBox" layoutX="319.0" layoutY="17.0" mnemonicParsing="false" onAction="#onClose" text="Close" />
-         <TextField fx:id="knowledgeText" layoutX="36.0" layoutY="246.0" prefHeight="37.0" prefWidth="307.0">
-            <font>
-               <Font name=".VnArial Bold Italic" size="14.0" />
-            </font>
-         </TextField>
-         <ImageView fx:id="newElement" fitHeight="150.0" fitWidth="200.0" layoutX="96.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true" />
-      </children>
-   </Pane>
+
+    <ImageView fitHeight="90.0" fitWidth="415.0" layoutX="332.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../header/creative.png" />
+        </image>
+    </ImageView>
+   <Button fx:id="backBtn" onAction="#backToMain" layoutX="38.0" layoutY="40.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+      <graphic>
+         <ImageView fitHeight="50.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../button/back.png" />
+            </image>
+         </ImageView>
+      </graphic>
+   </Button>
+
+
+    <ListView fx:id="listView" layoutX="1079.0" prefHeight="750.0" prefWidth="128.0" style="-fx-region-border: none;" />
+
+    <ListView fx:id="listViewText" layoutX="1199.0" prefHeight="750.0" prefWidth="101.0" style="-fx-region-border: none;" />
+
+    <Pane fx:id="pane" layoutX="47.0" layoutY="106.0" prefHeight="603.0" prefWidth="984.0" style="-fx-background-radius: 20; -fx-background-color: white;" />
+
+    <Pane fx:id="knowledgeBox" disable="true" layoutX="459.0" layoutY="218.0" prefHeight="381.0" prefWidth="428.0" style="-fx-background-radius: 10;" visible="false">
+        <children>
+         <ImageView fitHeight="381.0" fitWidth="428.0">
+            <image>
+               <Image url="@../background/knowledgeBox.png" />
+            </image>
+         </ImageView>
+            <Button fx:id="closeBox" layoutX="368.0" layoutY="17.0" maxHeight="50" maxWidth="50" onAction="#onClose" style="-fx-background-color: transparent;">
+            <graphic>
+                  <ImageView fitHeight="30" fitWidth="30">
+                      <image>
+                          <Image url="@../button/close.png" />
+                      </image>
+                  </ImageView>
+            </graphic></Button>
+            <ImageView fx:id="newElement" fitHeight="120.0" fitWidth="120.0" layoutX="154.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true" />
+            <TextArea fx:id="knowledgeText" layoutX="48.0" layoutY="246.0" prefHeight="68.0" prefWidth="332.0" wrapText="true">
+                <font>
+                    <Font name="System Bold" size="14.0" />
+                </font>
+            </TextArea>
+            <TextField fx:id="elementName" alignment="CENTER" layoutX="139.0" layoutY="14.0" prefHeight="44.0" prefWidth="151.0">
+                <font>
+                    <Font name="System Bold" size="20.0" />
+                </font>
+            </TextField>
+        </children>
+    </Pane>
 </AnchorPane>

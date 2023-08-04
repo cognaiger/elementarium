@@ -10,8 +10,8 @@ public class CreativeGame extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/layout/creativeGame.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 900, 600);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/layout/creativeGame.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1300, 750);
         stage.setTitle("ELEMENTARIUM");
         stage.setScene(scene);
         stage.show();
