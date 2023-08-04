@@ -6,7 +6,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NatureLevelController">
    <children>
-      <ImageView fx:id="myImageView1" fitHeight="1164.0" fitWidth="515.0" layoutX="-14.0" layoutY="-216.0" onMouseEntered="#onMouseHover1" onMouseExited="#onMouseExit1" pickOnBounds="true" style="-fx-border-color: white; -fx-border-width: 10px;">
+      <ImageView fx:id="myImageView1" fitHeight="1164.0" fitWidth="515.0" layoutX="-14.0" layoutY="-216.0" onMouseClicked="#natureGameLevel1" onMouseEntered="#onMouseHover1" onMouseExited="#onMouseExit1" pickOnBounds="true" style="-fx-border-color: white; -fx-border-width: 10px;">
          <image>
             <Image url="@../nature/desert.png" />
          </image>

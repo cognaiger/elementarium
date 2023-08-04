@@ -41,6 +41,19 @@ public class NatureLevelController {
     }
 
     @FXML
+    public void natureGameLevel1() {
+        try {
+            Scene natureScene = sceneUtil.loadScene("/layout/NatureLevel1.fxml");
+            sceneUtil.showScene(natureScene);
+            // Đặt lại Scene của Stage với giao diện của Game
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @FXML
     void onMouseHover1() {
         // Add the hover effect here, for example, changing the opacity
         scaleBiggerImageView(myImageView1);
