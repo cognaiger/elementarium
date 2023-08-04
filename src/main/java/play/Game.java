@@ -1,5 +1,6 @@
 package play;
 
+import elementarium.models.Element;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -12,10 +13,13 @@ import javafx.stage.Stage;
 
 public class Game extends Application {
 
+    public static final double ELEMENT_WIDTH = 50;
     private ImageView[] imageViews = new ImageView[2];
     private ImageView[] cloneImageViews = new ImageView[2];
     private double[] offsetXs = new double[2];
     private double[] offsetYs = new double[2];
+
+
 
     @Override
     public void start(Stage primaryStage) {
