@@ -1,9 +1,11 @@
 package controller;
 
-import elementarium.models.Combination;
 import elementarium.models.Element;
 import elementarium.models.Result;
+import elementarium.utils.animation.Animation;
+import elementarium.utils.animation.BoomEffect;
 import elementarium.utils.automatic_load_data.AutomaticLoadData;
+import elementarium.utils.sound.SoundUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -41,7 +43,7 @@ public class CreativeController {
     @FXML
     private ImageView newElement;
 
-
+    private final SoundUtil soundUtil = new SoundUtil();
 
 
     private ImageView draggedImageView;
@@ -115,6 +117,7 @@ public class CreativeController {
     listView.setOnDragDetected(
         event -> {
           if (listView.getSelectionModel().getSelectedItem() != null) {
+              soundUtil.playSelectSoundEffect();
             Dragboard dragboard = listView.startDragAndDrop(TransferMode.COPY);
             // Put the image on the dragboard
             ClipboardContent clipboardContent = new ClipboardContent();
@@ -131,6 +134,7 @@ public class CreativeController {
     // Set the onDragDropped event for the pane to handle the drop
     pane.setOnDragDropped(
         event -> {
+            soundUtil.playDropSoundEffect();
           Dragboard dragboard = event.getDragboard();
           if (dragboard.hasImage()) {
             // DataFormat idDataFormatt = new DataFormat("Imgid");
@@ -157,35 +161,50 @@ public class CreativeController {
               }
             }
             if (override != null) {
-              Result curCom = null;
-              curCom = comRes[id1][id2];
-              if (curCom != null) {
-                Element resElement = elements.get(curCom.getId() - 1);
-                if (inBar[resElement.getElementId()]) { // / sản phẩm đã có từ trước
-                  pane.getChildren().remove(override);
-                  ImageView newImg = new ImageView(resElement.getImageLink());
-                  newImg.setLayoutX(event.getX() - width / 2);
-                  newImg.setLayoutY(event.getY() - height / 2);
-                  newImg.setUserData(resElement.getElementId());
-                  pane.getChildren().add(newImg);
-                } else {  /// sản phẩm chưa có, cần hiển thị bảng.
 
-                   knowledgeBox.setVisible(!knowledgeBox.isVisible());
-                   knowledgeBox.setDisable(false);
-                   knowledgeText.setText(curCom.getDes());
-                   newElement.setImage(new Image(resElement.getImageLink()));
+                Result curCom = null;
+                curCom = comRes[id1][id2];
+                if (curCom != null) {
+                    Element resElement = elements.get(curCom.getId() - 1);
+                    if (inBar[resElement.getElementId()]) { // / sản phẩm đã có từ trước
 
-                  inBar[resElement.getElementId()] = true;
-                  bar.add(resElement.getElementId());
-                  setup();
-                  pane.getChildren().remove(override);
-                  ImageView newImg = new ImageView(resElement.getImageLink());
-                  newImg.setLayoutX(event.getX() - width / 2);
-                  newImg.setLayoutY(event.getY() - height / 2);
-                  newImg.setUserData(resElement.getElementId());
-                  pane.getChildren().add(newImg);
+                        soundUtil.playCanCombineSoundEffect();
+
+                        pane.getChildren().remove(override);
+                        ImageView newImg = new ImageView(resElement.getImageLink());
+                        newImg.setLayoutX(event.getX() - width / 2);
+                        newImg.setLayoutY(event.getY() - height / 2);
+                        newImg.setUserData(resElement.getElementId());
+                        pane.getChildren().add(newImg);
+                    } else {  /// sản phẩm chưa có, cần hiển thị bảng.
+
+                        soundUtil.playNewElementSoundEffect();
+
+                        knowledgeBox.setVisible(!knowledgeBox.isVisible());
+                        knowledgeBox.setDisable(false);
+
+                        knowledgeText.setText(curCom.getDes());
+                        newElement.setImage(new Image(resElement.getImageLink()));
+
+                        inBar[resElement.getElementId()] = true;
+                        bar.add(resElement.getElementId());
+
+                        setup();
+
+                        pane.getChildren().remove(override);
+
+                        ImageView newImg = new ImageView(resElement.getImageLink());
+                        newImg.setLayoutX(event.getX() - width / 2);
+                        newImg.setLayoutY(event.getY() - height / 2);
+                        newImg.setUserData(resElement.getElementId());
+                        pane.getChildren().add(newImg);
+                    }
+              } else {
+                    Animation.shakeImageView(imageView);
+                    System.out.println("Cant combine");
+                    pane.getChildren().add(imageView);
+                    soundUtil.playCanNotCombineSoundEffect();
                 }
-              }
             } else {
               pane.getChildren().add(imageView);
             }
@@ -197,6 +216,7 @@ public class CreativeController {
         //// Sự kiện kéo từ Pane
         pane.setOnDragDetected(
                 event -> {
+                    soundUtil.playSelectSoundEffect();
                     draggedImageView = null;
                     for (Node imageView : pane.getChildren()) {
                         ImageView tmp = (ImageView) imageView;
@@ -240,6 +260,7 @@ public class CreativeController {
         // Xử lý sự kiện khi thả ImageView vào ListView
         listView.setOnDragDropped(
                 event -> {
+                    soundUtil.playBackToListViewSoundEffect();
                     Dragboard dragboard = event.getDragboard();
                     boolean success = false;
                     if (dragboard.hasImage() && draggedImageView != null) {
