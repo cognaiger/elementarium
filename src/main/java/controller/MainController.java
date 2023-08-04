@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import play.CreativeGame;
 import play.Game;
+import util.SceneUtil;
 
 public class MainController {
     @FXML
@@ -23,6 +24,8 @@ public class MainController {
 
     @FXML
     private Button chemistryButton;
+
+    SceneUtil sceneUtil = SceneUtil.getInstance();
 
     @FXML
     public void creativeGame() {
@@ -39,14 +42,8 @@ public class MainController {
     @FXML
     public void historyGame() {
         try {
-            Game game = new Game();
-            Stage currentStage = (Stage) historyButton.getScene().getWindow();
-            // Đặt lại Scene của Stage với giao diện của Game
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/layout/SelectLevel.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            currentStage.setScene(scene);
-            currentStage.show();
+            Scene historyScene = sceneUtil.loadScene("/layout/SelectLevel.fxml");
+            sceneUtil.showScene(historyScene);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -68,18 +65,10 @@ public class MainController {
     public void chemistryGame() {
         try {
             Game game = new Game();
-            Stage currentStage = (Stage) chemistryButton.getScene().getWindow();
-            System.out.println("Chemistry clicked");
-            // Đặt lại Scene của Stage với giao diện của Game
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/layout/Chemistry.fxml"));
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-
-
-            currentStage.setScene(scene);
-            currentStage.show();
-//            game.start(currentStage);
+            Stage currentStage = sceneUtil.getPrimaryStage();
+            game.start(currentStage);
+            Scene chemistry = sceneUtil.loadScene("/layout/Chemistry.fxml");
+            sceneUtil.showScene(chemistry);
         } catch (Exception e) {
             e.printStackTrace();
         }
