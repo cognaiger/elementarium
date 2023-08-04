@@ -7,6 +7,8 @@ module elementarium {
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
     requires javafx.media;
+    requires de.jensd.fx.glyphs.fontawesome;
+    requires font.awesome;
     opens elementarium to javafx.fxml;
     exports elementarium;
     exports controller;

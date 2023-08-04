@@ -17,7 +17,7 @@ public class AutomaticLoadData {
 
     }
 
-    public static Element getElementById(int id) throws SQLException, ClassNotFoundException {
+    public List<Element> getElementById(int id) throws SQLException, ClassNotFoundException {
         mySQLConnection = new MySQLConnection();
         Element element = new Element();
         String sql = "SELECT * FROM element WHERE id = " + id;
@@ -33,7 +33,9 @@ public class AutomaticLoadData {
 
         // Close the database connection
         mySQLConnection.close();
-        return element;
+        List<Element> res = new ArrayList<>();
+        res.add(element);
+        return res;
     }
 
     public static Combination getCombinationByE1E2(int id1, int id2) throws SQLException, ClassNotFoundException {
