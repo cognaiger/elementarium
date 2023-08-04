@@ -9,16 +9,17 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Game extends Application {
 
-    List<Element> elementList = new ArrayList<>();
-
-    private ImageView[] imageViews = new ImageView[1001];
-    private ImageView[] cloneImageViews = new ImageView[1001];
-    private double[] offsetXs = new double[1001];
-    private double[] offsetYs = new double[1001];
+    public static final double ELEMENT_WIDTH = 50;
+    private ImageView[] imageViews = new ImageView[2];
+    private ImageView[] cloneImageViews = new ImageView[2];
+    private double[] offsetXs = new double[2];
+    private double[] offsetYs = new double[2];
 
     public Game() {
         System.out.println("Constructor");
