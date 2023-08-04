@@ -1,4 +1,4 @@
-package elementarium.Model;
+package elementarium.models;
 
 public class Era {
     private int id;
