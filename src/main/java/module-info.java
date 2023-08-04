@@ -6,7 +6,7 @@ module elementarium {
     requires com.dlsc.formsfx;
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
-
+    requires javafx.media;
     opens elementarium to javafx.fxml;
     exports elementarium;
     exports controller;

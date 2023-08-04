@@ -5,7 +5,6 @@ import elementarium.models.Combination;
 import elementarium.models.Element;
 import elementarium.models.Result;
 
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -73,7 +72,6 @@ public class AutomaticLoadData {
             String description = rs.getString("description");
 
             Result tmp = new Result(result_id, description);
-
             res[element1_id][element2_id] = tmp;
             res[element2_id][element1_id] = tmp;
         }
