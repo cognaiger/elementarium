@@ -5,7 +5,6 @@ import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
 public class BoomEffect {
-
     public static void applyBoomEffect(Pane parentPane) {
         double initialSize = 2;
         double finalSize = 200;
