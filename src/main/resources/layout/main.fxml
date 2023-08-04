@@ -5,7 +5,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="600" maxWidth="900" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+<AnchorPane maxHeight="600" maxWidth="900" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
       <ImageView fitHeight="600" fitWidth="900">
          <image>
             <Image url="@../background/main_bgr.jpg" />

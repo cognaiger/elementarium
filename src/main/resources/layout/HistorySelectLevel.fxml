@@ -7,7 +7,9 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LevelController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0"
+           prefWidth="1300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="controller.HistoryLevelController">
    <children>
       <ImageView fitHeight="750.0" fitWidth="1300.0" pickOnBounds="true">
          <image>
@@ -16,7 +18,8 @@
       </ImageView>
       <Pane prefHeight="600.0" prefWidth="900.0">
          <children>
-            <Pane layoutX="680.0" layoutY="250.0" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: F9F9F9;">
+            <Pane layoutX="680.0" layoutY="250.0" prefHeight="250.0" prefWidth="250.0"
+                  style="-fx-background-color: F9F9F9;" onMouseClicked="#selectLevel3">
                <children>
                   <ImageView fitHeight="164.0" fitWidth="250.0" focusTraversable="true" layoutY="89.0" pickOnBounds="true">
                      <image>
@@ -30,7 +33,8 @@
                   </Label>
                   <Label layoutX="78.0" layoutY="56.0" text="Middle Ages" />
                </children></Pane>
-            <Pane layoutX="370.0" layoutY="250.0" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: F9F9F9;">
+            <Pane fx:id="level2" layoutX="370.0" layoutY="250.0" prefHeight="250.0" prefWidth="250.0"
+                  style="-fx-background-color: F9F9F9;" onMouseClicked="#selectLevel2">
                <children>
                   <ImageView fitHeight="164.0" fitWidth="250.0" layoutY="88.0" pickOnBounds="true">
                      <image>
@@ -44,12 +48,14 @@
                   </Label>
                   <Label layoutX="76.0" layoutY="56.0" text="Classical Era" />
                </children></Pane>
-            <ImageView fx:id="turnBack" fitHeight="80.0" fitWidth="80.0" layoutX="65.0" layoutY="58.0" onMouseClicked="#handleTurnBack" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="turnBack" fitHeight="80.0" fitWidth="80.0" layoutX="65.0" layoutY="58.0"
+                       onMouseClicked="#handleTurnBack" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../button/back.png" />
                </image>
             </ImageView>
-            <Pane layoutX="58.0" layoutY="250.0" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: F9F9F9;">
+            <Pane layoutX="58.0" layoutY="250.0" prefHeight="250.0" prefWidth="250.0"
+                  style="-fx-background-color: F9F9F9;" onMouseClicked="#selectLevel1">
                <children>
                   <ImageView fitHeight="164.0" fitWidth="250.0" layoutY="89.0" pickOnBounds="true">
                      <image>
@@ -63,7 +69,8 @@
                   </Label>
                   <Label layoutX="85.0" layoutY="56.0" text="Prehistory" />
                </children></Pane>
-            <Pane layoutX="990.0" layoutY="250.0" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: F9F9F9;">
+            <Pane layoutX="990.0" layoutY="250.0" prefHeight="250.0" prefWidth="250.0"
+                  style="-fx-background-color: F9F9F9;" onMouseClicked="#selectLevel4">
                <children>
                   <ImageView fitHeight="164.0" fitWidth="250.0" layoutY="89.0" pickOnBounds="true">
                      <image>
