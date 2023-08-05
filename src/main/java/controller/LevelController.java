@@ -2,6 +2,7 @@ package controller;
 
 import elementarium.models.Element;
 import elementarium.utils.SceneUtil;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,6 +23,8 @@ public class LevelController extends DragAndDropWindow {
     public static int level = 1;
 
     public int resId;
+    @FXML
+    public Pane helpTab;
 
     SceneUtil sceneUtil = SceneUtil.getInstance();
 
@@ -101,7 +104,6 @@ public class LevelController extends DragAndDropWindow {
     @Override
     public void checkRes(Element resElement) {
         if (resElement.getElementId() == resId) {
-            System.out.println("ok");
             congraBox.setDisable(false);
             congraBox.setVisible(true);
         }
@@ -130,7 +132,23 @@ public class LevelController extends DragAndDropWindow {
                 sceneUtil.showScene(level4);
                 break;
             }
+            case 5: {
+                QuestionHistoryController.questionNum = 1;
+                Scene q = sceneUtil.loadScene("/layout/QuestionHis.fxml");
+                sceneUtil.showScene(q);
+                break;
+            }
         }
     }
 
+    public void closeHelpTab() {
+        helpTab.setDisable(true);
+        helpTab.setVisible(false);
+    }
+
+
+    public void openHelpTab() {
+        helpTab.setVisible(true);
+        helpTab.setDisable(false);
+    }
 }

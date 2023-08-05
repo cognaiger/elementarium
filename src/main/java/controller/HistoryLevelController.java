@@ -23,8 +23,8 @@ public class HistoryLevelController {
     @FXML
     private void selectLevel1() {
         try {
-            Scene level1 = sceneUtil.loadScene("/layout/Level1His.fxml");
             LevelController.level = 1;
+            Scene level1 = sceneUtil.loadScene("/layout/Level1His.fxml");
             sceneUtil.showScene(level1);
         } catch (IOException e) {
             e.printStackTrace();
@@ -34,8 +34,8 @@ public class HistoryLevelController {
     @FXML
     private void selectLevel2() {
         try {
-            Scene level2 = sceneUtil.loadScene("/layout/Level1His.fxml");
             LevelController.level = 2;
+            Scene level2 = sceneUtil.loadScene("/layout/Level1His.fxml");
             sceneUtil.showScene(level2);
         } catch (IOException e) {
             e.printStackTrace();
@@ -45,8 +45,8 @@ public class HistoryLevelController {
     @FXML
     private void selectLevel3() {
         try {
-            Scene level2 = sceneUtil.loadScene("/layout/Level1His.fxml");
             LevelController.level = 3;
+            Scene level2 = sceneUtil.loadScene("/layout/Level1His.fxml");
             sceneUtil.showScene(level2);
         } catch (IOException e) {
             e.printStackTrace();
@@ -55,8 +55,8 @@ public class HistoryLevelController {
     @FXML
     private void selectLevel4() {
         try {
+            LevelController.level = 4;
             Scene level2 = sceneUtil.loadScene("/layout/Level1His.fxml");
-            LevelController.level = 3;
             sceneUtil.showScene(level2);
         } catch (IOException e) {
             e.printStackTrace();
