@@ -4,6 +4,7 @@ import elementarium.utils.SceneUtil;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.ListView;
@@ -11,6 +12,8 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.w3c.dom.events.MouseEvent;
+
+import java.io.IOException;
 
 public class LevelController {
 
@@ -20,11 +23,12 @@ public class LevelController {
     private ImageView fire;
     @FXML
     private ListView<ImageView> listView;
+    SceneUtil sceneUtil = SceneUtil.getInstance();
 
     @FXML
     private void initialize() {
-        // Show the modal dialog when the application starts
-        showInstructionsModal();
+            // Show the modal dialog when the application starts
+            showInstructionsModal();
     }
 
     private void showInstructionsModal() {
