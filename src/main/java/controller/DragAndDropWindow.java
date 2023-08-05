@@ -50,6 +50,7 @@ public abstract class DragAndDropWindow {
     protected TextField elementName;
 
 
+
     protected ImageView draggedImageView;
     public static final int ELEMENT_WIDTH = 80;
     public static final int ELEMENT_HEIGHT = 80;
@@ -116,7 +117,7 @@ public abstract class DragAndDropWindow {
             Element x = elements.get(i - 1);
             listViewText.getItems().add(x.getName());
         }
-        listViewText.setCellFactory(param -> new CustomListCell(20));
+        listViewText.setCellFactory(param -> new CustomListCell(18));
 
         // Set the onDragDetected event for the ImageView items in the ListView
         listView.setOnDragDetected(
@@ -258,9 +259,6 @@ public abstract class DragAndDropWindow {
                                 Element resElement = elements.get(curCom.getId() - 1);
                                 if (inBar[resElement.getElementId()]) { // / sản phẩm đã có từ trước
 
-
-
-
                                     pane.getChildren().remove(override);
                                     ImageView newImg = new ImageView(resElement.getImageLink());
                                     newImg.setLayoutX(event.getX() - ELEMENT_WIDTH / 2);
@@ -268,9 +266,6 @@ public abstract class DragAndDropWindow {
                                     newImg.setUserData(resElement.getElementId());
                                     pane.getChildren().add(newImg);
                                 } else {  /// sản phẩm chưa có, cần hiển thị bảng.
-
-
-
 
                                     listViewText.getItems().add(resElement.getName());
                                     listViewText.setCellFactory(param -> new CustomListCell(20));
@@ -293,6 +288,8 @@ public abstract class DragAndDropWindow {
                                     newImg.setLayoutY(event.getY() - ELEMENT_HEIGHT / 2);
                                     newImg.setUserData(resElement.getElementId());
                                     pane.getChildren().add(newImg);
+
+                                    checkRes(resElement);
                                 }
                             } else {
                                 Animation.shakeImageView(imageView);
@@ -397,4 +394,5 @@ public abstract class DragAndDropWindow {
     }
 
 
+    public abstract void checkRes(Element resElement);
 }
