@@ -5,7 +5,7 @@ import elementarium.models.Result;
 import elementarium.utils.SceneUtil;
 import elementarium.utils.animation.Animation;
 import elementarium.utils.automatic_load_data.AutomaticLoadData;
-import elementarium.utils.sound.SoundUtil;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -51,7 +51,7 @@ public abstract class DragAndDropWindow {
     @FXML
     protected TextField elementName;
 
-    protected final SoundUtil soundUtil = new SoundUtil();
+
 
 
     protected ImageView draggedImageView;
@@ -218,7 +218,7 @@ public abstract class DragAndDropWindow {
         listView.setOnDragDetected(
                 event -> {
                     if (listView.getSelectionModel().getSelectedItem() != null) {
-                        soundUtil.playSelectSoundEffect();
+
                         Dragboard dragboard = listView.startDragAndDrop(TransferMode.COPY);
                         // Put the image on the dragboard
                         ClipboardContent clipboardContent = new ClipboardContent();
@@ -235,7 +235,7 @@ public abstract class DragAndDropWindow {
         // Set the onDragDropped event for the pane to handle the drop
         pane.setOnDragDropped(
                 event -> {
-                    soundUtil.playDropSoundEffect();
+
                     Dragboard dragboard = event.getDragboard();
                     if (dragboard.hasImage()) {
                         // DataFormat idDataFormatt = new DataFormat("Imgid");
@@ -269,7 +269,8 @@ public abstract class DragAndDropWindow {
                                 Element resElement = elements.get(curCom.getId() - 1);
                                 if (inBar[resElement.getElementId()]) { // / sản phẩm đã có từ trước
 
-                                    soundUtil.playCanCombineSoundEffect();
+
+
 
                                     pane.getChildren().remove(override);
                                     ImageView newImg = new ImageView(resElement.getImageLink());
@@ -279,7 +280,8 @@ public abstract class DragAndDropWindow {
                                     pane.getChildren().add(newImg);
                                 } else {  /// sản phẩm chưa có, cần hiển thị bảng.
 
-                                    soundUtil.playNewElementSoundEffect();
+
+
 
                                     listViewText.getItems().add(resElement.getName());
                                     listViewText.setCellFactory(param -> new CustomListCell(20));
@@ -307,7 +309,8 @@ public abstract class DragAndDropWindow {
                                 Animation.shakeImageView(imageView);
                                 System.out.println("Cant combine");
                                 pane.getChildren().add(imageView);
-                                soundUtil.playCanNotCombineSoundEffect();
+
+
                             }
                         } else {
                             pane.getChildren().add(imageView);
@@ -321,7 +324,7 @@ public abstract class DragAndDropWindow {
         //// Sự kiện kéo từ Pane
         pane.setOnDragDetected(
                 event -> {
-                    soundUtil.playSelectSoundEffect();
+
                     draggedImageView = null;
                     for (Node imageView : pane.getChildren()) {
                         ImageView tmp = (ImageView) imageView;
@@ -365,7 +368,8 @@ public abstract class DragAndDropWindow {
         // Xử lý sự kiện khi thả ImageView vào ListView
         listView.setOnDragDropped(
                 event -> {
-                    soundUtil.playBackToListViewSoundEffect();
+
+
                     Dragboard dragboard = event.getDragboard();
                     boolean success = false;
                     if (dragboard.hasImage() && draggedImageView != null) {
