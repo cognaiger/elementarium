@@ -42,6 +42,6 @@ public class Main extends Application {
     public static void getDatabase() throws SQLException, ClassNotFoundException {
         AutomaticLoadData data = new AutomaticLoadData();
         comRes = data.getCombinations(); /// các phản ứng
-        elements = AutomaticLoadData.getAllElements(); /// tất cả các element
+        elements = data.getAllElements(); /// tất cả các element
     }
 }
