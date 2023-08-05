@@ -35,7 +35,7 @@ public abstract class DragAndDropWindow {
     protected ListView<ImageView> listView;
 
     @FXML
-    protected ListView<String> listViewText;
+    protected ListView<String> listViewText = new ListView<>();
 
     @FXML
     protected Pane pane;
