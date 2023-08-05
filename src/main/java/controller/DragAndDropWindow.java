@@ -395,6 +395,16 @@ public abstract class DragAndDropWindow {
 
     }
 
+    public void backToMainNature() {
+        try {
+            Scene main = sceneUtil.loadScene("/layout/NatureSelectLevel.fxml");
+            sceneUtil.showScene(main);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
     public abstract void checkRes(Element resElement);
 }
