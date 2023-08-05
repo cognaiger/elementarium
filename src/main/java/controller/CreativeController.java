@@ -10,7 +10,7 @@ import elementarium.utils.animation.Animation;
 import elementarium.utils.animation.BoomEffect;
 
 import elementarium.utils.automatic_load_data.AutomaticLoadData;
-import elementarium.utils.sound.SoundUtil;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -39,7 +39,11 @@ public class CreativeController extends DragAndDropWindow {
     public CreativeController() throws SQLException, ClassNotFoundException {
 
         super();
-        initialNumberElements = 6;
-        elements = AutomaticLoadData.getAllElements();
+
+        for (int i = 1; i <= 5; i++) {
+            inBar[i] = true;
+            bar.add(i);
+        }
+
     }
 }

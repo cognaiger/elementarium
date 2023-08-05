@@ -5,7 +5,7 @@ import elementarium.models.Result;
 import elementarium.utils.SceneUtil;
 import elementarium.utils.animation.Animation;
 import elementarium.utils.automatic_load_data.AutomaticLoadData;
-import elementarium.utils.sound.SoundUtil;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -20,6 +20,7 @@ import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
+import play.Main;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -28,9 +29,6 @@ import java.util.List;
 
 
 public abstract class DragAndDropWindow {
-
-
-    protected int initialNumberElements;
 
     @FXML
     protected ListView<ImageView> listView;
@@ -51,7 +49,7 @@ public abstract class DragAndDropWindow {
     @FXML
     protected TextField elementName;
 
-    protected final SoundUtil soundUtil = new SoundUtil();
+
 
 
     protected ImageView draggedImageView;
@@ -60,21 +58,19 @@ public abstract class DragAndDropWindow {
 
     protected SceneUtil sceneUtil = SceneUtil.getInstance();
 
-    protected DataFormat idDataFormat = new DataFormat("id");
+    protected DataFormat idDataFormat = IdData.getInstance().getDataFormat();
 
-    protected List<Element> elements = new ArrayList<Element>();
-    protected Result[][] comRes = new Result[100][100];
+    protected List<Element> elements = Main.getElements();
+    protected Result[][] comRes = Main.getComRes();
 
     protected List<Integer> bar = new ArrayList<Integer>();
 
     protected boolean inBar[] = new boolean[1000];
 
-    protected AutomaticLoadData data = new AutomaticLoadData();
-
     protected ObservableList<ImageView> imageList = FXCollections.observableArrayList();
 
-    public DragAndDropWindow() throws SQLException, ClassNotFoundException {
-        comRes = data.getCombinations();
+    public DragAndDropWindow() {
+
     }
 
     public void setup() {
@@ -115,11 +111,6 @@ public abstract class DragAndDropWindow {
     public void initialize() throws SQLException, ClassNotFoundException {
 
         // Tạo danh sách các ImageView
-
-        for (int i = 1; i <= initialNumberElements; i++) {
-            inBar[i] = true;
-            bar.add(i);
-        }
 
         setup();
 
@@ -218,7 +209,7 @@ public abstract class DragAndDropWindow {
         listView.setOnDragDetected(
                 event -> {
                     if (listView.getSelectionModel().getSelectedItem() != null) {
-                        soundUtil.playSelectSoundEffect();
+
                         Dragboard dragboard = listView.startDragAndDrop(TransferMode.COPY);
                         // Put the image on the dragboard
                         ClipboardContent clipboardContent = new ClipboardContent();
@@ -235,7 +226,7 @@ public abstract class DragAndDropWindow {
         // Set the onDragDropped event for the pane to handle the drop
         pane.setOnDragDropped(
                 event -> {
-                    soundUtil.playDropSoundEffect();
+
                     Dragboard dragboard = event.getDragboard();
                     if (dragboard.hasImage()) {
                         // DataFormat idDataFormatt = new DataFormat("Imgid");
@@ -269,7 +260,8 @@ public abstract class DragAndDropWindow {
                                 Element resElement = elements.get(curCom.getId() - 1);
                                 if (inBar[resElement.getElementId()]) { // / sản phẩm đã có từ trước
 
-                                    soundUtil.playCanCombineSoundEffect();
+
+
 
                                     pane.getChildren().remove(override);
                                     ImageView newImg = new ImageView(resElement.getImageLink());
@@ -279,7 +271,8 @@ public abstract class DragAndDropWindow {
                                     pane.getChildren().add(newImg);
                                 } else {  /// sản phẩm chưa có, cần hiển thị bảng.
 
-                                    soundUtil.playNewElementSoundEffect();
+
+
 
                                     listViewText.getItems().add(resElement.getName());
                                     listViewText.setCellFactory(param -> new CustomListCell(20));
@@ -307,7 +300,8 @@ public abstract class DragAndDropWindow {
                                 Animation.shakeImageView(imageView);
                                 System.out.println("Cant combine");
                                 pane.getChildren().add(imageView);
-                                soundUtil.playCanNotCombineSoundEffect();
+
+
                             }
                         } else {
                             pane.getChildren().add(imageView);
@@ -321,7 +315,7 @@ public abstract class DragAndDropWindow {
         //// Sự kiện kéo từ Pane
         pane.setOnDragDetected(
                 event -> {
-                    soundUtil.playSelectSoundEffect();
+
                     draggedImageView = null;
                     for (Node imageView : pane.getChildren()) {
                         ImageView tmp = (ImageView) imageView;
@@ -365,7 +359,8 @@ public abstract class DragAndDropWindow {
         // Xử lý sự kiện khi thả ImageView vào ListView
         listView.setOnDragDropped(
                 event -> {
-                    soundUtil.playBackToListViewSoundEffect();
+
+
                     Dragboard dragboard = event.getDragboard();
                     boolean success = false;
                     if (dragboard.hasImage() && draggedImageView != null) {
