@@ -12,11 +12,6 @@ import java.sql.SQLException;
 
 public class CreativeController extends DragAndDropWindow {
 
-    @FXML
-    private ImageView aimImg;
-
-    @FXML
-    private TextField aimText;
 
     public CreativeController() {
         super();
