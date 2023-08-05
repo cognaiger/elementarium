@@ -49,7 +49,7 @@ public class NatureLevel1Controller extends DragAndDropWindow {
         super();
         // initialNumberElements = InitialNumberElement.NATURE_LEVEL_1;
         resId = 23;
-        initialId.addAll(Arrays.asList(17,1,4,5,13));
+        initialId.addAll(Arrays.asList(17,1,2,5,13,68,70));
 
         for (int i:initialId) {
             inBar[i] = true;
