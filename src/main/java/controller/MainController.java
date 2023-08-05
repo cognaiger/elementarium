@@ -49,7 +49,7 @@ public class MainController {
     @FXML
     public void historyGame() {
         try {
-            Scene historyScene = sceneUtil.loadScene("/layout/SelectLevel.fxml");
+            Scene historyScene = sceneUtil.loadScene("/layout/HistorySelectLevel.fxml");
             sceneUtil.showScene(historyScene);
         } catch (Exception e) {
             e.printStackTrace();

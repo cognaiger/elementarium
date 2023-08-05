@@ -6,27 +6,27 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
+import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class LevelController {
+import java.io.IOException;
 
-    private Stage primaryStage = SceneUtil.getInstance().getPrimaryStage();
-    private Stage dialogStage = new Stage();
+public class ModalDialogController {
+    SceneUtil sceneUtil = SceneUtil.getInstance();
+    Stage dialogStage = new Stage();
 
     @FXML
-    private void initialize() {
-        // Show the modal dialog when the application starts
-        showInstructionsModal();
+    private Label description;
+
+    public void setDescription (String description) {
+        this.description.setText(description);
     }
 
-    private void showInstructionsModal() {
+    public void showAndWait() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/layout/ModalDialog.fxml"));
             Parent root = fxmlLoader.load();
-
-            ModalDialogController modalDialogController = fxmlLoader.getController();
-            modalDialogController.setDescription("This is description for level 1");
 
             // Show the modal dialog and wait for user interaction
             Dialog<String> dialog = new Dialog<>();
@@ -41,10 +41,12 @@ public class LevelController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
     @FXML
-    private void startPlaying() {
-        // Handle the "Start" button click to begin the gameplay.
+    private void proceed() {
+        System.out.println("close");
+        dialogStage.close();
     }
 }

@@ -1,10 +1,15 @@
 package controller;
 
-import elementarium.models.Combination;
 import elementarium.models.Element;
 import elementarium.models.Result;
+
 import elementarium.utils.SceneUtil;
+
+import elementarium.utils.animation.Animation;
+import elementarium.utils.animation.BoomEffect;
+
 import elementarium.utils.automatic_load_data.AutomaticLoadData;
+import elementarium.utils.sound.SoundUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -50,7 +55,7 @@ public class CreativeController {
     @FXML
     private TextField elementName;
 
-
+    private final SoundUtil soundUtil = new SoundUtil();
 
 
     private ImageView draggedImageView;
@@ -214,9 +219,111 @@ public class CreativeController {
                     event.consume();
                 });
 
+    // Set the onDragDetected event for the ImageView items in the ListView
+    listView.setOnDragDetected(
+        event -> {
+          if (listView.getSelectionModel().getSelectedItem() != null) {
+              soundUtil.playSelectSoundEffect();
+            Dragboard dragboard = listView.startDragAndDrop(TransferMode.COPY);
+            // Put the image on the dragboard
+            ClipboardContent clipboardContent = new ClipboardContent();
+            // System.out.println(listView.getSelectionModel().getSelectedItem().getImage().getWidth());
+            clipboardContent.putImage(listView.getSelectionModel().getSelectedItem().getImage());
+            int id = (int) listView.getSelectionModel().getSelectedItem().getUserData();
+            clipboardContent.put(idDataFormat, id);
+            dragboard.setContent(clipboardContent);
+            int idValue = (int) dragboard.getContent(idDataFormat);
+          }
+          event.consume();
+        });
+
+    // Set the onDragDropped event for the pane to handle the drop
+    pane.setOnDragDropped(
+        event -> {
+            soundUtil.playDropSoundEffect();
+          Dragboard dragboard = event.getDragboard();
+          if (dragboard.hasImage()) {
+            // DataFormat idDataFormatt = new DataFormat("Imgid");
+            Integer idValue =
+                (Integer) dragboard.getContent(idDataFormat); // Ép kiểu Object sang Integer
+            int id = idValue.intValue();
+            ImageView imageView = new ImageView(dragboard.getImage());
+            imageView.setLayoutX(event.getX() - width / 2);
+            imageView.setLayoutY(event.getY() - height / 2);
+            imageView.setUserData(id);
+
+            if (event.getGestureSource() instanceof ImageView) {
+              pane.getChildren().remove(draggedImageView);
+            }
+            int id1 = 0, id2 = 0;
+            ImageView override = null;
+            for (Node node : pane.getChildren()) {
+              ImageView img = (ImageView) node;
+              if (overlap(img, imageView) || overlap(imageView, img)) {
+                id1 = (int) img.getUserData();
+                id2 = (int) imageView.getUserData();
+                override = img;
+                break;
+              }
+            }
+            if (override != null) {
+
+                Result curCom = null;
+                curCom = comRes[id1][id2];
+                if (curCom != null) {
+                    Element resElement = elements.get(curCom.getId() - 1);
+                    if (inBar[resElement.getElementId()]) { // / sản phẩm đã có từ trước
+
+                        soundUtil.playCanCombineSoundEffect();
+
+                        pane.getChildren().remove(override);
+                        ImageView newImg = new ImageView(resElement.getImageLink());
+                        newImg.setLayoutX(event.getX() - width / 2);
+                        newImg.setLayoutY(event.getY() - height / 2);
+                        newImg.setUserData(resElement.getElementId());
+                        pane.getChildren().add(newImg);
+                    } else {  /// sản phẩm chưa có, cần hiển thị bảng.
+
+                        soundUtil.playNewElementSoundEffect();
+
+                        knowledgeBox.setVisible(!knowledgeBox.isVisible());
+                        knowledgeBox.setDisable(false);
+
+                        knowledgeText.setText(curCom.getDes());
+                        newElement.setImage(new Image(resElement.getImageLink()));
+
+                        inBar[resElement.getElementId()] = true;
+                        bar.add(resElement.getElementId());
+
+                        setup();
+
+                        pane.getChildren().remove(override);
+
+                        ImageView newImg = new ImageView(resElement.getImageLink());
+                        newImg.setLayoutX(event.getX() - width / 2);
+                        newImg.setLayoutY(event.getY() - height / 2);
+                        newImg.setUserData(resElement.getElementId());
+                        pane.getChildren().add(newImg);
+                    }
+              } else {
+                    Animation.shakeImageView(imageView);
+                    System.out.println("Cant combine");
+                    pane.getChildren().add(imageView);
+                    soundUtil.playCanNotCombineSoundEffect();
+                }
+            } else {
+              pane.getChildren().add(imageView);
+            }
+          }
+          event.setDropCompleted(true);
+          event.consume();
+        });
+
+
         //// Sự kiện kéo từ Pane
         pane.setOnDragDetected(
                 event -> {
+                    soundUtil.playSelectSoundEffect();
                     draggedImageView = null;
                     for (Node imageView : pane.getChildren()) {
                         ImageView tmp = (ImageView) imageView;
@@ -260,6 +367,7 @@ public class CreativeController {
         // Xử lý sự kiện khi thả ImageView vào ListView
         listView.setOnDragDropped(
                 event -> {
+                    soundUtil.playBackToListViewSoundEffect();
                     Dragboard dragboard = event.getDragboard();
                     boolean success = false;
                     if (dragboard.hasImage() && draggedImageView != null) {

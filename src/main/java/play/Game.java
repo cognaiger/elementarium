@@ -9,6 +9,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Game extends Application {
@@ -18,6 +20,12 @@ public class Game extends Application {
     private ImageView[] cloneImageViews = new ImageView[2];
     private double[] offsetXs = new double[2];
     private double[] offsetYs = new double[2];
+
+    public Game() {
+        System.out.println("Constructor");
+
+    }
+
 
 
 
