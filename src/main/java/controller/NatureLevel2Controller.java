@@ -2,7 +2,6 @@ package controller;
 
 
 import elementarium.models.Element;
-import elementarium.utils.InitialNumberElement;
 import javafx.animation.TranslateTransition;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,28 +11,22 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class NatureLevel1Controller extends DragAndDropWindow {
+public class NatureLevel2Controller extends DragAndDropWindow {
 
     private final List<Integer> currentIdInBar = new ArrayList<>();
-
-    public int resId;
 
     @FXML
     private ImageView lookupIcon;
 
     private boolean isSearchBoxVisible = false;
-
-    private List<Integer> initialId = new ArrayList<>();
 
     @FXML
     private VBox searchBox;
@@ -41,17 +34,9 @@ public class NatureLevel1Controller extends DragAndDropWindow {
     @FXML
     private TextField searchField;
 
-
-    @FXML
-    Pane congraBox;
-
-    public NatureLevel1Controller() throws SQLException, ClassNotFoundException {
+    public NatureLevel2Controller() throws SQLException, ClassNotFoundException {
         super();
-        // initialNumberElements = InitialNumberElement.NATURE_LEVEL_1;
-        resId = 23;
-        initialId.addAll(Arrays.asList(17,1,4,5,13));
-
-        for (int i:initialId) {
+        for (int i = 1; i <= 7; i++) {
             inBar[i] = true;
             bar.add(i);
             currentIdInBar.add(i);
@@ -60,11 +45,7 @@ public class NatureLevel1Controller extends DragAndDropWindow {
 
     @Override
     public void checkRes(Element resElement) {
-        if (resElement.getElementId() == resId) {
-            System.out.println("ok");
-            congraBox.setDisable(false);
-            congraBox.setVisible(true);
-        }
+
     }
 
     @FXML
