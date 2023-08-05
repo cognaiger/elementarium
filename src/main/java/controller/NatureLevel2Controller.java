@@ -11,11 +11,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -34,18 +36,23 @@ public class NatureLevel2Controller extends DragAndDropWindow {
     @FXML
     private TextField searchField;
 
+    @FXML
+    private Pane congraBox;
+
     public NatureLevel2Controller() throws SQLException, ClassNotFoundException {
         super();
-        for (int i = 1; i <= 7; i++) {
-            inBar[i] = true;
-            bar.add(i);
-            currentIdInBar.add(i);
-        }
+        resId = 79;
+        initialId.addAll(Arrays.asList(17, 1, 2, 5, 13, 77, 78));
+        setInitialId();
     }
 
     @Override
     public void checkRes(Element resElement) {
-
+        if (resElement.getElementId() == resId) {
+            System.out.println("ok");
+            congraBox.setDisable(false);
+            congraBox.setVisible(true);
+        }
     }
 
     @FXML
