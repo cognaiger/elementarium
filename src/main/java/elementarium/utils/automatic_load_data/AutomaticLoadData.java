@@ -4,6 +4,7 @@ import elementarium.db_connect.MySQLConnection;
 import elementarium.models.Combination;
 import elementarium.models.Element;
 import elementarium.models.Result;
+import elementarium.utils.enums.ElementId;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,7 +18,7 @@ public class AutomaticLoadData {
 
     }
 
-    public List<Element> getElementById(int id) throws SQLException, ClassNotFoundException {
+    public Element getElementById(int id) throws SQLException, ClassNotFoundException {
         mySQLConnection = new MySQLConnection();
         Element element = new Element();
         String sql = "SELECT * FROM element WHERE id = " + id;
@@ -33,9 +34,8 @@ public class AutomaticLoadData {
 
         // Close the database connection
         mySQLConnection.close();
-        List<Element> res = new ArrayList<>();
-        res.add(element);
-        return res;
+
+        return element;
     }
 
     public static Combination getCombinationByE1E2(int id1, int id2) throws SQLException, ClassNotFoundException {
@@ -89,6 +89,28 @@ public class AutomaticLoadData {
         List<Element> elements = new ArrayList<Element>();
 
         String sql = "SELECT * FROM element;";
+        ResultSet rs = mySQLConnection.executeQuery(sql);
+
+        // Create an Element object from the row data
+        while (rs.next()) {
+            int id = Integer.parseInt(rs.getString("id"));
+            String elementName = rs.getString("element_name");
+            String elementDescription = rs.getString("element_description");
+            String imageLink = rs.getString("image_link");
+            Element element = new Element(id, elementName, elementDescription, imageLink);
+            elements.add(element);
+        }
+
+        // Close the database connection
+        mySQLConnection.close();
+        return elements;
+    }
+
+    public  List<Element> getInitialElementNatureLevel1() throws SQLException, ClassNotFoundException {
+        mySQLConnection = new MySQLConnection();
+        List<Element> elements = new ArrayList<Element>();
+
+        String sql = "SELECT * FROM element WHERE id = " + ElementId.FIRE_ID + " OR id = " + ElementId.WATER_ID + ";";
         ResultSet rs = mySQLConnection.executeQuery(sql);
 
         // Create an Element object from the row data

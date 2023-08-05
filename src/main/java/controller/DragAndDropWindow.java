@@ -44,6 +44,8 @@ public abstract class DragAndDropWindow {
     protected int width = 80;
     protected int height = 80;
 
+    protected int initialNumberElement;
+
     protected DataFormat idDataFormat = new DataFormat("id");
 
     protected List<Element> elements = new ArrayList<Element>();
@@ -58,6 +60,7 @@ public abstract class DragAndDropWindow {
     protected ObservableList<ImageView> imageList = FXCollections.observableArrayList();
 
     public DragAndDropWindow() throws SQLException, ClassNotFoundException {
+        comRes = data.getCombinations();
 
     }
 
@@ -98,7 +101,7 @@ public abstract class DragAndDropWindow {
     public void initialize() throws SQLException, ClassNotFoundException {
         // Tạo danh sách các ImageView
 
-        for (int i = 1; i <= 5; i++) {
+        for (int i = 1; i <= initialNumberElement; i++) {
             inBar[i] = true;
             bar.add(i);
         }
@@ -276,5 +279,9 @@ public abstract class DragAndDropWindow {
     public void onClose() {
         knowledgeBox.setVisible(!knowledgeBox.isVisible());
         knowledgeBox.setDisable(true);
+    }
+
+    public void setInitialNumberElement(int initialNumberElement) {
+        this.initialNumberElement = initialNumberElement;
     }
 }

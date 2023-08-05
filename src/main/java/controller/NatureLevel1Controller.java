@@ -1,6 +1,9 @@
 package controller;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import elementarium.utils.InititialNumberElement;
+import elementarium.utils.automatic_load_data.AutomaticLoadData;
+import elementarium.utils.enums.ElementId;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -26,8 +29,10 @@ public class NatureLevel1Controller extends DragAndDropWindow {
 
 
     public NatureLevel1Controller() throws SQLException, ClassNotFoundException {
-        comRes = data.getCombinations();
-        elements = data.getAllElements();
+        super();
+        initialNumberElement = InititialNumberElement.NATURE_LEVEL_1;
+        elements = data.getInitialElementNatureLevel1();
+
     }
 
     @FXML
