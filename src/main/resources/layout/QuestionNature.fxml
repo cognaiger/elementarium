@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="750.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QuestionNatureController">
+   <children>
+      <ImageView fitHeight="750.0" fitWidth="1350.0" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@../background/question.jpg" />
+         </image>
+      </ImageView>
+      <Pane layoutX="122.0" layoutY="118.0" prefHeight="566.0" prefWidth="1112.0">
+         <children>
+            <ImageView fitHeight="566.0" fitWidth="1112.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../background/questionBox.png" />
+               </image>
+            </ImageView>
+            <TextArea fx:id="questionText" editable="false" layoutX="76.0" layoutY="86.0" prefHeight="76.0" prefWidth="982.0" style="-fx-background-color: transparent;" wrapText="true">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextArea>
+            <Button layoutX="102.0" layoutY="200.0" mnemonicParsing="false" onAction="#choose1" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../button/A.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <TextField fx:id="ans1" layoutX="176.0" layoutY="210.0" prefHeight="36.0" prefWidth="777.0" />
+            <Button layoutX="102.0" layoutY="270.0" mnemonicParsing="false" onAction="#choose2" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../button/b.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <TextField fx:id="ans2" layoutX="176.0" layoutY="280.0" prefHeight="36.0" prefWidth="777.0" />
+            <TextField fx:id="ans3" layoutX="176.0" layoutY="350.0" prefHeight="36.0" prefWidth="777.0" />
+            <Button layoutX="102.0" layoutY="340.0" mnemonicParsing="false" onAction="#choose3" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../button/c.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="102.0" layoutY="410.0" mnemonicParsing="false" onAction="#choose4" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../button/d.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <TextField fx:id="ans4" layoutX="176.0" layoutY="420.0" prefHeight="36.0" prefWidth="777.0" />
+            <Button fx:id="nextBtn" disable="true" layoutX="389.0" layoutY="135.0" mnemonicParsing="false" onAction="#nextQuestion" prefHeight="317.0" prefWidth="330.0" style="-fx-background-color: transparent;" visible="false">
+               <graphic>
+                  <ImageView fitHeight="318.0" fitWidth="340.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../button/correct.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="againBtn" disable="true" layoutX="389.0" layoutY="135.0" mnemonicParsing="false" onAction="#chooseAgain" prefHeight="317.0" prefWidth="330.0" style="-fx-background-color: transparent;" visible="false">
+               <graphic>
+                  <ImageView fitHeight="318.0" fitWidth="340.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../button/close.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </Pane>
+      <ImageView fitHeight="82.0" fitWidth="266.0" layoutX="539.0" layoutY="37.0" pickOnBounds="true">
+         <image>
+            <Image url="@../header/question.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

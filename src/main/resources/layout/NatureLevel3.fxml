@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="750.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NatureLevel3Controller">
+<AnchorPane prefHeight="750.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NatureLevelController">
    <ImageView fitHeight="750" fitWidth="1300">
       <image>
          <Image url="@../background/nature_bg.jpg" />
@@ -66,13 +66,13 @@
    <Pane layoutX="740.0" layoutY="17.0" prefHeight="78.0" prefWidth="240.0" style="-fx-background-color: white; -fx-background-radius: 10;">
       <children>
 
-         <ImageView fx:id="aimImg" fitHeight="61.0" fitWidth="75.0" layoutX="166.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView fx:id="aimImg" fitHeight="48.0" fitWidth="46.0" layoutX="195.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@../tool.png" />
+               <Image url="@../snowshoe_hare.png" />
             </image></ImageView>
 
 
-         <TextField fx:id="aimText" alignment="CENTER" layoutX="14.0" layoutY="25.0" prefHeight="39.0" prefWidth="109.0" style="-fx-background-color: transparent;" text="CÔNG CỤ">
+         <TextField fx:id="aimText" alignment="CENTER" layoutX="-22.0" layoutY="19.0" prefHeight="40.0" prefWidth="240.0" style="-fx-background-color: transparent;" text="THỎ RỪNG GIÀY TUYẾT">
             <font>
                <Font name="System Bold" size="18.0" />
             </font>
@@ -113,4 +113,45 @@
          </TextField>
       </children>
    </Pane>
+
+
+   <Pane fx:id="helpTab" layoutX="364.0" layoutY="174.0" prefHeight="350.0" prefWidth="530.0">
+      <children>
+         <ImageView fitHeight="350.0" fitWidth="530.0" pickOnBounds="true">
+            <image>
+               <Image url="@../background/info.png" />
+            </image>
+         </ImageView>
+         <Button layoutX="439.0" layoutY="12.0" mnemonicParsing="false" onAction="#closeHelpTab" prefHeight="68.0" prefWidth="64.0" style="-fx-background-color: transparent;">
+            <graphic>
+               <ImageView fitHeight="62.0" fitWidth="66.0" pickOnBounds="true">
+                  <image>
+                     <Image url="@../button/close.png" />
+                  </image>
+               </ImageView>
+            </graphic>
+         </Button>
+         <TextField alignment="CENTER" layoutX="168.0" layoutY="20.0" prefHeight="51.0" prefWidth="177.0" style="-fx-text-fill: white; -fx-background-color: transparent;" text="BẠN CÓ BIẾT">
+            <font>
+               <Font name="System Bold" size="24.0" />
+            </font>
+         </TextField>
+         <TextArea editable="false" layoutX="27.0" layoutY="120.0" prefHeight="166.0" prefWidth="474.0" style="-fx-background-color: FFEBCD; -fx-text-fill: black; -fx-background-radius: 10;" text="Thỏ rừng giày tuyết (giày đi tuyết), tên khoa học Lepus americanus, còn được gọi là thỏ nhát Mỹ, thỏ đổi màu, là 1 loài thỏ rừng được tìm thấy ở Nam Mỹ. Cái tên thỏ rừng giày tuyết bắt nguồn từ kích thước bàn chân sau lớn của chúng, giúp chúng không bị lún vào tuyết khi nhảy và đi trên tuyết." wrapText="true">
+            <font>
+               <Font name="System Bold" size="20.0" />
+            </font>
+         </TextArea>
+      </children>
+   </Pane>
+
+   <Button layoutX="124.0" layoutY="37.0" mnemonicParsing="false" onAction="#openHelpTab" style="-fx-background-color: transparent;">
+      <graphic>
+         <ImageView fitHeight="48.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../button/hint.png" />
+            </image>
+         </ImageView>
+      </graphic>
+   </Button>
+
 </AnchorPane>
