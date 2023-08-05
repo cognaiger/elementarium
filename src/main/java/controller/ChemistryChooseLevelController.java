@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 
 import java.io.IOException;
 
-public class ChemistryLevelController {
+public class ChemistryChooseLevelController {
     SceneUtil sceneUtil = SceneUtil.getInstance();
 
     @FXML
@@ -22,7 +22,10 @@ public class ChemistryLevelController {
     @FXML
     private void selectLevel1() {
         try {
+            // controller la ChemLevelController
+            ChemLevelController.level = 2;
             Scene level1 = sceneUtil.loadScene("/layout/Chemistry2.fxml");
+
             sceneUtil.showScene(level1);
         } catch (IOException e) {
             e.printStackTrace();
@@ -32,7 +35,7 @@ public class ChemistryLevelController {
     @FXML
     private void selectLevel2() {
         try {
-            Scene level2 = sceneUtil.loadScene("/layout/Level1His.fxml");
+            Scene level2 = sceneUtil.loadScene("/layout/Chemistry2.fxml");
             sceneUtil.showScene(level2);
         } catch (IOException e) {
             e.printStackTrace();
@@ -42,7 +45,7 @@ public class ChemistryLevelController {
     @FXML
     private void selectLevel3() {
         try {
-            Scene level2 = sceneUtil.loadScene("/layout/Level1His.fxml");
+            Scene level2 = sceneUtil.loadScene("/layout/Chemistry2.fxml");
             sceneUtil.showScene(level2);
         } catch (IOException e) {
             e.printStackTrace();
@@ -51,7 +54,7 @@ public class ChemistryLevelController {
     @FXML
     private void selectLevel4() {
         try {
-            Scene level2 = sceneUtil.loadScene("/layout/Level1His.fxml");
+            Scene level2 = sceneUtil.loadScene("/layout/Chemistry2.fxml");
             sceneUtil.showScene(level2);
         } catch (IOException e) {
             e.printStackTrace();

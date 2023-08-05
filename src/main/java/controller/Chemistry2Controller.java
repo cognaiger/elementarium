@@ -31,10 +31,11 @@ import java.util.List;
 
 public class Chemistry2Controller {
 
+    public String text;
+
     @FXML
     private TextField goalText;
-    private int goalId;
-    protected Element goal = new Element();
+
     static final int numColumns = 3;
     static final int numRows = 3;
     @FXML
@@ -60,23 +61,23 @@ public class Chemistry2Controller {
     public static final int ELEMENT_HEIGHT = 80;
     protected SceneUtil sceneUtil = SceneUtil.getInstance();
 
+    public Chemistry2Controller() {
+
+
+    }
 
     public void setup() {
-        goalId = 61;
-
         elements = Main.getElements();
-
-        goal = elements.get(goalId-1);
-        goalText.setText("cần tạo NaOH");
-        bar.add(60);
-        bar.add(58);
-        bar.add(56);
-        bar.add(60);
-        bar.add(54);
-        bar.add(56);
-        bar.add(58);
-        bar.add(60);
-        bar.add(54);
+        goalText.setText(text);
+//        bar.add(60);
+//        bar.add(58);
+//        bar.add(56);
+//        bar.add(60);
+//        bar.add(54);
+//        bar.add(56);
+//        bar.add(58);
+//        bar.add(60);
+//        bar.add(54);
         for (int i : bar) {
             Element element = elements.get(i - 1);
             ImageView imageView = new ImageView(element.getImageLink());
