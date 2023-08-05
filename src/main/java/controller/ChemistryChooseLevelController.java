@@ -23,8 +23,8 @@ public class ChemistryChooseLevelController {
     private void selectLevel1() {
         try {
             // controller la ChemLevelController
-            ChemLevelController.level = 2;
-            Scene level1 = sceneUtil.loadScene("/layout/Chemistry2.fxml");
+            ChemLevelController.level = 1;
+            Scene level1 = sceneUtil.loadScene("/layout/ChemistryGame.fxml");
 
             sceneUtil.showScene(level1);
         } catch (IOException e) {
@@ -35,7 +35,8 @@ public class ChemistryChooseLevelController {
     @FXML
     private void selectLevel2() {
         try {
-            Scene level2 = sceneUtil.loadScene("/layout/Chemistry2.fxml");
+            ChemLevelController.level = 2;
+            Scene level2 = sceneUtil.loadScene("/layout/ChemistryGame.fxml");
             sceneUtil.showScene(level2);
         } catch (IOException e) {
             e.printStackTrace();
@@ -45,8 +46,9 @@ public class ChemistryChooseLevelController {
     @FXML
     private void selectLevel3() {
         try {
-            Scene level2 = sceneUtil.loadScene("/layout/Chemistry2.fxml");
-            sceneUtil.showScene(level2);
+            ChemLevelController.level = 3;
+            Scene level3 = sceneUtil.loadScene("/layout/ChemistryGame.fxml");
+            sceneUtil.showScene(level3);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -54,7 +56,8 @@ public class ChemistryChooseLevelController {
     @FXML
     private void selectLevel4() {
         try {
-            Scene level2 = sceneUtil.loadScene("/layout/Chemistry2.fxml");
+            ChemLevelController.level = 4;
+            Scene level2 = sceneUtil.loadScene("/layout/ChemistryGame.fxml");
             sceneUtil.showScene(level2);
         } catch (IOException e) {
             e.printStackTrace();

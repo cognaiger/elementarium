@@ -10,6 +10,9 @@ import elementarium.utils.automatic_load_data.AutomaticLoadData;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.HPos;
+import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -31,7 +34,11 @@ import java.util.List;
 
 public class Chemistry2Controller {
 
-    public String text;
+    public static String text;
+
+    public static int resId;
+    @FXML
+    private Pane congraBox;
 
     @FXML
     private TextField goalText;
@@ -90,16 +97,22 @@ public class Chemistry2Controller {
                 int index = i * numColumns + j;
                 if (index < imageList.size()) {
                     ImageView imageView = imageList.get(index);
+
                     GridPane.setConstraints(imageView, j, i);
+                    GridPane.setValignment(imageView, VPos.CENTER);
+                    GridPane.setHalignment(imageView, HPos.CENTER);
+
                     gridPane.getChildren().add(imageView);
                 }
             }
         }
 
 
+
     }
 
     public void initialize() {
+
         setup();
 
         gridPane.setOnDragDetected(
@@ -173,18 +186,26 @@ public class Chemistry2Controller {
                                 newImg.setLayoutY(override.getLayoutY() - ELEMENT_HEIGHT / 2);
                                 newImg.setUserData(resElement.getElementId());
                                 GridPane.setConstraints(newImg, colIndex, rowIndex);
+                                GridPane.setHalignment(newImg,HPos.CENTER);
+                                GridPane.setValignment(newImg,VPos.CENTER);
                                 gridPane.getChildren().add(newImg);
+
+                                checkRes(resElement);
 
                             } else {
                                 // todo
                                 Animation.shakeImageView(imageView);
                                 System.out.println("Cant combine");
                                 GridPane.setConstraints(imageView, col, row);
+                                GridPane.setHalignment(imageView,HPos.CENTER);
+                                GridPane.setValignment(imageView,VPos.CENTER);
                                 gridPane.getChildren().add(imageView);
                             }
                         } else {
                             System.out.println("khong co override");
                             GridPane.setConstraints(imageView, col, row);
+                            GridPane.setHalignment(imageView,HPos.CENTER);
+                            GridPane.setValignment(imageView,VPos.CENTER);
                             gridPane.getChildren().add(imageView);
                         }
                     }
@@ -211,6 +232,14 @@ public class Chemistry2Controller {
                 && x.getLayoutY() <= y.getLayoutY() + ELEMENT_WIDTH && y.getLayoutY() + ELEMENT_WIDTH <= x.getLayoutY() + ELEMENT_WIDTH)
             return true;
         return false;
+    }
+    public void checkRes(Element resElement) {
+        if (resElement.getElementId() == resId) {
+            System.out.println("Win game");
+
+            congraBox.setDisable(false);
+            congraBox.setVisible(true);
+        }
     }
 
 
