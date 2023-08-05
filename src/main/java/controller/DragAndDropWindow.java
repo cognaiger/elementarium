@@ -52,6 +52,7 @@ public abstract class DragAndDropWindow {
 
 
 
+
     protected ImageView draggedImageView;
     public static final int ELEMENT_WIDTH = 80;
     public static final int ELEMENT_HEIGHT = 80;

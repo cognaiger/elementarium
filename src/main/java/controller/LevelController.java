@@ -8,19 +8,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
+
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 
 import java.io.IOException;
 
-public class LevelController extends DragAndDropWindow{
+public class LevelController extends DragAndDropWindow {
 
-    @FXML
-    private ImageView aimImg;
-
-    @FXML
-    private TextField aimText;
 
     public static int level = 1;
 
@@ -28,34 +25,14 @@ public class LevelController extends DragAndDropWindow{
 
     SceneUtil sceneUtil = SceneUtil.getInstance();
 
+    @FXML
+    Pane congraBox;
+
+
     public LevelController() {
         super();
-        showInstructionsModal();
+        createLevel();
 
-    }
-
-    private void showInstructionsModal() {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/layout/ModalDialog.fxml"));
-            Parent root = fxmlLoader.load();
-
-            ModalDialogController modalDialogController = fxmlLoader.getController();
-            modalDialogController.setDescription("This is description for level 1");
-
-            // Show the modal dialog and wait for user interaction
-            Dialog<String> dialog = new Dialog<>();
-            dialog.getDialogPane().setContent(root);
-            dialog.getDialogPane().getButtonTypes().add(ButtonType.NEXT);
-            dialog.initModality(Modality.APPLICATION_MODAL);
-            dialog.setTitle("Instruction for level");
-
-            dialog.showAndWait();
-            createLevel();
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     void createLevel() {
@@ -66,13 +43,49 @@ public class LevelController extends DragAndDropWindow{
                 bar.add(1);
                 inBar[15] = true;
                 bar.add(15);
-
                 resId = 14;
-                Element e = elements.get(resId - 1);
-                aimText.setText(e.getName());
+                break;
+            }
+            case 2:
+            {
+                inBar[1] = true;
+                bar.add(1);
+                inBar[2] = true;
+                bar.add(2);
+                inBar[3] = true;
+                bar.add(3);
+                inBar[4] = true;
+                bar.add(4);
+                inBar[5] = true;
+                bar.add(5);
+                resId = 19;
+                break;
+            }
+            case 3:{
+                inBar[1] = true;
+                bar.add(1);
+                inBar[17] = true;
+                bar.add(17);
+                resId = 23;
+                break;
+            }
+            case 4: {
+                inBar[1] = true;
+                bar.add(1);
+                inBar[9] = true;
+                bar.add(9);
+                resId = 26;
                 break;
             }
         }
+    }
+
+    @FXML
+    public void nextLevel() throws IOException {
+        congraBox.setDisable(true);
+        congraBox.setVisible(false);
+        level++;
+        switchLayout();
     }
 
     @Override
@@ -88,9 +101,36 @@ public class LevelController extends DragAndDropWindow{
     @Override
     public void checkRes(Element resElement) {
         if (resElement.getElementId() == resId) {
-            System.out.println("thanh cong roi");
+            System.out.println("ok");
+            congraBox.setDisable(false);
+            congraBox.setVisible(true);
         }
     }
 
+    public void switchLayout() throws IOException {
+        switch (level){
+            case 1:
+            {
+                Scene level1 = sceneUtil.loadScene("/layout/Level1His.fxml");
+                sceneUtil.showScene(level1);
+                break;
+            }
+            case 2: {
+                Scene level2 = sceneUtil.loadScene("/layout/Level2His.fxml");
+                sceneUtil.showScene(level2);
+                break;
+            }
+            case 3: {
+                Scene level3 = sceneUtil.loadScene("/layout/Level3His.fxml");
+                sceneUtil.showScene(level3);
+                break;
+            }
+            case 4: {
+                Scene level4 = sceneUtil.loadScene("/layout/Level4His.fxml");
+                sceneUtil.showScene(level4);
+                break;
+            }
+        }
+    }
 
 }
