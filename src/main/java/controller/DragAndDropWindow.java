@@ -20,6 +20,7 @@ import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
+import play.Main;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -28,9 +29,6 @@ import java.util.List;
 
 
 public abstract class DragAndDropWindow {
-
-
-    protected int initialNumberElements;
 
     @FXML
     protected ListView<ImageView> listView;
@@ -60,21 +58,19 @@ public abstract class DragAndDropWindow {
 
     protected SceneUtil sceneUtil = SceneUtil.getInstance();
 
-    protected DataFormat idDataFormat = new DataFormat("id");
+    protected DataFormat idDataFormat = IdData.getInstance().getDataFormat();
 
-    protected List<Element> elements = new ArrayList<Element>();
-    protected Result[][] comRes = new Result[100][100];
+    protected List<Element> elements = Main.getElements();
+    protected Result[][] comRes = Main.getComRes();
 
     protected List<Integer> bar = new ArrayList<Integer>();
 
     protected boolean inBar[] = new boolean[1000];
 
-    protected AutomaticLoadData data = new AutomaticLoadData();
-
     protected ObservableList<ImageView> imageList = FXCollections.observableArrayList();
 
-    public DragAndDropWindow() throws SQLException, ClassNotFoundException {
-        comRes = data.getCombinations();
+    public DragAndDropWindow() {
+
     }
 
     public void setup() {
@@ -115,11 +111,6 @@ public abstract class DragAndDropWindow {
     public void initialize() throws SQLException, ClassNotFoundException {
 
         // Tạo danh sách các ImageView
-
-        for (int i = 1; i <= initialNumberElements; i++) {
-            inBar[i] = true;
-            bar.add(i);
-        }
 
         setup();
 
