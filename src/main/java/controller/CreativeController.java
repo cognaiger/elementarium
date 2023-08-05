@@ -286,11 +286,14 @@ public class CreativeController {
 
                         soundUtil.playNewElementSoundEffect();
 
+                        listViewText.getItems().add(resElement.getName());
+                        listViewText.setCellFactory(param -> new CustomListCell(20));
                         knowledgeBox.setVisible(!knowledgeBox.isVisible());
                         knowledgeBox.setDisable(false);
-
                         knowledgeText.setText(curCom.getDes());
                         newElement.setImage(new Image(resElement.getImageLink()));
+                        elementName.setText(resElement.getName());
+
 
                         inBar[resElement.getElementId()] = true;
                         bar.add(resElement.getElementId());
