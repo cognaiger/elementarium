@@ -1,12 +1,12 @@
 package controller;
 
+import elementarium.utils.SceneUtil;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import play.CreativeGame;
 import play.Game;
-import elementarium.utils.SceneUtil;
 
 public class MainController {
     @FXML
@@ -59,7 +59,7 @@ public class MainController {
     @FXML
     public void natureGame() {
         try {
-            Scene historyScene = sceneUtil.loadScene("/layout/NatureLevel.fxml");
+            Scene historyScene = sceneUtil.loadScene("/layout/NatureSelectLevel.fxml");
             sceneUtil.showScene(historyScene);
             // Đặt lại Scene của Stage với giao diện của Game
 

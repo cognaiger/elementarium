@@ -1,18 +1,22 @@
 package controller;
 
-import elementarium.utils.SceneUtil;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
+import javafx.scene.control.ListView;
+import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 public class LevelController {
 
-    private Stage primaryStage = SceneUtil.getInstance().getPrimaryStage();
-    private Stage dialogStage = new Stage();
+    @FXML
+    private ImageView earth;
+    @FXML
+    private ImageView fire;
+    @FXML
+    private ListView<ImageView> listView;
 
     @FXML
     private void initialize() {
@@ -43,8 +47,4 @@ public class LevelController {
         }
     }
 
-    @FXML
-    private void startPlaying() {
-        // Handle the "Start" button click to begin the gameplay.
-    }
 }

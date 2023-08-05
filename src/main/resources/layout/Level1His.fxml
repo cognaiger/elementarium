@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.LevelController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="750.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/20.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LevelController">
+   <children>
+      <ImageView fitHeight="761.0" fitWidth="1300.0" pickOnBounds="true">
+         <image>
+            <Image url="@../background/hisBackground.png" />
+         </image>
+      </ImageView>
+      <ListView layoutX="1085.0" prefHeight="761.0" prefWidth="215.0" style="-fx-background-color: DFA878;"
+      fx:id="listView"/>
+      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="1153.0" layoutY="27.0" pickOnBounds="true"
+                 preserveRatio="true" fx:id="fire">
+         <image>
+            <Image url="@../fire.png" />
+         </image>
+      </ImageView>
+      <Pane prefHeight="761.0" prefWidth="1085.0" />
+      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="1153.0" layoutY="145.0" pickOnBounds="true"
+                 preserveRatio="true" fx:id="earth"
+      >
+         <image>
+            <Image url="@../earth.png" />
+         </image>
+      </ImageView>
+   </children>
 </AnchorPane>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NatureLevelController">
+   <children>
+      <ImageView fitHeight="750.0" fitWidth="1300.0" pickOnBounds="true">
+         <image>
+            <Image url="@../background/nature_bg.jpg" />
+         </image>
+      </ImageView>
+      <Pane prefHeight="600.0" prefWidth="900.0">
+         <children>
+            <Pane layoutX="938.0" layoutY="250.0" onMouseEntered="#onMouseHover3" onMouseExited="#onMouseExit3" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: F9F9F9;">
+               <children>
+                  <ImageView fx:id="myImageView3" fitHeight="164.0" fitWidth="250.0" focusTraversable="true" layoutY="89.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../nature/north_pole.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="104.0" layoutY="26.0" text="LV3">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="86.0" layoutY="55.0" text="North pole" />
+               </children></Pane>
+            <Pane fx:id="level2" layoutX="568.0" layoutY="250.0" onMouseEntered="#onMouseHover2" onMouseExited="#onMouseExit2" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: F9F9F9;">
+               <children>
+                  <ImageView fx:id="myImageView2" fitHeight="164.0" fitWidth="250.0" layoutY="88.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../nature/forest.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="104.0" layoutY="26.0" text="LV2">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="86.0" layoutY="55.0" prefHeight="17.0" prefWidth="119.0" text="Climate forest" />
+               </children></Pane>
+            <ImageView fx:id="turnBack" fitHeight="80.0" fitWidth="80.0" layoutX="65.0" layoutY="58.0" onMouseClicked="#handleTurnBack" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../button/back.png" />
+               </image>
+            </ImageView>
+            <Pane layoutX="193.0" layoutY="250.0" onMouseClicked="#natureGameLevel1" onMouseEntered="#onMouseHover1" onMouseExited="#onMouseExit1" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: F9F9F9;">
+               <children>
+                  <ImageView fx:id="myImageView1" fitHeight="164.0" fitWidth="250.0" layoutY="89.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../nature/desert.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="104.0" layoutY="26.0" text="LV1">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="98.0" layoutY="55.0" text="Desert" />
+               </children></Pane>
+         </children>
+      </Pane>
+   </children>
+</StackPane>

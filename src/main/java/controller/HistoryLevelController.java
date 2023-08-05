@@ -1,8 +1,8 @@
 package controller;
 
+import elementarium.utils.SceneUtil;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import elementarium.utils.SceneUtil;
 
 import java.io.IOException;
 
@@ -13,7 +13,7 @@ public class HistoryLevelController {
     @FXML
     private void handleTurnBack() {
         try {
-            Scene main = sceneUtil.loadScene("/layout/main.fxml");
+            Scene main = sceneUtil.loadScene("/layout/Main.fxml");
             sceneUtil.showScene(main);
         } catch (IOException e) {
             e.printStackTrace();
