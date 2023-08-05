@@ -106,8 +106,6 @@ public abstract class DragAndDropWindow {
             ImageView imageView = new ImageView(x.getImageLink());
             imageView.setUserData(x.getElementId());
             imageList.add(imageView);
-
-            countImageList++;
         }
 
         // Đặt items cho ListView
@@ -217,7 +215,6 @@ public abstract class DragAndDropWindow {
         listView.setOnDragDetected(
                 event -> {
                     if (listView.getSelectionModel().getSelectedItem() != null) {
-
                         Dragboard dragboard = listView.startDragAndDrop(TransferMode.COPY);
                         // Put the image on the dragboard
                         ClipboardContent clipboardContent = new ClipboardContent();
@@ -267,8 +264,6 @@ public abstract class DragAndDropWindow {
                             if (curCom != null) {
                                 Element resElement = elements.get(curCom.getId() - 1);
                                 if (inBar[resElement.getElementId()]) { // / sản phẩm đã có từ trước
-
-
                                     pane.getChildren().remove(override);
                                     ImageView newImg = new ImageView(resElement.getImageLink());
                                     newImg.setLayoutX(event.getX() - ELEMENT_WIDTH / 2);
@@ -283,8 +278,6 @@ public abstract class DragAndDropWindow {
                                     knowledgeText.setText(curCom.getDes());
                                     newElement.setImage(new Image(resElement.getImageLink()));
                                     elementName.setText(resElement.getName());
-
-
                                     inBar[resElement.getElementId()] = true;
                                     bar.add(resElement.getElementId());
 
@@ -399,6 +392,8 @@ public abstract class DragAndDropWindow {
         }
 
     }
+
+
 
 
 }

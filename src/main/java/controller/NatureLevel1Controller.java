@@ -1,8 +1,10 @@
 package controller;
 
 
+import elementarium.models.Element;
 import elementarium.utils.InitialNumberElement;
 import javafx.animation.TranslateTransition;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -73,7 +75,7 @@ public class NatureLevel1Controller extends DragAndDropWindow {
         searchField.setOnKeyTyped(event -> {
             String searchText = searchField.getText();
             if (searchText == "") {
-                System.out.println(listViewText.getItems().size() + "SIZE ");
+
                 for (int i : bar) {
                     if (!currentIdInBar.contains(Integer.valueOf(i))) {
                         currentIdInBar.add(i);
@@ -81,13 +83,16 @@ public class NatureLevel1Controller extends DragAndDropWindow {
                 }
                 listView.getItems().clear();
                 imageList.clear();
+                clearName();
                 for (int i : bar) {
                     ImageView imageView = new ImageView(elements.get(i - 1).getImageLink());
                     imageView.setUserData(i);
                     imageList.add(imageView);
+                    listViewText.getItems().add(elements.get(i - 1).getName());
                 }
                 listView.setItems(imageList);
                 setCellFactory();
+//                refreshName();
                 return;
             }
             for (int i = 0; i < listViewText.getItems().size(); i++) {
@@ -96,29 +101,33 @@ public class NatureLevel1Controller extends DragAndDropWindow {
                     currentIdInBar.removeAll(Collections.singletonList(needBeRemovedId));
                     listView.getItems().clear();
                     imageList.clear();
+                    clearName();
                     for (Integer integer : currentIdInBar) {
                         ImageView imageView = new ImageView(elements.get(integer.intValue() - 1).getImageLink());
                         imageView.setUserData(integer);
                         imageList.add(imageView);
+                        listViewText.getItems().add(elements.get(integer.intValue() - 1).getName());
                     }
                     listView.setItems(imageList);
                     setCellFactory();
-                    System.out.println("need be removed " + needBeRemovedId + "name " + listViewText.getItems().get(i));
+                    // refreshName();
                 } else {
-                    System.out.println("GO HERE");
                     System.out.println(listViewText.getItems().get(i));
                     int needToBeAdded = bar.get(i);
                     if (!currentIdInBar.contains(Integer.valueOf(needToBeAdded))) {
                         currentIdInBar.add(Integer.valueOf(needToBeAdded));
                         listView.getItems().clear();
                         imageList.clear();
+                        clearName();
                         for (Integer integer : currentIdInBar) {
                             ImageView imageView = new ImageView(elements.get(integer.intValue() - 1).getImageLink());
                             imageView.setUserData(integer);
                             imageList.add(imageView);
+                            listViewText.getItems().add(elements.get(integer.intValue() - 1).getName());
                         }
                         listView.setItems(imageList);
                         setCellFactory();
+                        // refreshName();
                     }
                 }
             }
@@ -126,23 +135,25 @@ public class NatureLevel1Controller extends DragAndDropWindow {
 
         if (keyEvent.getCode() == KeyCode.BACK_SPACE) {
             String searchText = searchField.getText();
-            System.out.println("Backspace Pressed. Text: " + searchText);
+
             if (searchText == "") {
                 for (int i : bar) {
                     if (!currentIdInBar.contains(Integer.valueOf(i))) {
                         currentIdInBar.add(i);
                     }
                 }
-                System.out.println(listViewText.getItems().size() + "SIZE ");
                 listView.getItems().clear();
                 imageList.clear();
+                clearName();
                 for (int i : bar) {
                     ImageView imageView = new ImageView(elements.get(i - 1).getImageLink());
                     imageView.setUserData(i);
                     imageList.add(imageView);
+                    listViewText.getItems().add(elements.get(i - 1).getName());
                 }
                 listView.setItems(imageList);
                 setCellFactory();
+                // refreshName();
                 return;
             }
 
@@ -153,30 +164,53 @@ public class NatureLevel1Controller extends DragAndDropWindow {
                         currentIdInBar.add(Integer.valueOf(needToBeAdded));
                         listView.getItems().clear();
                         imageList.clear();
+                        clearName();
                         for (Integer integer : currentIdInBar) {
                             ImageView imageView = new ImageView(elements.get(integer.intValue() - 1).getImageLink());
                             imageView.setUserData(integer);
                             imageList.add(imageView);
+                            listViewText.getItems().add(elements.get(integer.intValue() - 1).getName());
                         }
                         listView.setItems(imageList);
                         setCellFactory();
+                        // refreshName();
                     }
                 } else {
                     int needBeRemovedId = bar.get(i);
                     currentIdInBar.removeAll(Collections.singletonList(needBeRemovedId));
                     listView.getItems().clear();
-                    imageList.clear();
+                    for (Integer ii : currentIdInBar) {
+                        System.out.println("In bar: " + ii);
+                    }
+                    List<String> tmp = new ArrayList<>();
                     for (Integer integer : currentIdInBar) {
                         ImageView imageView = new ImageView(elements.get(integer.intValue() - 1).getImageLink());
                         imageView.setUserData(integer);
                         imageList.add(imageView);
+                        tmp.add(elements.get(integer.intValue() - 1).getName());
                     }
                     listView.setItems(imageList);
+                    clearName();
+                    listViewText.setItems((ObservableList<String>) tmp);
                     setCellFactory();
+                    // refreshName();
                     break;
                 }
             }
 
         }
+
     }
+
+
+    public void addToListViewTextById(int elementId) {
+//        Element x = elements.get(elementId-1);
+//        listViewText.getItems().add(x.getName());
+    }
+
+    public  void clearName() {
+        listViewText.getItems().clear();
+    }
+
+
 }
