@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="750.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NatureLevel1Controller">
+<AnchorPane prefHeight="750.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NatureLevel2Controller">
    <ImageView fitHeight="750" fitWidth="1300">
       <image>
          <Image url="@../background/climate.png" />
@@ -68,11 +68,11 @@
 
          <ImageView fx:id="aimImg" fitHeight="61.0" fitWidth="75.0" layoutX="166.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@../tool.png" />
+               <Image url="@../dam.png" />
             </image></ImageView>
 
 
-         <TextField fx:id="aimText" alignment="CENTER" layoutX="14.0" layoutY="25.0" prefHeight="39.0" prefWidth="109.0" style="-fx-background-color: transparent;" text="CÔNG CỤ">
+         <TextField fx:id="aimText" alignment="CENTER" layoutX="14.0" layoutY="25.0" prefHeight="39.0" prefWidth="109.0" style="-fx-background-color: transparent;" text="CON ĐẬP">
             <font>
                <Font name="System Bold" size="18.0" />
             </font>

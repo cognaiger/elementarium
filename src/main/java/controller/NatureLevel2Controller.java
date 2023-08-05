@@ -21,17 +21,14 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class NatureLevel1Controller extends DragAndDropWindow {
+public class NatureLevel2Controller extends DragAndDropWindow {
 
     private final List<Integer> currentIdInBar = new ArrayList<>();
-
-
 
     @FXML
     private ImageView lookupIcon;
 
     private boolean isSearchBoxVisible = false;
-
 
     @FXML
     private VBox searchBox;
@@ -42,15 +39,10 @@ public class NatureLevel1Controller extends DragAndDropWindow {
     @FXML
     private Pane congraBox;
 
-
-
-
-
-    public NatureLevel1Controller() throws SQLException, ClassNotFoundException {
+    public NatureLevel2Controller() throws SQLException, ClassNotFoundException {
         super();
-        // initialNumberElements = InitialNumberElement.NATURE_LEVEL_1;
-        resId = 23;
-        initialId.addAll(Arrays.asList(17, 1, 2, 5, 13, 68, 70));
+        resId = 79;
+        initialId.addAll(Arrays.asList(17, 1, 2, 5, 13, 77, 78));
         setInitialId();
     }
 
@@ -62,7 +54,6 @@ public class NatureLevel1Controller extends DragAndDropWindow {
             congraBox.setVisible(true);
         }
     }
-
 
     @FXML
     private void handleLookupClick(MouseEvent event) {
@@ -228,15 +219,11 @@ public class NatureLevel1Controller extends DragAndDropWindow {
 //        listViewText.getItems().add(x.getName());
     }
 
-    public void clearName() {
+    public  void clearName() {
         listViewText.getItems().clear();
     }
 
 
     public void nextLevel(ActionEvent actionEvent) {
     }
-
-
-
-
 }

@@ -4,8 +4,6 @@ import elementarium.models.Element;
 import elementarium.models.Result;
 import elementarium.utils.SceneUtil;
 import elementarium.utils.animation.Animation;
-import elementarium.utils.automatic_load_data.AutomaticLoadData;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -50,8 +48,10 @@ public abstract class DragAndDropWindow {
     protected TextField elementName;
 
 
+    protected List<Integer> initialId = new ArrayList<>();
 
 
+    protected int resId;
 
     protected ImageView draggedImageView;
     public static final int ELEMENT_WIDTH = 80;
@@ -407,4 +407,11 @@ public abstract class DragAndDropWindow {
 
 
     public abstract void checkRes(Element resElement);
+
+    public void setInitialId() {
+        for (int i : initialId) {
+            inBar[i] = true;
+            bar.add(i);
+        }
+    }
 }
