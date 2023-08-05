@@ -5,13 +5,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="750.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreativeController">
+<AnchorPane prefHeight="750.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/16"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreativeController">
 
     <ImageView fitHeight="750" fitWidth="1300">
         <image>
             <Image url="@../background/creative_bgr.jpg" />
         </image>
     </ImageView>
+
 
     <ImageView fitHeight="90.0" fitWidth="415.0" layoutX="332.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
         <image>

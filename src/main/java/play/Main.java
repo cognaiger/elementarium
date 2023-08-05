@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         sceneUtil.setPrimaryStage(stage);
-        Scene main = sceneUtil.loadScene("/layout/main.fxml");
+        Scene main = sceneUtil.loadScene("/layout/Main.fxml");
 
         stage.setTitle("ELEMENTARIUM");
         stage.setScene(main);
