@@ -98,6 +98,8 @@ public class LevelController extends DragAndDropWindow {
         }
     }
 
+
+
     @Override
     public void checkRes(Element resElement) {
         if (resElement.getElementId() == resId) {
