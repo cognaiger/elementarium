@@ -30,7 +30,7 @@ public class MainController {
     public void creativeGame() {
         try {
             CreativeGame game = new CreativeGame();
-            Stage currentStage = (Stage) creativeButton.getScene().getWindow();
+            Stage currentStage = sceneUtil.getPrimaryStage();
             // Đặt lại Scene của Stage với giao diện của Game
             game.start(currentStage);
         } catch (Exception e) {

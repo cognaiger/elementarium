@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="900.0" maxWidth="1500.0" prefHeight="750.0" prefWidth="1300.0"
+            xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.MainController">
+      <ImageView fitHeight="750.0" fitWidth="1300.0" opacity="0.6">
+         <image>
+            <Image url="@../background/main_bgr.jpg" />
+         </image>
+      <effect>
+         <Blend />
+      </effect>
+      </ImageView>
+   <Pane layoutX="60.0" layoutY="230.0" prefHeight="300.0" prefWidth="250.0" style="-fx-background-color: white;"
+   onMousePressed="#historyGame">
+      <children>
+         <ImageView fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../background/history_mode.png" />
+            </image>
+         </ImageView>
+         <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="100.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../background/history-icon.png" />
+            </image>
+         </ImageView>
+         <Label layoutX="72.0" layoutY="237.0" text="History Mode">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font>
+         </Label>
+      </children>
+   </Pane>
+   <Pane layoutX="370.0" layoutY="230.0" prefHeight="300.0" prefWidth="250.0" style="-fx-background-color: white;"
+   onMousePressed="#creativeGame">
+      <children>
+         <ImageView fitHeight="150.0" fitWidth="250.0" layoutY="-2.0" pickOnBounds="true">
+            <image>
+               <Image url="@../background/creative-mode.jpg" />
+            </image>
+         </ImageView>
+         <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="100.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../background/creative-icon.png" />
+            </image>
+         </ImageView>
+         <Label layoutX="68.0" layoutY="237.0" text="Creative Mode">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font>
+         </Label>
+      </children>
+   </Pane>
+   <Pane layoutX="680.0" layoutY="230.0" prefHeight="300.0" prefWidth="250.0" style="-fx-background-color: white;"
+   onMousePressed="#natureGame">
+      <children>
+         <ImageView fitHeight="150.0" fitWidth="250.0" layoutX="-2.0" layoutY="-1.0" pickOnBounds="true">
+            <image>
+               <Image url="@../background/nature-mode.jpeg" />
+            </image>
+         </ImageView>
+         <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="98.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../background/nature-mode.png" />
+            </image>
+         </ImageView>
+         <Label layoutX="74.0" layoutY="237.0" text="Nature Mode">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font>
+         </Label>
+      </children>
+   </Pane>
+   <Pane layoutX="990.0" layoutY="230.0" prefHeight="300.0" prefWidth="250.0" style="-fx-background-color: white;"
+   onMousePressed="#chemistryGame">
+      <children>
+         <ImageView fitHeight="150.0" fitWidth="250.0" layoutX="1.0" pickOnBounds="true">
+            <image>
+               <Image url="@../background/chemistry-mode.jpg" />
+            </image>
+         </ImageView>
+         <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="98.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../background/chem-icon.png" />
+            </image>
+         </ImageView>
+         <Label layoutX="62.0" layoutY="236.0" text="Chemistry Mode">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font>
+         </Label>
+      </children>
+   </Pane>
+</AnchorPane>

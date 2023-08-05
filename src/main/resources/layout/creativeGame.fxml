@@ -5,23 +5,28 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreativeController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.CreativeController">
     <ImageView fitHeight="600" fitWidth="900">
         <image>
             <Image url="@../background/creative_bgr.jpg" />
         </image>
     </ImageView>
-   <ListView fx:id="listView" layoutX="694.0" prefHeight="600.0" prefWidth="206.0" style="-fx-background-color: #BC8F8F;" />
+   <ListView fx:id="listView" layoutX="694.0" prefHeight="600.0" prefWidth="206.0"
+             style="-fx-background-color: #BC8F8F;" />
    <Pane fx:id="pane" prefHeight="600.0" prefWidth="695.0" />
-   <Pane fx:id="knowledgeBox" disable="true" layoutX="188.0" layoutY="85.0" prefHeight="350.0" prefWidth="384.0" style="-fx-background-color: white;" visible="false">
+   <Pane fx:id="knowledgeBox" disable="true" layoutX="188.0" layoutY="85.0" prefHeight="350.0" prefWidth="384.0"
+         style="-fx-background-color: white;" visible="false">
       <children>
-         <Button fx:id="closeBox" layoutX="319.0" layoutY="17.0" mnemonicParsing="false" onAction="#onClose" text="Close" />
+         <Button fx:id="closeBox" layoutX="319.0" layoutY="17.0" mnemonicParsing="false" onAction="#onClose"
+                 text="Close" />
          <TextField fx:id="knowledgeText" layoutX="36.0" layoutY="246.0" prefHeight="37.0" prefWidth="307.0">
             <font>
                <Font name=".VnArial Bold Italic" size="14.0" />
             </font>
          </TextField>
-         <ImageView fx:id="newElement" fitHeight="150.0" fitWidth="200.0" layoutX="96.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true" />
+         <ImageView fx:id="newElement" fitHeight="150.0" fitWidth="200.0" layoutX="96.0" layoutY="73.0"
+                    pickOnBounds="true" preserveRatio="true" />
       </children>
    </Pane>
 </AnchorPane>

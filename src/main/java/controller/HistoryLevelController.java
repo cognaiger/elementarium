@@ -13,7 +13,7 @@ public class HistoryLevelController {
     @FXML
     private void handleTurnBack() {
         try {
-            Scene main = sceneUtil.loadScene("/layout/main.fxml");
+            Scene main = sceneUtil.loadScene("/layout/Main.fxml");
             sceneUtil.showScene(main);
         } catch (IOException e) {
             e.printStackTrace();
