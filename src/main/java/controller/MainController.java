@@ -59,10 +59,10 @@ public class MainController {
     @FXML
     public void natureGame() {
         try {
-            Game game = new Game();
-            Stage currentStage = (Stage) natureButton.getScene().getWindow();
+            Scene historyScene = sceneUtil.loadScene("/layout/NatureLevel.fxml");
+            sceneUtil.showScene(historyScene);
             // Đặt lại Scene của Stage với giao diện của Game
-            game.start(currentStage);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

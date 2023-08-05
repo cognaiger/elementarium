@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NatureLevelController">
+   <children>
+      <ImageView fx:id="myImageView1" fitHeight="1164.0" fitWidth="515.0" layoutX="-14.0" layoutY="-216.0" onMouseClicked="#natureGameLevel1" onMouseEntered="#onMouseHover1" onMouseExited="#onMouseExit1" pickOnBounds="true" style="-fx-border-color: white; -fx-border-width: 10px;">
+         <image>
+            <Image url="@../nature/desert.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="myImageView2" fitHeight="1164.0" fitWidth="433.0" layoutX="433.0" layoutY="-234.0" onMouseEntered="#onMouseHover2" onMouseExited="#onMouseExit2" pickOnBounds="true">
+         <image>
+            <Image url="@../nature/forest.png" />
+         </image>
+
+      </ImageView>
+      <ImageView fx:id="myImageView3" fitHeight="1128.0" fitWidth="493.0" layoutX="866.0" layoutY="-206.0" onMouseEntered="#onMouseHover3" onMouseExited="#onMouseExit3" pickOnBounds="true">
+         <image>
+            <Image url="@../nature/north_pole.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="backButton" fitHeight="75.0" fitWidth="93.0" layoutX="7.0" pickOnBounds="true" onMouseEntered="#onMouseHoverButton" onMouseExited="#onMouseExitBackButton" onMouseClicked="#handleTurnBack" preserveRatio="true">
+         <image>
+            <Image url="@../button/back.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

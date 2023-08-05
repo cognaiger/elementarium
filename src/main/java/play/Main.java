@@ -5,7 +5,6 @@ import javafx.stage.Stage;
 import elementarium.utils.SceneUtil;
 
 public class Main extends Application {
-
     SceneUtil sceneUtil = SceneUtil.getInstance();
 
     @Override
