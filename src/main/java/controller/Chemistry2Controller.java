@@ -2,13 +2,9 @@ package controller;
 
 import elementarium.models.Element;
 import elementarium.models.Result;
-
 import elementarium.utils.InitialNumberElement;
 import elementarium.utils.SceneUtil;
-
 import elementarium.utils.animation.Animation;
-import elementarium.utils.animation.BoomEffect;
-
 import elementarium.utils.automatic_load_data.AutomaticLoadData;
 import elementarium.utils.sound.SoundUtil;
 import javafx.collections.FXCollections;
@@ -23,23 +19,49 @@ import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DataFormat;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
-import javafx.scene.layout.*;
-import javafx.stage.Stage;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.util.Callback;
-import play.CreativeGame;
-import play.Main;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+public class Chemistry2Controller {
+    @FXML
+    private GridPane gridPane;
 
-public class CreativeController extends DragAndDropWindow {
-    public CreativeController() throws SQLException, ClassNotFoundException {
+    @FXML
+    private ListView<ImageView> listView;
+    protected List<Element> elements = new ArrayList<Element>();
 
-        super();
-        initialNumberElements = 6;
-        elements = AutomaticLoadData.getAllElements();
+    protected List<Integer> bar = new ArrayList<Integer>();
+
+    public static final int ELEMENT_WIDTH = 80;
+    public static final int ELEMENT_HEIGHT = 80;
+    protected SceneUtil sceneUtil = SceneUtil.getInstance();
+
+
+    public void setup () {
+        bar.add(2);
+        bar.add(58);
+        bar.add(56);
+        bar.add(60);
+        bar.add(54);
+        bar.add(56);
+        bar.add(58);
+        bar.add(60);
+        bar.add(54);
+        for(int i : bar){
+
+        }
+
+
     }
+
+    public void initialize() {
+
+    }
+
 }
