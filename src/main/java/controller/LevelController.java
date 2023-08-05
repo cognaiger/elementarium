@@ -1,5 +1,6 @@
 package controller;
 
+import elementarium.models.Element;
 import elementarium.utils.SceneUtil;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,28 +8,30 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
-import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
-import javafx.stage.Stage;
-import org.w3c.dom.events.MouseEvent;
 
 import java.io.IOException;
 
-public class LevelController {
+public class LevelController extends DragAndDropWindow{
 
     @FXML
-    private ImageView earth;
+    private ImageView aimImg;
+
     @FXML
-    private ImageView fire;
-    @FXML
-    private ListView<ImageView> listView;
+    private TextField aimText;
+
+    public static int level = 1;
+
+    public int resId;
+
     SceneUtil sceneUtil = SceneUtil.getInstance();
 
-    @FXML
-    private void initialize() {
-            // Show the modal dialog when the application starts
-            showInstructionsModal();
+    public LevelController() {
+        super();
+        showInstructionsModal();
+
     }
 
     private void showInstructionsModal() {
@@ -47,11 +50,47 @@ public class LevelController {
             dialog.setTitle("Instruction for level");
 
             dialog.showAndWait();
+            createLevel();
 
-            System.out.println("Selected level");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    void createLevel() {
+        switch (level){
+            case 1:
+            {
+                inBar[1] = true;
+                bar.add(1);
+                inBar[15] = true;
+                bar.add(15);
+
+                resId = 14;
+                Element e = elements.get(resId - 1);
+                aimText.setText(e.getName());
+                break;
+            }
+        }
+    }
+
+    @Override
+    public void backToMain() {
+        try {
+            Scene main = sceneUtil.loadScene("/layout/HistorySelectLevel.fxml");
+            sceneUtil.showScene(main);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void checkRes(Element resElement) {
+        if (resElement.getElementId() == resId) {
+            System.out.println("thanh cong roi");
+        }
+    }
+
 
 }

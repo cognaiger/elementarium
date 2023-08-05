@@ -1,16 +1,23 @@
 package controller;
 
 
+import elementarium.models.Element;
+
 import java.sql.SQLException;
 
 
 
 public class CreativeController extends DragAndDropWindow {
-    public CreativeController() throws SQLException, ClassNotFoundException {
+    public CreativeController() {
         super();
         for (int i = 1; i <= 5; i++) {
             inBar[i] = true;
             bar.add(i);
         }
+    }
+
+    @Override
+    public void checkRes(Element resElement) {
+
     }
 }
