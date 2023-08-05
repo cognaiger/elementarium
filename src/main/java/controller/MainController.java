@@ -21,6 +21,8 @@ public class MainController {
     @FXML
     private Button chemistryButton;
 
+    CreativeGame game = new CreativeGame();
+
     SceneUtil sceneUtil = SceneUtil.getInstance();
 
 
@@ -28,11 +30,17 @@ public class MainController {
 
     @FXML
     public void creativeGame() {
+//        try {
+//            Stage currentStage = (Stage) creativeButton.getScene().getWindow();
+//            // Đặt lại Scene của Stage với giao diện của Game
+//            game.start(currentStage);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+
         try {
-            CreativeGame game = new CreativeGame();
-            Stage currentStage = sceneUtil.getPrimaryStage();
-            // Đặt lại Scene của Stage với giao diện của Game
-            game.start(currentStage);
+            Scene creativeScene = sceneUtil.loadScene("/layout/creativeGame.fxml");
+            sceneUtil.showScene(creativeScene);
         } catch (Exception e) {
             e.printStackTrace();
         }
