@@ -74,7 +74,7 @@ public class MainController {
             Game game = new Game();
             Stage currentStage = sceneUtil.getPrimaryStage();
             game.start(currentStage);
-            Scene chemistry = sceneUtil.loadScene("/layout/Chemistry2.fxml");
+            Scene chemistry = sceneUtil.loadScene("/layout/SelectedChemistry.fxml");
             sceneUtil.showScene(chemistry);
         } catch (Exception e) {
             e.printStackTrace();
