@@ -126,9 +126,7 @@ public class MainController {
     @FXML
     public void chemistryGame() {
         try {
-            Game game = new Game();
             Stage currentStage = sceneUtil.getPrimaryStage();
-            game.start(currentStage);
             Scene chemistry = sceneUtil.loadScene("/layout/SelectedChemistry.fxml");
             sceneUtil.showScene(chemistry);
         } catch (Exception e) {
