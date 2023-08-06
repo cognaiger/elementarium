@@ -60,7 +60,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <ImageView fx:id="resetBtn" fitHeight="51.0" fitWidth="52.0" layoutX="1126.0" onMouseClicked="#resetGame" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="resetBtn" fitHeight="51.0" fitWidth="52.0" layoutX="1126.0" layoutY="61.0" onMouseClicked="#resetGame" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../button/reset.png" />
          </image>
