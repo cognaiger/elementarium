@@ -181,9 +181,7 @@ public abstract class DragAndDropWindow {
                                     pane.getChildren().add(newImg);
                                 } else {  /// sản phẩm chưa có, cần hiển thị bảng.
 
-                                    knowledgeBox.setVisible(!knowledgeBox.isVisible());
-                                    knowledgeBox.setDisable(false);
-                                    knowledgeText.setText(curCom.getDes());
+
                                     newElement.setImage(new Image(resElement.getImageLink()));
                                     elementName.setText(resElement.getName());
                                     listViewText.getItems().add(resElement.getName());
@@ -292,9 +290,7 @@ public abstract class DragAndDropWindow {
 
                                     listViewText.getItems().add(resElement.getName());
                                     listViewText.setCellFactory(param -> new CustomListCell(20));
-                                    knowledgeBox.setVisible(!knowledgeBox.isVisible());
-                                    knowledgeBox.setDisable(false);
-                                    knowledgeText.setText(curCom.getDes());
+
                                     newElement.setImage(new Image(resElement.getImageLink()));
                                     elementName.setText(resElement.getName());
 
@@ -317,7 +313,9 @@ public abstract class DragAndDropWindow {
                                     Animation.animateAndRushImageViews(imageView, overrideImg);
 
                                     ImageView finalOverrideImg = overrideImg;
+                                    Result finalCurCom = curCom;
                                     pause.setOnFinished(e -> {
+                                        showKnowledgeBox(finalCurCom);
                                         pane.getChildren().remove(finalOverrideImg);
                                         pane.getChildren().add(newImg);
                                     });
@@ -466,6 +464,12 @@ public abstract class DragAndDropWindow {
             inBar[i] = true;
             bar.add(i);
         }
+    }
+
+    public void showKnowledgeBox(Result curCom) {
+        knowledgeBox.setVisible(!knowledgeBox.isVisible());
+        knowledgeBox.setDisable(false);
+        knowledgeText.setText(curCom.getDes());
     }
 
 }
