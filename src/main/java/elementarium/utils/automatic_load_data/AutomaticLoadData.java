@@ -1,7 +1,6 @@
 package elementarium.utils.automatic_load_data;
 
 import elementarium.db_connect.MySQLConnection;
-import elementarium.models.Combination;
 import elementarium.models.Element;
 import elementarium.models.Question;
 import elementarium.models.Result;

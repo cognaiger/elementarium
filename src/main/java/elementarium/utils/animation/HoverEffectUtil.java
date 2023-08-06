@@ -1,12 +1,4 @@
 package elementarium.utils.animation;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.util.Duration;
 
 import javafx.animation.ScaleTransition;
 import javafx.scene.image.ImageView;

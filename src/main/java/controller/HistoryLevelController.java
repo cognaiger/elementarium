@@ -1,9 +1,9 @@
 package controller;
 
+import elementarium.utils.SceneUtil;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import elementarium.utils.SceneUtil;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
@@ -127,6 +127,7 @@ public class HistoryLevelController {
             e.printStackTrace();
         }
     }
+
     @FXML
     private void selectLevel4() {
         try {

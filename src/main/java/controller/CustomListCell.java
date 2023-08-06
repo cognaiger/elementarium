@@ -4,7 +4,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.text.Font;
 
 public class CustomListCell extends ListCell<String> {
-    private double fontSize;
+    private final double fontSize;
 
     public CustomListCell(double fontSize) {
         this.fontSize = fontSize;

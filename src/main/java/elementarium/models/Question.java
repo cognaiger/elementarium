@@ -1,11 +1,11 @@
 package elementarium.models;
 
 public class Question {
-    private String question;
-    private String correctAns;
-    private String wrongAns1;
-    private String wrongAns2;
-    private String wrongAns3;
+    private final String question;
+    private final String correctAns;
+    private final String wrongAns1;
+    private final String wrongAns2;
+    private final String wrongAns3;
 
     public Question(String question, String correctAns, String wrongAns1, String wrongAns2, String wrongAns3) {
         this.question = question;

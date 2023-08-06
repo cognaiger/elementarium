@@ -10,13 +10,11 @@ import java.io.IOException;
 
 public class GameStartController {
 
+    SceneUtil sceneUtil = SceneUtil.getInstance();
     @FXML
     private Button startBtn;
-
     @FXML
     private Button quitBtn;
-
-    SceneUtil sceneUtil = SceneUtil.getInstance();
 
     @FXML
     public void startGame() {

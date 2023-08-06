@@ -14,6 +14,7 @@ import java.util.List;
 
 public class QuestionHistoryController {
 
+    public static int questionNum = 1;
     @FXML
     public TextField ans1;
     @FXML
@@ -28,14 +29,11 @@ public class QuestionHistoryController {
     public Button againBtn;
     @FXML
     TextArea questionText;
-
     List<Question> questionList = Main.getQuestions();
-    public static int questionNum = 1;
     int correct = 0;
     SceneUtil sceneUtil = SceneUtil.getInstance();
 
-    
-    
+
     public QuestionHistoryController() {
         //addQuestion();
     }
@@ -45,11 +43,11 @@ public class QuestionHistoryController {
     }
 
     void addQuestion() {
-    System.out.println(questionNum);
+        System.out.println(questionNum);
         switch (questionNum) {
             case 1: {
                 Question tmp = questionList.get(7);
-          System.out.println("vcl1" + tmp.getQuestion());
+                System.out.println("vcl1" + tmp.getQuestion());
                 correct = 1;
                 questionText.setText(tmp.getQuestion());
                 ans1.setText(tmp.getCorrectAns());
@@ -130,19 +128,19 @@ public class QuestionHistoryController {
 
     void switchTab() throws IOException {
         switch (questionNum) {
-            case 1:{
+            case 1: {
                 Scene q = sceneUtil.loadScene("/layout/QuestionHis.fxml");
                 sceneUtil.showScene(q);
                 break;
             }
 
-            case 2:{
+            case 2: {
                 Scene q = sceneUtil.loadScene("/layout/QuestionHis.fxml");
                 sceneUtil.showScene(q);
                 break;
             }
 
-            case 3:{
+            case 3: {
                 Scene q = sceneUtil.loadScene("/layout/QuestionHis.fxml");
                 sceneUtil.showScene(q);
                 break;

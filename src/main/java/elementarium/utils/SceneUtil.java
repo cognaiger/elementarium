@@ -24,12 +24,12 @@ public class SceneUtil {
         return instance;
     }
 
-    public void setPrimaryStage(Stage primaryStage) {
-        this.primaryStage = primaryStage;
-    }
-
     public Stage getPrimaryStage() {
         return this.primaryStage;
+    }
+
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
     }
 
     public void showScene(Scene scene) {
