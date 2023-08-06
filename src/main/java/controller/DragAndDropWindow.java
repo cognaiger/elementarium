@@ -153,49 +153,70 @@ public abstract class DragAndDropWindow {
                             pane.getChildren().remove(draggedImageView);
                         }
                         int id1 = 0, id2 = 0;
-                        ImageView override = null;
+                        ImageView overrideImg = null;
                         for (Node node : pane.getChildren()) {
                             ImageView img = (ImageView) node;
                             if (overlap(img, imageView) || overlap(imageView, img)) {
                                 id1 = (int) img.getUserData();
                                 id2 = (int) imageView.getUserData();
-                                override = img;
+                                overrideImg = img;
                                 break;
                             }
                         }
-                        if (override != null) {
+                        if (overrideImg != null) {
                             Result curCom = null;
                             curCom = comRes[id1][id2];
                             if (curCom != null) {
                                 Element resElement = elements.get(curCom.getId() - 1);
                                 if (inBar[resElement.getElementId()]) { // / sản phẩm đã có từ trước
 
-                                    Animation.animateAndRushImageViews(imageView, override);
+                                    Animation.animateAndRushImageViews(imageView, overrideImg);
 
                                     ImageView newImg = new ImageView(resElement.getImageLink());
                                     newImg.setLayoutX(event.getX() - ELEMENT_WIDTH / 2);
                                     newImg.setLayoutY(event.getY() - ELEMENT_HEIGHT / 2);
                                     newImg.setUserData(resElement.getElementId());
-                                    pane.getChildren().remove(override);
                                     HoverEffectUtil.addHoverEffect(newImg);
-                                    pane.getChildren().add(newImg);
-                                } else {  /// sản phẩm chưa có, cần hiển thị bảng.
+                                    PauseTransition pause = new PauseTransition(Duration.millis(1000));
+                                    Animation.animateAndRushImageViews(imageView, overrideImg);
 
+                                    ImageView finalOverrideImg = overrideImg;
+                                    pause.setOnFinished(e -> {
+                                        pane.getChildren().remove(finalOverrideImg);
+                                        pane.getChildren().add(newImg);
+                                    });
+                                    System.out.println("Play pause");
+                                    pause.play();
+                                } else {  /// sản phẩm chưa có, cần hiển thị bảng.
+                                    listViewText.getItems().add(resElement.getName());
+                                    listViewText.setCellFactory(param -> new CustomListCell(20));
 
                                     newElement.setImage(new Image(resElement.getImageLink()));
                                     elementName.setText(resElement.getName());
-                                    listViewText.getItems().add(resElement.getName());
-                                    listViewText.setCellFactory(param -> new CustomListCell(16));
+
+
                                     inBar[resElement.getElementId()] = true;
                                     bar.add(resElement.getElementId());
+
                                     setup();
-                                    pane.getChildren().remove(override);
+
                                     ImageView newImg = new ImageView(resElement.getImageLink());
                                     newImg.setLayoutX(event.getX() - ELEMENT_WIDTH / 2);
                                     newImg.setLayoutY(event.getY() - ELEMENT_HEIGHT / 2);
                                     newImg.setUserData(resElement.getElementId());
                                     HoverEffectUtil.addHoverEffect(newImg);
-                                    pane.getChildren().add(newImg);
+                                    PauseTransition pause = new PauseTransition(Duration.millis(1000));
+                                    Animation.animateAndRushImageViews(imageView, overrideImg);
+
+                                    ImageView finalOverrideImg = overrideImg;
+                                    Result finalCurCom = curCom;
+                                    pause.setOnFinished(e -> {
+                                        showKnowledgeBox(finalCurCom);
+                                        pane.getChildren().remove(finalOverrideImg);
+                                        pane.getChildren().add(newImg);
+                                    });
+                                    pause.play();
+                                    checkRes(resElement);
                                 }
                             }
                         } else {
@@ -299,10 +320,6 @@ public abstract class DragAndDropWindow {
                                     bar.add(resElement.getElementId());
 
                                     setup();
-
-
-
-
 
                                     ImageView newImg = new ImageView(resElement.getImageLink());
                                     newImg.setLayoutX(event.getX() - ELEMENT_WIDTH / 2);
