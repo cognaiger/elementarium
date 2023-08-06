@@ -108,4 +108,42 @@
             </TextField>
         </children>
     </Pane>
+
+    <Pane fx:id="helpTab" layoutX="364.0" layoutY="174.0" prefHeight="350.0" prefWidth="530.0">
+        <children>
+            <ImageView fitHeight="350.0" fitWidth="530.0" pickOnBounds="true">
+                <image>
+                    <Image url="@../background/info.png" />
+                </image>
+            </ImageView>
+            <Button layoutX="439.0" layoutY="12.0" mnemonicParsing="false" onAction="#closeHelpTab" prefHeight="68.0" prefWidth="64.0" style="-fx-background-color: transparent;">
+                <graphic>
+                    <ImageView fitHeight="62.0" fitWidth="66.0" pickOnBounds="true">
+                        <image>
+                            <Image url="@../button/close.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <TextField alignment="CENTER" layoutX="168.0" layoutY="20.0" prefHeight="51.0" prefWidth="177.0" style="-fx-text-fill: white; -fx-background-color: transparent;" text="BẠN CÓ BIẾT">
+                <font>
+                    <Font name="System Bold" size="24.0" />
+                </font>
+            </TextField>
+            <TextArea editable="false" layoutX="28.0" layoutY="120.0" prefHeight="166.0" prefWidth="474.0" style="-fx-background-color: FFEBCD; -fx-text-fill: black; -fx-background-radius: 10;" text="Trong thời đại Đồ đồng, loài người đã biết tạo ra đồ gốm làm đồ dùng đựng các loại nước, quả và để trang trí. Đồ gốm cổ nhất được biết đến là từ Trung Quốc và có niên đại tới năm 20.000 TCN." wrapText="true">
+                <font>
+                    <Font name="System Bold" size="20.0" />
+                </font>
+            </TextArea>
+        </children>
+    </Pane>
+    <Button layoutX="124.0" layoutY="37.0" mnemonicParsing="false" onAction="#openHelpTab" style="-fx-background-color: transparent;">
+        <graphic>
+            <ImageView fitHeight="48.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../button/hint.png" />
+                </image>
+            </ImageView>
+        </graphic>
+    </Button>
 </AnchorPane>
