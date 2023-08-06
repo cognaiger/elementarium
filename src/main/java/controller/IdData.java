@@ -6,9 +6,13 @@ public class IdData {
     private static IdData instance;
     private DataFormat dataFormat;
 
+    private DataFormat rowIndexFormat;
+    private DataFormat colIndexFormat;
 
     private IdData() {
         dataFormat = new DataFormat("id");
+        rowIndexFormat = new DataFormat("row");
+        colIndexFormat = new DataFormat("col");
     }
 
     // Static method to get the IdData instance
@@ -27,8 +31,11 @@ public class IdData {
         return dataFormat;
     }
 
-    public void setDataFormat(DataFormat dataFormat) {
-        this.dataFormat = dataFormat;
+    public DataFormat getRowIndexFormat() {
+        return rowIndexFormat;
     }
 
+    public DataFormat getColIndexFormat() {
+        return colIndexFormat;
+    }
 }
