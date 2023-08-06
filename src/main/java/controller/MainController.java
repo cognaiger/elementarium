@@ -1,19 +1,14 @@
 package controller;
 
+import elementarium.utils.SceneUtil;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import play.CreativeGame;
-import play.Game;
-import elementarium.utils.SceneUtil;
 
 public class MainController {
-
-
 
 
     SceneUtil sceneUtil = SceneUtil.getInstance();

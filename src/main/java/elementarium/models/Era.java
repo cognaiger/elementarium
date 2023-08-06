@@ -6,8 +6,6 @@ public class Era {
     private int description;
 
 
-
-
     public Era(int id, int name, int description) {
         this.id = id;
         this.name = name;

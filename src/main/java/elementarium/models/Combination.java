@@ -1,10 +1,5 @@
 package elementarium.models;
 
-import elementarium.db_connect.MySQLConnection;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 public class Combination {
 
     private int id;

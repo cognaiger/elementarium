@@ -14,6 +14,7 @@ import java.util.List;
 
 public class QuestionNatureController {
 
+    public static int questionNum = 1;
     @FXML
     public TextField ans1;
     @FXML
@@ -28,12 +29,9 @@ public class QuestionNatureController {
     public Button againBtn;
     @FXML
     TextArea questionText;
-
     List<Question> questionList = Main.getQuestions();
-    public static int questionNum = 1;
     int correct = 0;
     SceneUtil sceneUtil = SceneUtil.getInstance();
-
 
 
     public QuestionNatureController() {
@@ -45,7 +43,7 @@ public class QuestionNatureController {
     }
 
     void addQuestion() {
-    System.out.println(questionNum);
+        System.out.println(questionNum);
         switch (questionNum) {
             case 1: {
                 Question tmp = questionList.get(25);

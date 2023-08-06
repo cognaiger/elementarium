@@ -1,8 +1,5 @@
 package elementarium.models;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
 public class Element {
     protected int elementId;
     protected String name;
