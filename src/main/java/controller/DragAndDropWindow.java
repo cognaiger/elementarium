@@ -177,13 +177,16 @@ public abstract class DragAndDropWindow {
                             if (curCom != null) {
                                 Element resElement = elements.get(curCom.getId() - 1);
                                 if (inBar[resElement.getElementId()]) { // / sản phẩm đã có từ trước
-                                    pane.getChildren().remove(override);
+
+                                    Animation.animateAndRushImageViews(imageView,override);
+
                                     ImageView newImg = new ImageView(resElement.getImageLink());
                                     newImg.setLayoutX(event.getX() - ELEMENT_WIDTH / 2);
                                     newImg.setLayoutY(event.getY() - ELEMENT_HEIGHT / 2);
                                     newImg.setUserData(resElement.getElementId());
+                                    pane.getChildren().remove(override);
                                     HoverEffectUtil.addHoverEffect(newImg);
-                                    pane.getChildren().add(newImg);
+                                    // pane.getChildren().add(newImg);
                                 } else {  /// sản phẩm chưa có, cần hiển thị bảng.
 
                                     knowledgeBox.setVisible(!knowledgeBox.isVisible());
@@ -274,14 +277,17 @@ public abstract class DragAndDropWindow {
                             if (curCom != null) {
                                 Element resElement = elements.get(curCom.getId() - 1);
                                 if (inBar[resElement.getElementId()]) { // / sản phẩm đã có từ trước
+                                    System.out.println("Can combine");
+                                    Animation.animateAndRushImageViews(imageView,override);
 
-                                    pane.getChildren().remove(override);
                                     ImageView newImg = new ImageView(resElement.getImageLink());
                                     newImg.setLayoutX(event.getX() - ELEMENT_WIDTH / 2);
                                     newImg.setLayoutY(event.getY() - ELEMENT_HEIGHT / 2);
                                     newImg.setUserData(resElement.getElementId());
-                                    HoverEffectUtil.addHoverEffect(newImg);
-                                    pane.getChildren().add(newImg);
+//                                    HoverEffectUtil.addHoverEffect(newImg);
+
+                                    pane.getChildren().remove(override);
+                                    // pane.getChildren().add(newImg);
                                 } else {  /// sản phẩm chưa có, cần hiển thị bảng.
 
                                     listViewText.getItems().add(resElement.getName());
