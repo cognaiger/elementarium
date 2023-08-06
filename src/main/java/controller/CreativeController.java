@@ -2,12 +2,6 @@ package controller;
 
 
 import elementarium.models.Element;
-import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
-
-import java.sql.SQLException;
-
 
 
 public class CreativeController extends DragAndDropWindow {

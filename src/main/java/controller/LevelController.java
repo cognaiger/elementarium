@@ -2,18 +2,9 @@ package controller;
 
 import elementarium.models.Element;
 import elementarium.utils.SceneUtil;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
-
-import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
 
 import java.io.IOException;
 
@@ -39,9 +30,8 @@ public class LevelController extends DragAndDropWindow {
     }
 
     void createLevel() {
-        switch (level){
-            case 1:
-            {
+        switch (level) {
+            case 1: {
                 inBar[1] = true;
                 bar.add(1);
                 inBar[15] = true;
@@ -49,8 +39,7 @@ public class LevelController extends DragAndDropWindow {
                 resId = 14;
                 break;
             }
-            case 2:
-            {
+            case 2: {
                 inBar[1] = true;
                 bar.add(1);
                 inBar[2] = true;
@@ -64,7 +53,7 @@ public class LevelController extends DragAndDropWindow {
                 resId = 19;
                 break;
             }
-            case 3:{
+            case 3: {
                 inBar[1] = true;
                 bar.add(1);
                 inBar[17] = true;
@@ -102,7 +91,6 @@ public class LevelController extends DragAndDropWindow {
     }
 
 
-
     @Override
     public void checkRes(Element resElement) {
         if (resElement.getElementId() == resId) {
@@ -112,9 +100,8 @@ public class LevelController extends DragAndDropWindow {
     }
 
     public void switchLayout() throws IOException {
-        switch (level){
-            case 1:
-            {
+        switch (level) {
+            case 1: {
                 Scene level1 = sceneUtil.loadScene("/layout/Level1His.fxml");
                 sceneUtil.showScene(level1);
                 break;

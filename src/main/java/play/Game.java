@@ -1,6 +1,5 @@
 package play;
 
-import elementarium.models.Element;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -9,25 +8,23 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class Game extends Application {
 
     public static final double ELEMENT_WIDTH = 50;
-    private ImageView[] imageViews = new ImageView[2];
-    private ImageView[] cloneImageViews = new ImageView[2];
-    private double[] offsetXs = new double[2];
-    private double[] offsetYs = new double[2];
+    private final ImageView[] imageViews = new ImageView[2];
+    private final ImageView[] cloneImageViews = new ImageView[2];
+    private final double[] offsetXs = new double[2];
+    private final double[] offsetYs = new double[2];
 
     public Game() {
         System.out.println("Constructor");
 
     }
 
-
-
+    public static void main(String[] args) {
+        launch(args);
+    }
 
     @Override
     public void start(Stage primaryStage) {
@@ -99,7 +96,7 @@ public class Game extends Application {
     private void onMouseReleased(MouseEvent event, int index) {
         // Remove the clone image from the pane
         Pane pane = (Pane) imageViews[index].getParent();
-         // pane.getChildren().remove(cloneImageViews[index]);
+        // pane.getChildren().remove(cloneImageViews[index]);
 
 
         // Check if the clone image overlaps with any other clone image
@@ -107,7 +104,7 @@ public class Game extends Application {
         int overlapIndex = -1;
         System.out.println("GO HERE");
         for (int i = 0; i < imageViews.length; i++) {
-            if (i != index && cloneImageViews[i]!=null && cloneImageViews[index].getBoundsInParent().intersects(cloneImageViews[i].getBoundsInParent()) ) {
+            if (i != index && cloneImageViews[i] != null && cloneImageViews[index].getBoundsInParent().intersects(cloneImageViews[i].getBoundsInParent())) {
                 isOverlap = true;
                 overlapIndex = i;
                 break;
@@ -117,9 +114,9 @@ public class Game extends Application {
         if (isOverlap) {
 
 
-            System.out.println( "index: "+ index + " overlap: " + overlapIndex);
+            System.out.println("index: " + index + " overlap: " + overlapIndex);
 
-            pane.getChildren().removeAll(cloneImageViews[overlapIndex],cloneImageViews[index]);
+            pane.getChildren().removeAll(cloneImageViews[overlapIndex], cloneImageViews[index]);
 
             // Create a new image view for the combined image
             newImageView = new ImageView(new Image("steam.png"));
@@ -135,11 +132,6 @@ public class Game extends Application {
 
         }
 
-    }
-
-
-    public static void main(String[] args) {
-        launch(args);
     }
 
 }

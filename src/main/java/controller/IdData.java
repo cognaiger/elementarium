@@ -4,10 +4,10 @@ import javafx.scene.input.DataFormat;
 
 public class IdData {
     private static IdData instance;
-    private DataFormat dataFormat;
+    private final DataFormat dataFormat;
 
-    private DataFormat rowIndexFormat;
-    private DataFormat colIndexFormat;
+    private final DataFormat rowIndexFormat;
+    private final DataFormat colIndexFormat;
 
     private IdData() {
         dataFormat = new DataFormat("id");
