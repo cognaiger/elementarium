@@ -15,7 +15,7 @@
          <Blend />
       </effect>
       </ImageView>
-   <Pane layoutX="60.0" layoutY="230.0" onMouseClicked="#historyGame" onMouseEntered="#onMouseHover1" onMouseExited="#onMouseExit1" prefHeight="300.0" prefWidth="250.0" style="-fx-background-color: white;">
+   <Pane layoutX="60.0" layoutY="230.0" onMouseClicked="#historyGame" onMouseEntered="#onMouseHover1" onMouseExited="#onMouseExit1" prefHeight="300.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 10;">
       <children>
          <ImageView fx:id="myImageView1" fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -34,7 +34,7 @@
          </Label>
       </children>
    </Pane>
-   <Pane layoutX="370.0" layoutY="230.0" onMouseClicked="#creativeGame" onMouseEntered="#onMouseHover2" onMouseExited="#onMouseExit2" prefHeight="300.0" prefWidth="250.0" style="-fx-background-color: white;">
+   <Pane layoutX="370.0" layoutY="230.0" onMouseClicked="#creativeGame" onMouseEntered="#onMouseHover2" onMouseExited="#onMouseExit2" prefHeight="300.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 10;">
       <children>
          <ImageView fx:id="myImageView2" fitHeight="150.0" fitWidth="250.0" layoutY="-2.0" pickOnBounds="true">
             <image>
@@ -53,7 +53,7 @@
          </Label>
       </children>
    </Pane>
-   <Pane layoutX="680.0" layoutY="230.0" onMouseClicked="#natureGame" onMouseEntered="#onMouseHover3" onMouseExited="#onMouseExit3" prefHeight="300.0" prefWidth="250.0" style="-fx-background-color: white;">
+   <Pane layoutX="680.0" layoutY="230.0" onMouseClicked="#natureGame" onMouseEntered="#onMouseHover3" onMouseExited="#onMouseExit3" prefHeight="300.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 10;">
       <children>
          <ImageView fx:id="myImageView3" fitHeight="150.0" fitWidth="250.0" layoutX="-2.0" layoutY="-1.0" pickOnBounds="true">
             <image>
@@ -72,7 +72,7 @@
          </Label>
       </children>
    </Pane>
-   <Pane layoutX="990.0" layoutY="230.0" onMouseClicked="#chemistryGame" onMouseEntered="#onMouseHover4" onMouseExited="#onMouseExit4" prefHeight="300.0" prefWidth="250.0" style="-fx-background-color: white;">
+   <Pane layoutX="990.0" layoutY="230.0" onMouseClicked="#chemistryGame" onMouseEntered="#onMouseHover4" onMouseExited="#onMouseExit4" prefHeight="300.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 10;">
       <children>
          <ImageView fx:id="myImageView4" fitHeight="150.0" fitWidth="250.0" layoutX="1.0" pickOnBounds="true">
             <image>
