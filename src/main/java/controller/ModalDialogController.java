@@ -10,8 +10,6 @@ import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 public class ModalDialogController {
     SceneUtil sceneUtil = SceneUtil.getInstance();
     Stage dialogStage = new Stage();
@@ -19,7 +17,7 @@ public class ModalDialogController {
     @FXML
     private Label description;
 
-    public void setDescription (String description) {
+    public void setDescription(String description) {
         this.description.setText(description);
     }
 

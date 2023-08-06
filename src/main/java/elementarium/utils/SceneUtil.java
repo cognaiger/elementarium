@@ -24,12 +24,12 @@ public class SceneUtil {
         return instance;
     }
 
-    public void setPrimaryStage(Stage primaryStage) {
-        this.primaryStage = primaryStage;
-    }
-
     public Stage getPrimaryStage() {
         return this.primaryStage;
+    }
+
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
     }
 
     public void showScene(Scene scene) {
@@ -41,6 +41,8 @@ public class SceneUtil {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
         Parent root = loader.load();
 
+
         return new Scene(root, 1300, 700);
+
     }
 }

@@ -38,22 +38,20 @@ public class NatureLevelController extends DragAndDropWindow {
     }
 
     void createLevel() {
-        switch (level){
-            case 1:
-            {
+        switch (level) {
+            case 1: {
                 resId = 23;
                 initialId.addAll(Arrays.asList(17, 1, 2, 5, 13, 68, 70));
                 setInitialId();
                 break;
             }
-            case 2:
-            {
+            case 2: {
                 resId = 79;
                 initialId.addAll(Arrays.asList(17, 1, 2, 5, 13, 77, 78));
                 setInitialId();
                 break;
             }
-            case 3:{
+            case 3: {
                 resId = 75;
                 initialId.addAll(Arrays.asList(17, 1, 71, 5, 74, 73, 78));
                 setInitialId();
@@ -82,7 +80,6 @@ public class NatureLevelController extends DragAndDropWindow {
     }
 
 
-
     @Override
     public void checkRes(Element resElement) {
         if (resElement.getElementId() == resId) {
@@ -92,9 +89,8 @@ public class NatureLevelController extends DragAndDropWindow {
     }
 
     public void switchLayout() throws IOException {
-        switch (level){
-            case 1:
-            {
+        switch (level) {
+            case 1: {
                 createLevel();
                 Scene level1 = sceneUtil.loadScene("/layout/NatureLevel1.fxml");
                 sceneUtil.showScene(level1);

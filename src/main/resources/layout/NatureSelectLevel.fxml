@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NatureSelectLevelController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NatureSelectLevelController">
    <children>
       <ImageView fitHeight="750.0" fitWidth="1300.0" pickOnBounds="true">
          <image>
@@ -16,7 +14,7 @@
       </ImageView>
       <Pane prefHeight="600.0" prefWidth="900.0">
          <children>
-            <Pane layoutX="938.0" layoutY="250.0" onMouseClicked="#natureGameLevel3" onMouseEntered="#onMouseHover3" onMouseExited="#onMouseExit3" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: F9F9F9;">
+            <Pane layoutX="938.0" layoutY="250.0" onMouseClicked="#natureGameLevel3" onMouseEntered="#onMouseHover3" onMouseExited="#onMouseExit3" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: F9F9F9; -fx-background-radius: 10;">
                <children>
                   <ImageView fx:id="myImageView3" fitHeight="164.0" fitWidth="250.0" focusTraversable="true" layoutY="89.0" pickOnBounds="true">
                      <image>
@@ -30,9 +28,9 @@
                   </Label>
                   <Label layoutX="86.0" layoutY="55.0" text="North pole" />
                </children></Pane>
-            <Pane fx:id="level2" layoutX="568.0" layoutY="250.0" onMouseEntered="#onMouseHover2" onMouseExited="#onMouseExit2" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: F9F9F9;">
+            <Pane fx:id="level2" layoutX="568.0" layoutY="250.0" onMouseEntered="#onMouseHover2" onMouseExited="#onMouseExit2" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: F9F9F9; -fx-background-radius: 10;">
                <children>
-                  <ImageView fx:id="myImageView2"  fitHeight="164.0" fitWidth="250.0" layoutY="88.0" onMouseClicked="#natureGameLevel2" pickOnBounds="true">
+                  <ImageView fx:id="myImageView2" fitHeight="164.0" fitWidth="250.0" layoutY="88.0" onMouseClicked="#natureGameLevel2" pickOnBounds="true">
                      <image>
                         <Image url="@../nature/forest.png" />
                      </image>
@@ -49,7 +47,7 @@
                   <Image url="@../button/back.png" />
                </image>
             </ImageView>
-            <Pane layoutX="193.0" layoutY="250.0" onMouseClicked="#natureGameLevel1" onMouseEntered="#onMouseHover1" onMouseExited="#onMouseExit1" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: F9F9F9;">
+            <Pane layoutX="193.0" layoutY="250.0" onMouseClicked="#natureGameLevel1" onMouseEntered="#onMouseHover1" onMouseExited="#onMouseExit1" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: F9F9F9; -fx-background-radius: 10;">
                <children>
                   <ImageView fx:id="myImageView1" fitHeight="164.0" fitWidth="250.0" layoutY="89.0" pickOnBounds="true">
                      <image>

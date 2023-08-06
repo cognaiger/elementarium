@@ -1,40 +1,23 @@
 package controller;
 
-import elementarium.models.Element;
-import elementarium.models.Result;
-import elementarium.utils.SceneUtil;
-import elementarium.utils.animation.Animation;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.DataFormat;
-import javafx.scene.input.Dragboard;
-import javafx.scene.input.TransferMode;
-import javafx.scene.layout.GridPane;
-import play.Main;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ChemLevelController extends Chemistry2Controller {
-        public static int level;
+    public static int level;
 
     @FXML
     private ImageView resetBtn;
 
-        public ChemLevelController () {
-            super();
-            System.out.println("ok");
-            createLevel();
+    public ChemLevelController() {
+        super();
+        System.out.println("ok");
+        createLevel();
 
-        }
+    }
 
         void createLevel(){
             System.out.println(level);
@@ -70,10 +53,6 @@ public class ChemLevelController extends Chemistry2Controller {
                     bar.add(61);
                     bar.add(64);
                     break;
-
-
-
-
                 }
                 case 3 : {
                     helpSingleText="Phản ứng oxi hóa khử là phản ứng hóa học mà các chất tham gia có xảy ra sự oxi hóa và sự khử";
@@ -93,7 +72,7 @@ public class ChemLevelController extends Chemistry2Controller {
 
                 }
                 case 4 : {
-                    helpSingleText="Phản ứng thế là phản ứng giữa các đơn chất và hợp chất";
+                    helpSingleText = "Phản ứng thế là phản ứng giữa các đơn chất và hợp chất";
                     text = "Hãy tạo ra Hcl";
                     resId = 66;
                     bar.add(58);
@@ -106,21 +85,19 @@ public class ChemLevelController extends Chemistry2Controller {
                     bar.add(61);
                     bar.add(67);
                     break;
-
                 }
-            }
+            }}
+
+
+    public void resetGame() {
+        try {
+
+            Scene main = sceneUtil.loadScene("/layout/ChemistryGame.fxml");
+            sceneUtil.showScene(main);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-
-        public void resetGame(){
-            try {
-
-                Scene main = sceneUtil.loadScene("/layout/ChemistryGame.fxml");
-                sceneUtil.showScene(main);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+    }
 
     public void backToMain() {
         try {
@@ -134,9 +111,6 @@ public class ChemLevelController extends Chemistry2Controller {
         knowledgeBox.setVisible(!knowledgeBox.isVisible());
         knowledgeBox.setDisable(true);
     }
-
-
-
 
 
 }
