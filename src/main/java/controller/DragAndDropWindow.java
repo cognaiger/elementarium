@@ -106,6 +106,7 @@ public abstract class DragAndDropWindow {
                                 } else {
                                     HoverEffectUtil.addHoverEffect(item);
                                     setGraphic(item);
+                                    setPrefHeight(86);
                                     setUserData(item.getUserData());
                                 }
                             }
@@ -314,8 +315,6 @@ public abstract class DragAndDropWindow {
                                 System.out.println("Cant combine");
                                 HoverEffectUtil.addHoverEffect(imageView);
                                 pane.getChildren().add(imageView);
-
-
                             }
                         } else {
                             HoverEffectUtil.addHoverEffect(imageView);
