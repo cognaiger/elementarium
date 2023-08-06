@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0"
-           prefWidth="1300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="controller.HistoryLevelController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HistoryLevelController">
    <children>
       <ImageView fitHeight="750.0" fitWidth="1300.0" pickOnBounds="true">
          <image>
@@ -18,71 +14,66 @@
       </ImageView>
       <Pane prefHeight="600.0" prefWidth="900.0">
          <children>
-            <Pane layoutX="680.0" layoutY="250.0" prefHeight="250.0" prefWidth="250.0"
-                  style="-fx-background-color: F9F9F9;" onMouseClicked="#selectLevel3">
+            <Pane layoutX="680.0" layoutY="250.0" onMouseClicked="#selectLevel3" onMouseEntered="#onMouseHover3" onMouseExited="#onMouseExit3" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: F9F9F9; -fx-background-radius: 10;">
                <children>
-                  <ImageView fitHeight="164.0" fitWidth="250.0" focusTraversable="true" layoutY="89.0" pickOnBounds="true">
+                  <ImageView fx:id="myImageView3" fitHeight="164.0" fitWidth="250.0" focusTraversable="true" layoutY="89.0" pickOnBounds="true">
                      <image>
                         <Image url="@../background/millennial.jpg" />
                      </image>
                   </ImageView>
-                  <Label layoutX="104.0" layoutY="26.0" text="LV3">
+                  <Label layoutX="114.0" layoutY="24.0" text="LV3">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label layoutX="78.0" layoutY="56.0" text="Middle Ages" />
+                  <Label layoutX="92.0" layoutY="51.0" text="Middle Ages" />
                </children></Pane>
-            <Pane fx:id="level2" layoutX="370.0" layoutY="250.0" prefHeight="250.0" prefWidth="250.0"
-                  style="-fx-background-color: F9F9F9;" onMouseClicked="#selectLevel2">
+            <Pane fx:id="level2" layoutX="370.0" layoutY="250.0" onMouseClicked="#selectLevel2" onMouseEntered="#onMouseHover2" onMouseExited="#onMouseExit2" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: F9F9F9; -fx-background-radius: 10;">
                <children>
-                  <ImageView fitHeight="164.0" fitWidth="250.0" layoutY="88.0" pickOnBounds="true">
+                  <ImageView fx:id="myImageView2" fitHeight="164.0" fitWidth="250.0" layoutY="88.0" pickOnBounds="true">
                      <image>
                         <Image url="@../background/classical.jpg" />
                      </image>
                   </ImageView>
-                  <Label layoutX="104.0" layoutY="26.0" text="LV2">
+                  <Label layoutX="114.0" layoutY="24.0" text="LV2">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label layoutX="76.0" layoutY="56.0" text="Classical Era" />
+                  <Label layoutX="93.0" layoutY="50.0" text="Classical Era" />
                </children></Pane>
-            <ImageView fx:id="turnBack" fitHeight="80.0" fitWidth="80.0" layoutX="65.0" layoutY="58.0"
-                       onMouseClicked="#handleTurnBack" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="turnBack" fitHeight="80.0" fitWidth="80.0" layoutX="65.0" layoutY="58.0" onMouseClicked="#handleTurnBack" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../button/back.png" />
                </image>
             </ImageView>
-            <Pane layoutX="58.0" layoutY="250.0" prefHeight="250.0" prefWidth="250.0"
-                  style="-fx-background-color: F9F9F9;" onMouseClicked="#selectLevel1">
+            <Pane layoutX="58.0" layoutY="250.0" onMouseClicked="#selectLevel1" onMouseEntered="#onMouseHover1" onMouseExited="#onMouseExit1" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: F9F9F9; -fx-background-radius: 10;">
                <children>
-                  <ImageView fitHeight="164.0" fitWidth="250.0" layoutY="89.0" pickOnBounds="true">
+                  <ImageView fx:id="myImageView1" fitHeight="164.0" fitWidth="250.0" layoutY="89.0" pickOnBounds="true">
                      <image>
                         <Image url="@../background/prehistory.jpeg" />
                      </image>
                   </ImageView>
-                  <Label layoutX="104.0" layoutY="26.0" text="LV1">
+                  <Label layoutX="114.0" layoutY="25.0" text="LV1">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label layoutX="85.0" layoutY="56.0" text="Prehistory" />
+                  <Label layoutX="98.0" layoutY="55.0" text="Prehistory" />
                </children></Pane>
-            <Pane layoutX="990.0" layoutY="250.0" prefHeight="250.0" prefWidth="250.0"
-                  style="-fx-background-color: F9F9F9;" onMouseClicked="#selectLevel4">
+            <Pane layoutX="990.0" layoutY="250.0" onMouseClicked="#selectLevel4" onMouseEntered="#onMouseHover4" onMouseExited="#onMouseExit4" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: F9F9F9; -fx-background-radius: 10;">
                <children>
-                  <ImageView fitHeight="164.0" fitWidth="250.0" layoutY="89.0" pickOnBounds="true">
+                  <ImageView fx:id="myImageView4" fitHeight="164.0" fitWidth="250.0" layoutY="89.0" pickOnBounds="true">
                      <image>
                         <Image url="@../background/modern_era.jpg" />
                      </image>
                   </ImageView>
-                  <Label layoutX="104.0" layoutY="26.0" text="LV4">
+                  <Label layoutX="114.0" layoutY="24.0" text="LV4">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label layoutX="80.0" layoutY="54.0" text="Modern Era" />
+                  <Label layoutX="94.0" layoutY="53.0" text="Modern Era" />
                </children></Pane>
          </children>
       </Pane>

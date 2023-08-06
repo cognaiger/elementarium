@@ -68,7 +68,7 @@
                         <Image url="@../background/knowledgeBox.png" />
                     </image>
                 </ImageView>
-                <Button fx:id="closeBox" layoutX="368.0" layoutY="17.0" maxHeight="50" maxWidth="50" onAction="#onClose" style="-fx-background-color: transparent;">
+                <Button fx:id="closeBox" layoutX="368.0" layoutY="17.0" maxHeight="50" maxWidth="50"  style="-fx-background-color: transparent;">
                     <graphic>
                         <ImageView fitHeight="30" fitWidth="30">
                             <image>
