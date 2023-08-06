@@ -82,7 +82,6 @@ public class NatureLevelController extends DragAndDropWindow {
     }
 
 
-
     @Override
     public void checkRes(Element resElement) {
         if (resElement.getElementId() == resId) {
