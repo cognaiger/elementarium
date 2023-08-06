@@ -121,7 +121,7 @@ public abstract class DragAndDropWindow {
             Element x = elements.get(i - 1);
             listViewText.getItems().add(x.getName());
         }
-        listViewText.setCellFactory(param -> new CustomListCell(18));
+        listViewText.setCellFactory(param -> new CustomListCell(16));
 
         // Set the onDragDetected event for the ImageView items in the ListView
         listView.setOnDragDetected(
