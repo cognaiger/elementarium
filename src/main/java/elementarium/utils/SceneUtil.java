@@ -42,7 +42,7 @@ public class SceneUtil {
         Parent root = loader.load();
 
 
-        return new Scene(root, 1300, 700);
+        return new Scene(root, 1300, 750);
 
     }
 }
