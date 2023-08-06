@@ -66,6 +66,12 @@ public class Chemistry2Controller {
 
     public static final int ELEMENT_WIDTH = 80;
     public static final int ELEMENT_HEIGHT = 80;
+    @FXML
+    protected TextArea knowledgeText;
+    @FXML
+    protected ImageView newElement;
+    @FXML
+    protected TextField elementName;
     protected SceneUtil sceneUtil = SceneUtil.getInstance();
 
     public Chemistry2Controller() {
@@ -76,6 +82,7 @@ public class Chemistry2Controller {
     public void setup() {
         elements = Main.getElements();
         goalText.setText(text);
+        goalText.setStyle("-fx-font-weight: bold;-fx-font-size: 20px;");
 //        bar.add(60);
 //        bar.add(58);
 //        bar.add(56);
