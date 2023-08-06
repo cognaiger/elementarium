@@ -186,7 +186,7 @@ public abstract class DragAndDropWindow {
                                     newImg.setUserData(resElement.getElementId());
                                     pane.getChildren().remove(override);
                                     HoverEffectUtil.addHoverEffect(newImg);
-                                    // pane.getChildren().add(newImg);
+                                     pane.getChildren().add(newImg);
                                 } else {  /// sản phẩm chưa có, cần hiển thị bảng.
 
                                     knowledgeBox.setVisible(!knowledgeBox.isVisible());
@@ -287,7 +287,7 @@ public abstract class DragAndDropWindow {
 //                                    HoverEffectUtil.addHoverEffect(newImg);
 
                                     pane.getChildren().remove(override);
-                                    // pane.getChildren().add(newImg);
+                                     pane.getChildren().add(newImg);
                                 } else {  /// sản phẩm chưa có, cần hiển thị bảng.
 
                                     listViewText.getItems().add(resElement.getName());
