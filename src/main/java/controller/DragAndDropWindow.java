@@ -84,6 +84,7 @@ public abstract class DragAndDropWindow {
             Element x = elements.get(i - 1);
             ImageView imageView = new ImageView(x.getImageLink());
             imageView.setUserData(x.getElementId());
+            HoverEffectUtil.addHoverEffect(imageView);
             imageList.add(imageView);
         }
 
@@ -103,6 +104,7 @@ public abstract class DragAndDropWindow {
                                     setText(null);
                                     setGraphic(null);
                                 } else {
+                                    HoverEffectUtil.addHoverEffect(item);
                                     setGraphic(item);
                                     setUserData(item.getUserData());
                                 }
@@ -180,6 +182,7 @@ public abstract class DragAndDropWindow {
                                     newImg.setLayoutX(event.getX() - ELEMENT_WIDTH / 2);
                                     newImg.setLayoutY(event.getY() - ELEMENT_HEIGHT / 2);
                                     newImg.setUserData(resElement.getElementId());
+                                    HoverEffectUtil.addHoverEffect(newImg);
                                     pane.getChildren().add(newImg);
                                 } else {  /// sản phẩm chưa có, cần hiển thị bảng.
 
@@ -198,10 +201,12 @@ public abstract class DragAndDropWindow {
                                     newImg.setLayoutX(event.getX() - ELEMENT_WIDTH / 2);
                                     newImg.setLayoutY(event.getY() - ELEMENT_HEIGHT / 2);
                                     newImg.setUserData(resElement.getElementId());
+                                    HoverEffectUtil.addHoverEffect(newImg);
                                     pane.getChildren().add(newImg);
                                 }
                             }
                         } else {
+                            HoverEffectUtil.addHoverEffect(imageView);
                             pane.getChildren().add(imageView);
                         }
                     }
@@ -275,6 +280,7 @@ public abstract class DragAndDropWindow {
                                     newImg.setLayoutX(event.getX() - ELEMENT_WIDTH / 2);
                                     newImg.setLayoutY(event.getY() - ELEMENT_HEIGHT / 2);
                                     newImg.setUserData(resElement.getElementId());
+                                    HoverEffectUtil.addHoverEffect(newImg);
                                     pane.getChildren().add(newImg);
                                 } else {  /// sản phẩm chưa có, cần hiển thị bảng.
 
@@ -298,6 +304,7 @@ public abstract class DragAndDropWindow {
                                     newImg.setLayoutX(event.getX() - ELEMENT_WIDTH / 2);
                                     newImg.setLayoutY(event.getY() - ELEMENT_HEIGHT / 2);
                                     newImg.setUserData(resElement.getElementId());
+                                    HoverEffectUtil.addHoverEffect(newImg);
                                     pane.getChildren().add(newImg);
 
                                     checkRes(resElement);
@@ -305,11 +312,13 @@ public abstract class DragAndDropWindow {
                             } else {
                                 Animation.shakeImageView(imageView);
                                 System.out.println("Cant combine");
+                                HoverEffectUtil.addHoverEffect(imageView);
                                 pane.getChildren().add(imageView);
 
 
                             }
                         } else {
+                            HoverEffectUtil.addHoverEffect(imageView);
                             pane.getChildren().add(imageView);
                         }
                     }
@@ -330,6 +339,7 @@ public abstract class DragAndDropWindow {
                                 && tmp.getLayoutY() <= event.getY()
                                 && event.getY() <= tmp.getLayoutY() + ELEMENT_HEIGHT) {
                             draggedImageView = tmp;
+                            HoverEffectUtil.addHoverEffect(draggedImageView);
                             break;
                         }
                     }
@@ -338,6 +348,7 @@ public abstract class DragAndDropWindow {
                         Dragboard db = draggedImageView.startDragAndDrop(TransferMode.MOVE);
                         int id = (int) draggedImageView.getUserData();
                         ClipboardContent content = new ClipboardContent();
+                        HoverEffectUtil.addHoverEffect(draggedImageView);
                         content.putImage(draggedImageView.getImage());
                         content.put(idDataFormat, id);
                         db.setContent(content);
@@ -358,6 +369,7 @@ public abstract class DragAndDropWindow {
         listView.setOnDragOver(
                 event -> {
                     if (event.getGestureSource() != listView && event.getDragboard().hasImage()) {
+                        System.out.println("HOVER IN HERE");
                         event.acceptTransferModes(TransferMode.MOVE);
                     }
                     event.consume();
@@ -366,8 +378,6 @@ public abstract class DragAndDropWindow {
         // Xử lý sự kiện khi thả ImageView vào ListView
         listView.setOnDragDropped(
                 event -> {
-
-
                     Dragboard dragboard = event.getDragboard();
                     boolean success = false;
                     if (dragboard.hasImage() && draggedImageView != null) {
@@ -378,16 +388,25 @@ public abstract class DragAndDropWindow {
                     event.consume();
                 });
 
-        for (ImageView imageView : listView.getItems()) {
-            HoverEffectUtil.addHoverEffect(imageView);
-        }
 
-        // Apply hover effect to ImageView elements in the Pane
-        for (Node imageView : pane.getChildren()) {
-            if (imageView instanceof ImageView) {
-                HoverEffectUtil.addHoverEffect((ImageView) imageView);
+//        for (int i = 0; i < imageList.size(); i++) {
+//            HoverEffectUtil.addHoverEffect(imageList.get(i));
+//        }
+
+        for (int i = 0; i < pane.getChildren().size(); i++) {
+            if (pane.getChildren().get(i) instanceof ImageView) {
+                HoverEffectUtil.addHoverEffect((ImageView) pane.getChildren().get(i));
             }
         }
+
+//        // Apply hover effect to ImageView elements in the Pane
+//        for (Node imageView : pane.getChildren()) {
+//            if (imageView instanceof ImageView) {
+//                HoverEffectUtil.addHoverEffect((ImageView) imageView);
+//            }
+//        }
+
+
     }
 
     public boolean overlap(ImageView x, ImageView y) {

@@ -21,6 +21,7 @@ public class HoverEffectUtil {
         System.out.println("HOVER");
         imageView.setOnMouseEntered(event -> handleMouseEnter(imageView));
         imageView.setOnMouseExited(event -> handleMouseExit(imageView));
+        System.out.println("END HOVER");
     }
 
     private static void handleMouseEnter(ImageView imageView) {
