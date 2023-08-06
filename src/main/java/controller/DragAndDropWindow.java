@@ -49,6 +49,9 @@ public abstract class DragAndDropWindow {
     protected ImageView newElement;
     @FXML
     protected TextField elementName;
+
+    @FXML
+    Pane congraBox;
     protected List<Integer> initialId = new ArrayList<>();
     protected int resId;
     protected ImageView draggedImageView;
@@ -300,10 +303,6 @@ public abstract class DragAndDropWindow {
 
                                     setup();
 
-
-
-
-
                                     ImageView newImg = new ImageView(resElement.getImageLink());
                                     newImg.setLayoutX(event.getX() - ELEMENT_WIDTH / 2);
                                     newImg.setLayoutY(event.getY() - ELEMENT_HEIGHT / 2);
@@ -318,9 +317,10 @@ public abstract class DragAndDropWindow {
                                         showKnowledgeBox(finalCurCom);
                                         pane.getChildren().remove(finalOverrideImg);
                                         pane.getChildren().add(newImg);
+                                        checkRes(resElement);
                                     });
                                     pause.play();
-                                    checkRes(resElement);
+
                                 }
                             } else {
                                 Animation.shakeImageView(imageView);
@@ -470,6 +470,11 @@ public abstract class DragAndDropWindow {
         knowledgeBox.setVisible(!knowledgeBox.isVisible());
         knowledgeBox.setDisable(false);
         knowledgeText.setText(curCom.getDes());
+    }
+
+    public void showCongraBox() {
+        congraBox.setDisable(false);
+        congraBox.setVisible(true);
     }
 
 }

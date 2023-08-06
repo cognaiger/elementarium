@@ -62,7 +62,6 @@ public class NatureSelectLevelController {
         }
     }
 
-
     @FXML
     void onMouseHover1() {
         // Add the hover effect here, for example, changing the opacity

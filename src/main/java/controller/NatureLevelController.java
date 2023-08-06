@@ -20,8 +20,7 @@ public class NatureLevelController extends DragAndDropWindow {
 
     SceneUtil sceneUtil = SceneUtil.getInstance();
 
-    @FXML
-    Pane congraBox;
+
 
 
     public NatureLevelController() {
