@@ -1,131 +1,136 @@
 package controller;
 
-
+import elementarium.models.Element;
 import elementarium.utils.SceneUtil;
-import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.util.Duration;
+import javafx.scene.layout.Pane;
 
 import java.io.IOException;
+import java.util.Arrays;
 
-public class NatureLevelController {
+public class NatureLevelController extends DragAndDropWindow {
+
+
+    public static int level = 1;
+
+    public int resId;
+    @FXML
+    public Pane helpTab;
+
     SceneUtil sceneUtil = SceneUtil.getInstance();
 
     @FXML
-    private ImageView backButton;
-
-    @FXML
-    private ImageView myImageView1;
-    @FXML
-    private ImageView myImageView2;
-
-    @FXML
-    private ImageView myImageView3;
+    Pane congraBox;
 
 
-    public void scaleBiggerImageView(ImageView imageView) {
-        ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(200), imageView);
-        scaleTransition.setToX(1.1); // Scale to 120% in the x-axis
-        scaleTransition.setToY(1.1); // Scale to 120% in the y-axis
-        scaleTransition.play();
+    public NatureLevelController() {
+        super();
+        createLevel();
+
     }
 
-    public void scaleNormalImageView(ImageView imageView) {
-        ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(200), imageView);
-        scaleTransition.setToX(1.0); // Scale to 120% in the x-axis
-        scaleTransition.setToY(1.0); // Scale to 120% in the y-axis
-        scaleTransition.play();
+    public void setInitialId() {
+        for (int i : initialId) {
+            inBar[i] = true;
+            bar.add(i);
+        }
     }
 
-    @FXML
-    public void natureGameLevel1() {
-        try {
-            Scene natureScene = sceneUtil.loadScene("/layout/NatureLevel1.fxml");
-            sceneUtil.showScene(natureScene);
-            // Đặt lại Scene của Stage với giao diện của Game
-        } catch (Exception e) {
-            e.printStackTrace();
+    void createLevel() {
+        switch (level){
+            case 1:
+            {
+                resId = 23;
+                initialId.addAll(Arrays.asList(17, 1, 2, 5, 13, 68, 70));
+                setInitialId();
+                break;
+            }
+            case 2:
+            {
+                resId = 79;
+                initialId.addAll(Arrays.asList(17, 1, 2, 5, 13, 77, 78));
+                setInitialId();
+                break;
+            }
+            case 3:{
+                resId = 75;
+                initialId.addAll(Arrays.asList(17, 1, 71, 5, 74, 73, 78));
+                setInitialId();
+                break;
+            }
+
         }
     }
 
     @FXML
-    public void natureGameLevel2() {
+    public void nextLevel() throws IOException {
+        congraBox.setDisable(true);
+        congraBox.setVisible(false);
+        level++;
+        switchLayout();
+    }
+
+    @Override
+    public void backToMain() {
         try {
-            Scene natureScene = sceneUtil.loadScene("/layout/NatureLevel2.fxml");
-            sceneUtil.showScene(natureScene);
-            // Đặt lại Scene của Stage với giao diện của Game
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    @FXML
-    void onMouseHover1() {
-        // Add the hover effect here, for example, changing the opacity
-        scaleBiggerImageView(myImageView1);
-    }
-
-    @FXML
-    void onMouseExit1() {
-        // Add the effect when the mouse exits the ImageView (optional)
-        scaleNormalImageView(myImageView1);
-    }
-
-    @FXML
-    void onMouseHover2() {
-        // Add the hover effect here, for example, changing the opacity
-        scaleBiggerImageView(myImageView2);
-    }
-
-    @FXML
-    void onMouseExit2() {
-        // Add the effect when the mouse exits the ImageView (optional)
-        scaleNormalImageView(myImageView2);
-    }
-
-    @FXML
-    void onMouseHover3() {
-        // Add the hover effect here, for example, changing the opacity
-        scaleBiggerImageView(myImageView3);
-    }
-
-    @FXML
-    void onMouseExit3() {
-        // Add the effect when the mouse exits the ImageView (optional)
-        scaleNormalImageView(myImageView3);
-    }
-
-    @FXML
-    private void handleTurnBack() {
-        try {
-            Scene main = sceneUtil.loadScene("/layout/main.fxml");
+            Scene main = sceneUtil.loadScene("/layout/NatureSelectLevel.fxml");
             sceneUtil.showScene(main);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    @FXML
-    void onMouseHoverButton() {
-        scaleBiggerImageView(backButton);
-    }
 
-    @FXML
-    void onMouseExitBackButton() {
-        scaleNormalImageView(backButton);
-    }
 
-    public void natureGameLevel3(MouseEvent mouseEvent) {
-        try {
-            Scene natureScene = sceneUtil.loadScene("/layout/NatureLevel3.fxml");
-            sceneUtil.showScene(natureScene);
-            // Đặt lại Scene của Stage với giao diện của Game
-        } catch (Exception e) {
-            e.printStackTrace();
+    @Override
+    public void checkRes(Element resElement) {
+        if (resElement.getElementId() == resId) {
+            congraBox.setDisable(false);
+            congraBox.setVisible(true);
         }
+    }
+
+    public void switchLayout() throws IOException {
+        switch (level){
+            case 1:
+            {
+                createLevel();
+                Scene level1 = sceneUtil.loadScene("/layout/NatureLevel1.fxml");
+                sceneUtil.showScene(level1);
+                break;
+            }
+            case 2: {
+                createLevel();
+                Scene level2 = sceneUtil.loadScene("/layout/NatureLevel2.fxml");
+                sceneUtil.showScene(level2);
+                break;
+            }
+            case 3: {
+                createLevel();
+                Scene level3 = sceneUtil.loadScene("/layout/NatureLevel3.fxml");
+                sceneUtil.showScene(level3);
+                break;
+            }
+            case 4: {
+                createLevel();
+                QuestionHistoryController.questionNum = 1;
+                Scene q = sceneUtil.loadScene("/layout/QuestionNature.fxml");
+                sceneUtil.showScene(q);
+                break;
+            }
+
+        }
+    }
+
+    public void closeHelpTab() {
+        helpTab.setDisable(true);
+        helpTab.setVisible(false);
+    }
+
+
+    public void openHelpTab() {
+        helpTab.setVisible(true);
+        helpTab.setDisable(false);
     }
 }
