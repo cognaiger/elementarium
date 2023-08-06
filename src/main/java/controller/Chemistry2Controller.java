@@ -36,6 +36,8 @@ public class Chemistry2Controller {
 
     public static String text;
 
+    public String helpSingleText;
+
     public static int resId;
     @FXML
     private Pane congraBox;
@@ -67,12 +69,19 @@ public class Chemistry2Controller {
     public static final int ELEMENT_WIDTH = 80;
     public static final int ELEMENT_HEIGHT = 80;
     @FXML
+    protected Pane knowledgeBox;
+    @FXML
     protected TextArea knowledgeText;
     @FXML
     protected ImageView newElement;
     @FXML
     protected TextField elementName;
     protected SceneUtil sceneUtil = SceneUtil.getInstance();
+
+    @FXML
+    public Pane helpTab;
+    @FXML
+    private TextArea helpText;
 
     public Chemistry2Controller() {
 
@@ -82,6 +91,7 @@ public class Chemistry2Controller {
     public void setup() {
         elements = Main.getElements();
         goalText.setText(text);
+        helpText.setText(helpSingleText);
         goalText.setStyle("-fx-font-weight: bold;-fx-font-size: 20px;");
 //        bar.add(60);
 //        bar.add(58);
@@ -113,9 +123,6 @@ public class Chemistry2Controller {
                 }
             }
         }
-
-
-
     }
 
     public void initialize() {
@@ -196,7 +203,11 @@ public class Chemistry2Controller {
                                 GridPane.setHalignment(newImg,HPos.CENTER);
                                 GridPane.setValignment(newImg,VPos.CENTER);
                                 gridPane.getChildren().add(newImg);
-
+                                knowledgeBox.setVisible(!knowledgeBox.isVisible());
+                                knowledgeBox.setDisable(false);
+                                knowledgeText.setText(curCom.getDes());
+                                newElement.setImage(new Image(resElement.getImageLink()));
+                                elementName.setText(resElement.getName());
                                 checkRes(resElement);
 
                             } else {
@@ -239,6 +250,10 @@ public class Chemistry2Controller {
                 && x.getLayoutY() <= y.getLayoutY() + ELEMENT_WIDTH && y.getLayoutY() + ELEMENT_WIDTH <= x.getLayoutY() + ELEMENT_WIDTH)
             return true;
         return false;
+    }
+    public void closeHelpTab() {
+        helpTab.setDisable(true);
+        helpTab.setVisible(false);
     }
     public void checkRes(Element resElement) {
         if (resElement.getElementId() == resId) {
