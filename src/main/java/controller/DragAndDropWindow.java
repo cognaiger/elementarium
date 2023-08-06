@@ -4,6 +4,7 @@ import elementarium.models.Element;
 import elementarium.models.Result;
 import elementarium.utils.SceneUtil;
 import elementarium.utils.animation.Animation;
+import elementarium.utils.animation.HoverEffectUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -207,10 +208,14 @@ public abstract class DragAndDropWindow {
                 });
 
         // Set the onDragDetected event for the ImageView items in the ListView
+
+
+
         listView.setOnDragDetected(
                 event -> {
-                    if (listView.getSelectionModel().getSelectedItem() != null) {
 
+                    if (listView.getSelectionModel().getSelectedItem() != null) {
+                        System.out.println("DRAG DETEECT");
                         Dragboard dragboard = listView.startDragAndDrop(TransferMode.COPY);
                         // Put the image on the dragboard
                         ClipboardContent clipboardContent = new ClipboardContent();
@@ -227,7 +232,7 @@ public abstract class DragAndDropWindow {
         // Set the onDragDropped event for the pane to handle the drop
         pane.setOnDragDropped(
                 event -> {
-
+                    System.out.println("DROP ON DRAGBOARD");
                     Dragboard dragboard = event.getDragboard();
                     if (dragboard.hasImage()) {
                         // DataFormat idDataFormatt = new DataFormat("Imgid");
@@ -235,6 +240,8 @@ public abstract class DragAndDropWindow {
                                 (Integer) dragboard.getContent(idDataFormat); // Ép kiểu Object sang Integer
                         int id = idValue.intValue();
                         ImageView imageView = new ImageView(dragboard.getImage());
+                        // HoverEffectUtil.addHoverEffect(imageView);
+
                         imageView.setLayoutX(event.getX() - ELEMENT_WIDTH / 2);
                         imageView.setLayoutY(event.getY() - ELEMENT_HEIGHT / 2);
                         imageView.setUserData(id);
@@ -325,6 +332,7 @@ public abstract class DragAndDropWindow {
                         }
                     }
                     if (draggedImageView != null) {
+                        System.out.println("DRAG FROM PANE ");
                         Dragboard db = draggedImageView.startDragAndDrop(TransferMode.MOVE);
                         int id = (int) draggedImageView.getUserData();
                         ClipboardContent content = new ClipboardContent();
@@ -367,6 +375,17 @@ public abstract class DragAndDropWindow {
                     event.setDropCompleted(success);
                     event.consume();
                 });
+
+        for (ImageView imageView : listView.getItems()) {
+            HoverEffectUtil.addHoverEffect(imageView);
+        }
+
+        // Apply hover effect to ImageView elements in the Pane
+        for (Node imageView : pane.getChildren()) {
+            if (imageView instanceof ImageView) {
+                HoverEffectUtil.addHoverEffect((ImageView) imageView);
+            }
+        }
     }
 
     public boolean overlap(ImageView x, ImageView y) {
