@@ -51,7 +51,9 @@ public abstract class DragAndDropWindow {
     protected List<Integer> initialId = new ArrayList<>();
 
 
+
     protected int resId;
+
 
     protected ImageView draggedImageView;
     public static final int ELEMENT_WIDTH = 80;
