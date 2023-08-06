@@ -1,10 +1,27 @@
 package controller;
 
+import elementarium.models.Element;
+import elementarium.models.Result;
+import elementarium.utils.SceneUtil;
+import elementarium.utils.animation.Animation;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.DataFormat;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.TransferMode;
+import javafx.scene.layout.GridPane;
+import play.Main;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ChemLevelController extends Chemistry2Controller {
     public static int level;
@@ -12,32 +29,19 @@ public class ChemLevelController extends Chemistry2Controller {
     @FXML
     private ImageView resetBtn;
 
-    public ChemLevelController() {
+    public ChemLevelController () {
         super();
         System.out.println("ok");
         createLevel();
 
     }
 
-    void createLevel() {
+    void createLevel(){
         System.out.println(level);
-        switch (level) {
-            case 1: {
-                text = "Hãy tạo ra NaOH";
-                resId = 61;
-                bar.add(65);
-                bar.add(58);
-                bar.add(56);
-                bar.add(60);
-                bar.add(54);
-                bar.add(56);
-                bar.add(58);
-                bar.add(60);
-                bar.add(57);
-                System.out.println("vcl");
-                break;
-            }
-            case 2: {
+        switch (level){
+            case 1:
+            {
+                helpSingleText = "Phản ứng hóa hợp là phản ứng hóa học của hai hay nhiều chất và chỉ tạo thành một chất sản phẩm\n";
                 text = "Hãy tạo ra Fe3O4";
                 resId = 64;
                 bar.add(60);
@@ -52,21 +56,44 @@ public class ChemLevelController extends Chemistry2Controller {
                 break;
 
             }
-            case 3: {
-                text = "Hãy tạo Na";
-                resId = 58;
-                bar.add(60);
-                bar.add(59);
+            case 2 : {
+                helpSingleText="Phản ứng phân hủy là phản ứng hóa học của một chất ban đầu bị phân hủy thành hai hay nhiều chất khác nhau";
+                text = "Hãy tạo H2";
+                resId = 56;
+                bar.add(64);
+                bar.add(84);
                 bar.add(57);
                 bar.add(60);
-                bar.add(62);
+                bar.add(59);
                 bar.add(56);
-                bar.add(63);
+                bar.add(66);
                 bar.add(61);
                 bar.add(64);
                 break;
+
+
+
+
             }
-            case 4: {
+            case 3 : {
+                helpSingleText="Phản ứng oxi hóa khử là phản ứng hóa học mà các chất tham gia có xảy ra sự oxi hóa và sự khử";
+                text = "Hãy tạo ra NaOH";
+                resId = 61;
+                bar.add(65);
+                bar.add(58);
+                bar.add(56);
+                bar.add(60);
+                bar.add(54);
+                bar.add(56);
+                bar.add(58);
+                bar.add(60);
+                bar.add(57);
+                System.out.println("vcl");
+                break;
+
+            }
+            case 4 : {
+                helpSingleText="Phản ứng thế là phản ứng giữa các đơn chất và hợp chất";
                 text = "Hãy tạo ra Hcl";
                 resId = 66;
                 bar.add(58);
@@ -85,7 +112,7 @@ public class ChemLevelController extends Chemistry2Controller {
     }
 
 
-    public void resetGame() {
+    public void resetGame(){
         try {
 
             Scene main = sceneUtil.loadScene("/layout/ChemistryGame.fxml");
@@ -103,6 +130,8 @@ public class ChemLevelController extends Chemistry2Controller {
             e.printStackTrace();
         }
     }
+
+
 
 
 }
