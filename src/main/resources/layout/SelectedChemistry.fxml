@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ChemistryChooseLevelController">
+    <children>
+        <ImageView fitHeight="750.0" fitWidth="1300.0" pickOnBounds="true">
+            <image>
+                <Image url="@../background/chebg.jpg" />
+            </image>
+        </ImageView>
+        <Pane prefHeight="600.0" prefWidth="900.0">
+            <children>
+                <Pane layoutX="680.0" layoutY="250.0" onMouseClicked="#selectLevel3" onMouseEntered="#onMouseHover3" onMouseExited="#onMouseExit3" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: F9F9F9;">
+                    <children>
+                        <ImageView fx:id="myImageView3" fitHeight="164.0" fitWidth="250.0" focusTraversable="true" layoutY="89.0" pickOnBounds="true">
+                            <image>
+                                <Image url="@../background/phanhuy.jpg" />
+                            </image>
+                        </ImageView>
+                        <Label alignment="CENTER" layoutX="63.0" layoutY="14.0" prefHeight="19.0" prefWidth="125.0" text="Phản ứng thế">
+                            <font>
+                                <Font name="System Bold" size="13.0" />
+                            </font>
+                        </Label>
+                    </children></Pane>
+                <Pane fx:id="level2" layoutX="370.0" layoutY="250.0" onDragEntered="#onMouseHover2" onDragExited="#onMouseExit2" onMouseClicked="#selectLevel2" onMouseEntered="#onMouseHover2" onMouseExited="#onMouseExit2" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: F9F9F9;">
+                    <children>
+                        <ImageView fx:id="myImageView2" fitHeight="164.0" fitWidth="250.0" layoutY="88.0" pickOnBounds="true">
+                            <image>
+                                <Image url="@../background/hoahop.jpg" />
+                            </image>
+                        </ImageView>
+                        <Label layoutX="63.0" layoutY="14.0" prefHeight="19.0" prefWidth="125.0" text="Phản ứng phân hủy">
+                            <font>
+                                <Font name="System Bold" size="13.0" />
+                            </font>
+                        </Label>
+                    </children></Pane>
+                <ImageView fx:id="turnBack" fitHeight="71.0" fitWidth="68.0" layoutX="58.0" layoutY="41.0" onMouseClicked="#handleTurnBack" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../button/back.png" />
+                    </image>
+                </ImageView>
+                <Pane layoutX="58.0" layoutY="250.0" onMouseClicked="#selectLevel1" onMouseEntered="#onMouseHover1" onMouseExited="#onMouseExit1" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: F9F9F9;">
+                    <children>
+                        <ImageView fx:id="myImageView1" fitHeight="164.0" fitWidth="250.0" layoutY="89.0" pickOnBounds="true">
+                            <image>
+                                <Image url="@../background/oxyhoakhu.jpg" />
+                            </image>
+                        </ImageView>
+                        <Label layoutX="63.0" layoutY="14.0" prefHeight="26.0" prefWidth="125.0" text="Phản ứng hóa hợp">
+                            <font>
+                                <Font name="System Bold" size="13.0" />
+                            </font>
+                        </Label>
+                    </children></Pane>
+                <Pane layoutX="990.0" layoutY="250.0" onMouseClicked="#selectLevel4" onMouseEntered="#onMouseHover4" onMouseExited="#onMouseExit4" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: F9F9F9;">
+                    <children>
+                        <ImageView fx:id="myImageView4" fitHeight="164.0" fitWidth="250.0" layoutY="89.0" pickOnBounds="true">
+                            <image>
+                                <Image url="@../background/the.jpg" />
+                            </image>
+                        </ImageView>
+                        <Label alignment="CENTER" layoutX="53.0" layoutY="14.0" prefHeight="19.0" prefWidth="145.0" text="Phản ứng oxy hóa khử">
+                            <font>
+                                <Font name="System Bold" size="13.0" />
+                            </font>
+                        </Label>
+                    </children></Pane>
+            </children>
+        </Pane>
+    </children>
+</StackPane>

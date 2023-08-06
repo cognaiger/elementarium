@@ -3,6 +3,7 @@ package elementarium.utils.automatic_load_data;
 import elementarium.db_connect.MySQLConnection;
 import elementarium.models.Combination;
 import elementarium.models.Element;
+import elementarium.models.Question;
 import elementarium.models.Result;
 
 import java.sql.ResultSet;
@@ -17,45 +18,26 @@ public class AutomaticLoadData {
 
     }
 
-    public static Element getElementById(int id) throws SQLException, ClassNotFoundException {
+    public static List<Question> getQuestions() throws SQLException, ClassNotFoundException {
         mySQLConnection = new MySQLConnection();
-        Element element = new Element();
-        String sql = "SELECT * FROM element WHERE id = " + id;
+        String sql = "SELECT * FROM appear_four_choices_quiz";
         ResultSet rs = mySQLConnection.executeQuery(sql);
+        List<Question> res = new ArrayList<Question>();
 
         // Create an Element object from the row data
-        if (rs.next()) {
-            String elementName = rs.getString("element_name");
-            String elementDescription = rs.getString("element_description");
-            String imageLink = rs.getString("image_link");
-            element = new Element(id, elementName, elementDescription, imageLink);
+        while (rs.next()) {
+            String question = rs.getString("question");
+            String correctAns = rs.getString("correct_ans");
+            String wans1 = rs.getString("wrong_ans1");
+            String wans2 = rs.getString("wrong_ans2");
+            String wans3 = rs.getString("wrong_ans3");
+            Question tmp = new Question(question, correctAns, wans1, wans2, wans3);
+            res.add(tmp);
         }
 
         // Close the database connection
         mySQLConnection.close();
-        return element;
-    }
-
-    public static Combination getCombinationByE1E2(int id1, int id2) throws SQLException, ClassNotFoundException {
-        mySQLConnection = new MySQLConnection();
-        Combination combination = new Combination();
-        String sql = "SELECT * FROM combination WHERE element1_id = " + id1 + " and element2_id = " + id2;
-        ResultSet rs = mySQLConnection.executeQuery(sql);
-
-        // Create an Element object from the row data
-        if (rs.next()) {
-            int element1_id = Integer.parseInt(rs.getString("element1_id"));
-            int element2_id = Integer.parseInt(rs.getString("element2_id"));
-            int result_id = Integer.parseInt(rs.getString("result_element"));
-            int combinationId = Integer.parseInt(rs.getString("combinationId"));
-            String description = rs.getString("description");
-
-            combination = new Combination(combinationId, element1_id, element2_id, result_id, description);
-        }
-
-        // Close the database connection
-        mySQLConnection.close();
-        return combination;
+        return res;
     }
 
     public static Result[][] getCombinations() throws SQLException, ClassNotFoundException {
