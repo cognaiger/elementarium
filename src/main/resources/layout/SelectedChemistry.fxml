@@ -14,7 +14,7 @@
         </ImageView>
         <Pane prefHeight="600.0" prefWidth="900.0">
             <children>
-                <Pane layoutX="680.0" layoutY="250.0" onMouseClicked="#selectLevel3" onMouseEntered="#onMouseHover3" onMouseExited="#onMouseExit3" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: F9F9F9;">
+                <Pane layoutX="680.0" layoutY="250.0" onMouseClicked="#selectLevel3" onMouseEntered="#onMouseHover3" onMouseExited="#onMouseExit3" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: F9F9F9; -fx-background-radius: 10;">
                     <children>
                         <ImageView fx:id="myImageView3" fitHeight="164.0" fitWidth="250.0" focusTraversable="true" layoutY="89.0" pickOnBounds="true">
                             <image>
@@ -27,7 +27,7 @@
                             </font>
                         </Label>
                     </children></Pane>
-                <Pane fx:id="level2" layoutX="370.0" layoutY="250.0" onDragEntered="#onMouseHover2" onDragExited="#onMouseExit2" onMouseClicked="#selectLevel2" onMouseEntered="#onMouseHover2" onMouseExited="#onMouseExit2" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: F9F9F9;">
+                <Pane fx:id="level2" layoutX="370.0" layoutY="250.0" onDragEntered="#onMouseHover2" onDragExited="#onMouseExit2" onMouseClicked="#selectLevel2" onMouseEntered="#onMouseHover2" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: F9F9F9; -fx-background-radius: 10;">
                     <children>
                         <ImageView fx:id="myImageView2" fitHeight="164.0" fitWidth="250.0" layoutY="88.0" pickOnBounds="true">
                             <image>
@@ -45,7 +45,7 @@
                         <Image url="@../button/back.png" />
                     </image>
                 </ImageView>
-                <Pane layoutX="58.0" layoutY="250.0" onMouseClicked="#selectLevel1" onMouseEntered="#onMouseHover1" onMouseExited="#onMouseExit1" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: F9F9F9;">
+                <Pane layoutX="58.0" layoutY="250.0" onMouseClicked="#selectLevel1" onMouseEntered="#onMouseHover1" onMouseExited="#onMouseExit1" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: F9F9F9; -fx-background-radius: 10;">
                     <children>
                         <ImageView fx:id="myImageView1" fitHeight="164.0" fitWidth="250.0" layoutY="89.0" pickOnBounds="true">
                             <image>
@@ -58,7 +58,7 @@
                             </font>
                         </Label>
                     </children></Pane>
-                <Pane layoutX="990.0" layoutY="250.0" onMouseClicked="#selectLevel4" onMouseEntered="#onMouseHover4" onMouseExited="#onMouseExit4" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: F9F9F9;">
+                <Pane layoutX="990.0" layoutY="250.0" onMouseClicked="#selectLevel4" onMouseEntered="#onMouseHover4" onMouseExited="#onMouseExit4" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: F9F9F9; -fx-background-radius: 10;">
                     <children>
                         <ImageView fx:id="myImageView4" fitHeight="164.0" fitWidth="250.0" layoutY="89.0" pickOnBounds="true">
                             <image>
